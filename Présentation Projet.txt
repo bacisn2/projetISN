@@ -20,20 +20,20 @@ ELEMENT NECESSAIRE:
 		- Grilles: 10*10 (A - J / 1 - 10), une grille sert au joueur pour placer ses bâteaux, l'autre lui sert à chercher les navires de l'IA
 
 		
-		- zones de textes:
+	- zones de textes:
 
-			- zone d'affichage: cadre qui permet à l'IA (le programme) d'afficher les cases qu'il attaque et de répondre "dans l'eau", "touché", "coulé" au joueur
+				- zone d'affichage: cadre qui permet à l'IA (le programme) d'afficher les cases qu'il attaque et de répondre "dans l'eau", "touché", "coulé" au joueur
 
-				- zone nécessaire: 3 (1 pour les cases, 1 pour les textes "dans l'eau" et "touché", 1 pour le texte "coulé")
+					- zone nécessaire: 3 (1 pour les cases, 1 pour les textes "dans l'eau" et "touché", 1 pour le texte "coulé")
 
 				
-			- zone de saisie: cadre où le joueur peut saisir les cases qu'il choisit d'attaquer ainsi que les textes "dans l'eau", "touché", "coulé" à l'IA
+- zone de saisie: cadre où le joueur peut saisir les cases qu'il choisit d'attaquer ainsi que les textes "dans l'eau", "touché", "coulé" à l'IA
 
-				- zone nécessaire: 2
+					- zone nécessaire: 2
 
-					- 1 pour rentrer les cases
+						- 1 pour rentrer les cases
 
-					- 1 pour les textes (en faisant si possible un choix entre les phrases pré-écrite)
+						- 1 pour les textes (en faisant si possible un choix entre les phrases pré-écrite)
 
 
 
