@@ -1,0 +1,125 @@
+							PROJET D'ISN
+
+	
+			  
+Valentin Carpentier & Mickael Parlange
+
+
+
+
+THEME: Crée un jeu de bataille navale où le joueur joue contre une IA basique
+
+
+
+ELEMENT NECESSAIRE:
+
+
+	- plateau de jeu (fenêtre contenant deux grilles pour le joueur et cinq zones de textes)
+
+	
+		- Grilles: 10*10 (A - J / 1 - 10), une grille sert au joueur pour placer ses bâteaux, l'autre lui sert à chercher les navires de l'IA
+
+		
+		- zones de textes:
+
+			- zone d'affichage: cadre qui permet à l'IA (le programme) d'afficher les cases qu'il attaque et de répondre "dans l'eau", "touché", "coulé" au joueur
+
+				- zone nécessaire: 3 (1 pour les cases, 1 pour les textes "dans l'eau" et "touché", 1 pour le texte "coulé")
+
+				
+			- zone de saisie: cadre où le joueur peut saisir les cases qu'il choisit d'attaquer ainsi que les textes "dans l'eau", "touché", "coulé" à l'IA
+
+				- zone nécessaire: 2
+
+					- 1 pour rentrer les cases
+
+					- 1 pour les textes (en faisant si possible un choix entre les phrases pré-écrite)
+
+
+
+	- programme:
+
+		
+- programme de positionnement des navires (début de la partie)
+
+			--> le joueur place ses navires un à un (éventuellement choix restreint pour éviter que le joueur place ses bâteaux en diagonale)
+
+			--> programme de vérification du positionnement des navires (les navires ne doivent pas se toucher, ni être en diagonale)
+
+				- fait recommencer la saisie si une erreur est repérer
+
+			--> l'IA positionne ses navires de manière aléatoire (en suivant les règles de positionnement)
+
+				- méthode utiliser à déterminer
+
+			--> détermination de la stratégie d'attaque de l'IA (3 choix), stratégie "une case sur deux"
+
+				- principe de la stratégie: l'IA choisit une case sur deux et cadrille le plateau entièrement de cette manière (ainsi il est sur de ne râter aucun bâteau et de cadriller de manière la plus efficace possible)
+
+					- les cases que choisit l'IA sont déterminées à l'avance
+
+					- ex: l'IA choisit A1, B2, A3, B4, etc
+
+				- 1er choix: l'IA attaque une case sur deux en partant de la colonne A jusqu'à la Z
+
+				- 2e choix: l'IA attaque une case sur deux en partant de la colonne Z jusqu'à la A
+
+				- 3e choix: l'IA choisit les cases aléatoirement (sans partir d'un point précis pour arriver à l'autre)
+
+
+		- programme choix de cases IA (recherche de bâteau)
+
+			--> utilisation de la stratégie "une case sur deux" selon la méthode choisit
+
+			--> affiche dans la zone de texte la case choisit
+
+			--> la case choisit est mise en évidence sur le plateau du joueur pour lui éviter de se tromper
+
+			--> le joueur choisit entre "dans l'eau", "touché", "coulé" (inutilisé/inutilisable à cette phase)
+
+				- en cas de triche, le jeu le constate et agit en conséquence (fait recommencer la saisie/ corrige la saisie ou quitte la partie)
+
+			--> l'IA prend en compte l'information du joueur (variable 0/1 par exemple)
+
+				- si la variable vaut 0 (= l'IA a touché dans l'eau) le tour du joueur commence et l'IA reste sur ce programme
+
+				- si la variable vaut 1 (= l'IA a touché un bâteau) le tour du joueur commence et l'IA passe au programme de coulage du navire
+
+
+		
+- programme attaque navire IA (pour couler le navire trouvé)
+
+			--> l'IA cible une case adjacent à la précédente case choisit
+
+			--> affiche dans la zone de texte la case choisit
+
+			--> le joueur choisit entre "dans l'eau", "touché", "coulé" (pour signaler que la dernière case vient dêtre touché)
+
+				- en cas de triche, le jeu le constate et agit en conséquence (fait recommencer la saisie/ corrige la saisie ou quitte la partie)
+
+			--> l'IA prend en compte l'information du joueur (deux variable 0/1 par exemple)
+
+				- si le message est "dans l'eau" : au tour suivant l'IA choisit une autre direction pour attaquer
+
+					- si plus d'une case a été touché, l'IA attaque la direction opposé aux cases déjà touchés
+
+				- si le message est "touché" : au tour suivant l'IA continue dans sa direction
+
+				- si le message est "coulé" : au tour suivant l'IA reprend le programme de choix de cases (cherche un nouveau bâteau)
+
+
+		- programme tour du joueur
+
+			--> le joueur tape le nom de la case dans la zone de texte (éventuellement, il pourra selectionner la case sur le plateau pour la rentrer)
+
+			--> le programme détermine si un bateau se trouve sur la case demandé (variable 0/1)
+
+			--> le programme affiche l'état de la case choisi en conséquence ("dans l'eau", "touché", "coulé") et met une couleur sur la case sur le 2e plateau du joueur (bleu ou rouge)
+
+			--> passage au tour de l'IA
+
+			
+			
+			
+			
+			
