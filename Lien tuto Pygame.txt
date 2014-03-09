@@ -1,0 +1,2 @@
+Liste des codes pour utiliser les touches du clavier: http://thepythongamebook.com/fr:glossaire:p:pygame:keycodes
+Tuto Pygame: http://fr.openclassrooms.com/informatique/cours/interface-graphique-pygame-pour-python
