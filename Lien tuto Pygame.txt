@@ -1,2 +1,7 @@
 Liste des codes pour utiliser les touches du clavier: http://thepythongamebook.com/fr:glossaire:p:pygame:keycodes
+
 Tuto Pygame: http://fr.openclassrooms.com/informatique/cours/interface-graphique-pygame-pour-python
+
+Render Aide: http://www.pygame.org/docs/ref/font.html#pygame.font
+
+Render exemple: http://nullege.com/codes/search?cq=pygame.font.Font.render&utm_expid=24446124-1.VCvmTxz_TCaKs5dGe3YRyA.0&utm_referrer=http%3A%2F%2Fwww.pygame.org%2Fdocs%2Fref%2Ffont.html
