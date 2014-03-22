@@ -48,9 +48,9 @@ CountShip = 0
 TextD1 = "Appuyez sur 2, 3, 4, 5 pour placez un bateau predefini. Appuyez sur \"haut\" pour reinitialiser le plateau"
 TextD2 = "Appuyez sur \"b\" pour placez un bateau (que vous choisirez) sur une case (que vous choisirez)"
 TextD3 = "Appuyez sur \"haut\" pour supprimer ce message"
-Instr1 = font.render(TextD1, 1, (150,200,100))
-Instr2 = font.render(TextD2, 1, (150,200,100))
-Instr3 = font.render(TextD3, 1, (150,200,100))
+Instr1 = font.render(TextD1, 1, (0,0,0))
+Instr2 = font.render(TextD2, 1, (0,0,0))
+Instr3 = font.render(TextD3, 1, (0,0,0))
 fenetre.blit(Instr1, (100,300))
 fenetre.blit(Instr2, (100,335))
 fenetre.blit(Instr3, (100,370))
@@ -99,7 +99,7 @@ while Infinie == 1:
             Bat = raw_input()
             print("Entrez sa case")
             Coord = raw_input()
-            if CountShip < 3:
+            if CountShip < 6:
                 if Bat in BateauPlayer and Coord in CasePlayer1:
                     CountShip = CountShip + 1
                     NewBat = BateauPlayer[Bat]
