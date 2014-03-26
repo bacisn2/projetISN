@@ -7,114 +7,114 @@ Valentin Carpentier & Mickael Parlange
 
 
 
-THEME: Crée un jeu de bataille navale où le joueur joue contre une IA basique
+THEME: CrÃ©er un jeu de bataille navale oï¿½ le joueur joue contre une IA basique
 
 
 
 ELEMENT NECESSAIRE:
 
 
-	- plateau de jeu (fenêtre contenant deux grilles pour le joueur et cinq zones de textes)
+	- plateau de jeu (fenï¿½tre contenant deux grilles pour le joueur et cinq zones de textes)
 
 	
-		- Grilles: 10*10 (A - J / 1 - 10), une grille sert au joueur pour placer ses bâteaux, l'autre lui sert à chercher les navires de l'IA
+		- Grilles: 10*10 (A - J / 1 - 10), une grille sert au joueur pour placer ses bï¿½teaux, l'autre lui sert ï¿½ chercher les navires de l'IA
 
 		
 	- zones de textes:
 
-				- zone d'affichage: cadre qui permet à l'IA (le programme) d'afficher les cases qu'il attaque et de répondre "dans l'eau", "touché", "coulé" au joueur
+				- zone d'affichage: cadre qui permet ï¿½ l'IA (le programme) d'afficher les cases qu'il attaque et de rï¿½pondre "dans l'eau", "touchï¿½", "coulï¿½" au joueur
 
-					- zone nécessaire: 3 (1 pour les cases, 1 pour les textes "dans l'eau" et "touché", 1 pour le texte "coulé")
+					- zone nï¿½cessaire: 3 (1 pour les cases, 1 pour les textes "dans l'eau" et "touchï¿½", 1 pour le texte "coulï¿½")
 
 				
-- zone de saisie: cadre où le joueur peut saisir les cases qu'il choisit d'attaquer ainsi que les textes "dans l'eau", "touché", "coulé" à l'IA
+- zone de saisie: cadre oï¿½ le joueur peut saisir les cases qu'il choisit d'attaquer ainsi que les textes "dans l'eau", "touchï¿½", "coulï¿½" ï¿½ l'IA
 
-					- zone nécessaire: 2
+					- zone nï¿½cessaire: 2
 
 						- 1 pour rentrer les cases
 
-						- 1 pour les textes (en faisant si possible un choix entre les phrases pré-écrite)
+						- 1 pour les textes (en faisant si possible un choix entre les phrases prï¿½-ï¿½crite)
 
 
 
 	- programme:
 
 		
-- programme de positionnement des navires (début de la partie)
+- programme de positionnement des navires (dï¿½but de la partie)
 
-			--> le joueur place ses navires un à un (éventuellement choix restreint pour éviter que le joueur place ses bâteaux en diagonale)
+			--> le joueur place ses navires un ï¿½ un (ï¿½ventuellement choix restreint pour ï¿½viter que le joueur place ses bï¿½teaux en diagonale)
 
-			--> programme de vérification du positionnement des navires (les navires ne doivent pas se toucher, ni être en diagonale)
+			--> programme de vï¿½rification du positionnement des navires (les navires ne doivent pas se toucher, ni ï¿½tre en diagonale)
 
-				- fait recommencer la saisie si une erreur est repérer
+				- fait recommencer la saisie si une erreur est repï¿½rer
 
-			--> l'IA positionne ses navires de manière aléatoire (en suivant les règles de positionnement)
+			--> l'IA positionne ses navires de maniï¿½re alï¿½atoire (en suivant les rï¿½gles de positionnement)
 
-				- méthode utiliser à déterminer
+				- mï¿½thode utiliser ï¿½ dï¿½terminer
 
-			--> détermination de la stratégie d'attaque de l'IA (3 choix), stratégie "une case sur deux"
+			--> dï¿½termination de la stratï¿½gie d'attaque de l'IA (3 choix), stratï¿½gie "une case sur deux"
 
-				- principe de la stratégie: l'IA choisit une case sur deux et cadrille le plateau entièrement de cette manière (ainsi il est sur de ne râter aucun bâteau et de cadriller de manière la plus efficace possible)
+				- principe de la stratï¿½gie: l'IA choisit une case sur deux et cadrille le plateau entiï¿½rement de cette maniï¿½re (ainsi il est sur de ne rï¿½ter aucun bï¿½teau et de cadriller de maniï¿½re la plus efficace possible)
 
-					- les cases que choisit l'IA sont déterminées à l'avance
+					- les cases que choisit l'IA sont dï¿½terminï¿½es ï¿½ l'avance
 
 					- ex: l'IA choisit A1, B2, A3, B4, etc
 
-				- 1er choix: l'IA attaque une case sur deux en partant de la colonne A jusqu'à la Z
+				- 1er choix: l'IA attaque une case sur deux en partant de la colonne A jusqu'ï¿½ la Z
 
-				- 2e choix: l'IA attaque une case sur deux en partant de la colonne Z jusqu'à la A
+				- 2e choix: l'IA attaque une case sur deux en partant de la colonne Z jusqu'ï¿½ la A
 
-				- 3e choix: l'IA choisit les cases aléatoirement (sans partir d'un point précis pour arriver à l'autre)
+				- 3e choix: l'IA choisit les cases alï¿½atoirement (sans partir d'un point prï¿½cis pour arriver ï¿½ l'autre)
 
 
-		- programme choix de cases IA (recherche de bâteau)
+		- programme choix de cases IA (recherche de bï¿½teau)
 
-			--> utilisation de la stratégie "une case sur deux" selon la méthode choisit
+			--> utilisation de la stratï¿½gie "une case sur deux" selon la mï¿½thode choisit
 
 			--> affiche dans la zone de texte la case choisit
 
-			--> la case choisit est mise en évidence sur le plateau du joueur pour lui éviter de se tromper
+			--> la case choisit est mise en ï¿½vidence sur le plateau du joueur pour lui ï¿½viter de se tromper
 
-			--> le joueur choisit entre "dans l'eau", "touché", "coulé" (inutilisé/inutilisable à cette phase)
+			--> le joueur choisit entre "dans l'eau", "touchï¿½", "coulï¿½" (inutilisï¿½/inutilisable ï¿½ cette phase)
 
-				- en cas de triche, le jeu le constate et agit en conséquence (fait recommencer la saisie/ corrige la saisie ou quitte la partie)
+				- en cas de triche, le jeu le constate et agit en consï¿½quence (fait recommencer la saisie/ corrige la saisie ou quitte la partie)
 
 			--> l'IA prend en compte l'information du joueur (variable 0/1 par exemple)
 
-				- si la variable vaut 0 (= l'IA a touché dans l'eau) le tour du joueur commence et l'IA reste sur ce programme
+				- si la variable vaut 0 (= l'IA a touchï¿½ dans l'eau) le tour du joueur commence et l'IA reste sur ce programme
 
-				- si la variable vaut 1 (= l'IA a touché un bâteau) le tour du joueur commence et l'IA passe au programme de coulage du navire
+				- si la variable vaut 1 (= l'IA a touchï¿½ un bï¿½teau) le tour du joueur commence et l'IA passe au programme de coulage du navire
 
 
 		
-- programme attaque navire IA (pour couler le navire trouvé)
+- programme attaque navire IA (pour couler le navire trouvï¿½)
 
-			--> l'IA cible une case adjacent à la précédente case choisit
+			--> l'IA cible une case adjacent ï¿½ la prï¿½cï¿½dente case choisit
 
 			--> affiche dans la zone de texte la case choisit
 
-			--> le joueur choisit entre "dans l'eau", "touché", "coulé" (pour signaler que la dernière case vient dêtre touché)
+			--> le joueur choisit entre "dans l'eau", "touchï¿½", "coulï¿½" (pour signaler que la derniï¿½re case vient dï¿½tre touchï¿½)
 
-				- en cas de triche, le jeu le constate et agit en conséquence (fait recommencer la saisie/ corrige la saisie ou quitte la partie)
+				- en cas de triche, le jeu le constate et agit en consï¿½quence (fait recommencer la saisie/ corrige la saisie ou quitte la partie)
 
 			--> l'IA prend en compte l'information du joueur (deux variable 0/1 par exemple)
 
 				- si le message est "dans l'eau" : au tour suivant l'IA choisit une autre direction pour attaquer
 
-					- si plus d'une case a été touché, l'IA attaque la direction opposé aux cases déjà touchés
+					- si plus d'une case a ï¿½tï¿½ touchï¿½, l'IA attaque la direction opposï¿½ aux cases dï¿½jï¿½ touchï¿½s
 
-				- si le message est "touché" : au tour suivant l'IA continue dans sa direction
+				- si le message est "touchï¿½" : au tour suivant l'IA continue dans sa direction
 
-				- si le message est "coulé" : au tour suivant l'IA reprend le programme de choix de cases (cherche un nouveau bâteau)
+				- si le message est "coulï¿½" : au tour suivant l'IA reprend le programme de choix de cases (cherche un nouveau bï¿½teau)
 
 
 		- programme tour du joueur
 
-			--> le joueur tape le nom de la case dans la zone de texte (éventuellement, il pourra selectionner la case sur le plateau pour la rentrer)
+			--> le joueur tape le nom de la case dans la zone de texte (ï¿½ventuellement, il pourra selectionner la case sur le plateau pour la rentrer)
 
-			--> le programme détermine si un bateau se trouve sur la case demandé (variable 0/1)
+			--> le programme dï¿½termine si un bateau se trouve sur la case demandï¿½ (variable 0/1)
 
-			--> le programme affiche l'état de la case choisi en conséquence ("dans l'eau", "touché", "coulé") et met une couleur sur la case sur le 2e plateau du joueur (bleu ou rouge)
+			--> le programme affiche l'ï¿½tat de la case choisi en consï¿½quence ("dans l'eau", "touchï¿½", "coulï¿½") et met une couleur sur la case sur le 2e plateau du joueur (bleu ou rouge)
 
 			--> passage au tour de l'IA
 
