@@ -2,7 +2,7 @@
 """
 Created on Thu Mar 27 16:34:12 2014
 
-@author: isn
+@author: Mickaël
 """
 
 #Dico liste des cases Grille 2
