@@ -9,6 +9,13 @@ Created on Mon Mar 10 17:37:59 2014
 #mais des variables. Ils me servent à vérifier le bon fonctionnement du programme 
 #(notamment l'état de la variable "Bateau/pas Bateau" invisible sur le plateau de jeu)
 
+#NOTE UTILE SUR LES GRILLES DE JEU:
+#Chaque Grille fait 400*400 px et chaque case fait 20*20 px. La première Grille est
+#émargé à 100 px en haut et 100 px à droite et la deuxième Grille est émargé à 100 px
+#en haut et 600 px à gauche, les coordonnées des cases de ces Grilles doient donc tenir
+#compte de ces marges. Les bateaux font moins de 20 px de haut (ou de large pour les
+#verticaux) et sont donc placé à 5 px de marge du coin supérieur gauche de la case.
+
 #NOTE UTILE SUR LA GESTION DES COORDONNEES (SUROUT POUR MICKAËL !):
 #Le Tuple de Coordonnées de la case (ex: (105, 105) pour A1) est géré différemment par
 # pygame que par notre esprit. Nous assossions la lettre puis le chiffre, le programme
@@ -143,8 +150,8 @@ while Infinie == 1:
             
         #Placement du bateau sur la Grille de Gauche
         if event.type == KEYDOWN and event.key == K_b:
-            #Vérifie s'il y a déjà le nombre max de bateau en jeu
-            if CountShip < 6: 
+            #Placement des bateau en jeu
+            while CountShip < 6:
                 #Appelle de la Fonction de position du Navire
                 #Cette Fonction appelera une sous-fontion qui à son tour 
                 #appelera deux sous-fonctions (choix entre les deux)
@@ -158,9 +165,13 @@ while Infinie == 1:
                     NewBat = BateauPlayer[Bat] #Chargement de la Case
                     fenetre.blit(NewBat, CasePlayer1[Coord]) #Placement de l'image du bateau
                     pygame.display.flip() #Rafraichissement du Plateau de Jeu
+                    print("\n")
+                    print("Nouvelle Grille1")
                     print(Grille1)
-            else:
-                print("Nombre de navire max atteint")
+                    print("\n")
+                    print("Nombre de Bateaux: " + str(CountShip))
+            #else:
+                #print("Nombre de navire max atteint")
         #réinitialisation du plateau
         if event.type == KEYDOWN and event.key == K_UP: 
             #réinitialisation du nombre de bateau en jeu
