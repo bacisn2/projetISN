@@ -1,0 +1,9 @@
+Navires:
+1 Navire 6 Cases
+1 Navires 5 Cases
+2 Navires 4 Cases
+3 Navires 3 Cases
+3 Navires 2 Cases
+
+Règles Positionnement:
+Les navires ne doivent pas se toucher (aucun navire directement adjacent, diagonal inclus)

@@ -37,6 +37,7 @@ import Dico_Ship
 #Ini Pygame + fond pour les textes
 pygame.init()
 pygame.font.init()
+Info = pygame.font.Font(None, 20) #Transparent pour l'affichage des Textes (version 15 px)
 font = pygame.font.Font(None, 30) #Transparent pour l'affichage des Textes (version 30 px)
 SuperFont = pygame.font.Font(None, 80) #Transparent pour l'affichage des Textes (version 80 px)
 
@@ -48,7 +49,7 @@ from Fonction_Ship import Grille2
     
 #Ini Fenêtre + Fond Blanc
 #Crée une fenêtre de 1200*900 pixel pour le Jeu
-fenetre = pygame.display.set_mode((1200, 900))
+fenetre = pygame.display.set_mode((1200, 700))
 #Charge l'image
 fond = pygame.image.load("Fond_Blanc_1200-900.jpg")
 #Positionne l'image
@@ -85,17 +86,41 @@ CountShip = 0 #Compteur Navires
 
 #Liste des commandes pour le début
 #Création des Textes
-TextD1 = "Appuyez sur 2, 3, 4, 5 pour placez un bateau predefini. Appuyez sur \"haut\" pour reinitialiser le plateau"
-TextD2 = "Appuyez sur \"b\" pour placez un bateau (que vous choisirez) sur une case (que vous choisirez)"
-TextD3 = "Appuyez sur \"haut\" pour supprimer ce message"
+TextD1 = "Il y a 9 navires possibles, chacun possede un code propre que voici pour facilite leur saisi:"
+TextD2 = "Voilier (2 cases) --> Code: \"Voilier\""
+TextD3 = "Destroyer (2 cases) --> Code: \"LitShip\""
+TextD4 = "Sous-Marin (3 cases) --> Code: \"SM\""
+TextD5 = "Mini-Navire version Bleue (3 cases) --> Code: \"MNB\""
+TextD6 = "Mini-Navire version Rouge (3 cases) --> Code: \"MNR\""
+TextD7 = "Cuirasse Standard (4 cases) --> Code: \"CuirBase\""
+TextD8 = "Cuirasse Version 2 (4 cases) --> Code: \"Cuir2\""
+TextD9 = "Porte Avion (5 cases) --> Code: \"PA\""
+TextD10 = "Super Cuirasse (6 cases) --> Code: \"CuirSuper\""
+TextD11 = "Ces codes placent vos bateaux de maniere horizontal, \n pour les placer verticalement, rajouter \"V\" apres les codes ci-dessus"
 #Chargement des Textes
-Instr1 = font.render(TextD1, 1, (0,0,0))
-Instr2 = font.render(TextD2, 1, (0,0,0))
-Instr3 = font.render(TextD3, 1, (0,0,0))
+Instr1 = Info.render(TextD1, 1, (0,0,0))
+Instr2 = Info.render(TextD2, 1, (0,0,0))
+Instr3 = Info.render(TextD3, 1, (0,0,0))
+Instr4 = Info.render(TextD4, 1, (0,0,0))
+Instr5 = Info.render(TextD5, 1, (0,0,0))
+Instr6 = Info.render(TextD6, 1, (0,0,0))
+Instr7 = Info.render(TextD7, 1, (0,0,0))
+Instr8 = Info.render(TextD8, 1, (0,0,0))
+Instr9 = Info.render(TextD9, 1, (0,0,0))
+Instr10 = Info.render(TextD10, 1, (0,0,0))
+Instr11 = Info.render(TextD11, 1, (0,0,0))
 #Placement des Textes sur le Plateau de Jeu
-fenetre.blit(Instr1, (100,300))
-fenetre.blit(Instr2, (100,335))
-fenetre.blit(Instr3, (100,370))
+fenetre.blit(Instr1, (100,580))
+fenetre.blit(Instr2, (100,595))
+fenetre.blit(Instr3, (450,595))
+fenetre.blit(Instr4, (100,610))
+fenetre.blit(Instr5, (450,610))
+fenetre.blit(Instr6, (100,625))
+fenetre.blit(Instr7, (450,625))
+fenetre.blit(Instr8, (100,640))
+fenetre.blit(Instr9, (450,640))
+fenetre.blit(Instr10, (100,655))
+fenetre.blit(Instr11, (100,670))
 #Raifraichissement du Plateau de Jeu
 pygame.display.flip()
 #FIN PARTIE INITIALISATION DU JEU
@@ -103,7 +128,7 @@ pygame.display.flip()
 #MAIN PROGRAMME         
 while Infinie == 1:
     for event in pygame.event.get(): #Fait la liste des évènements possible (appuyer sur une touche, souris, etc...)
-        if event.type == QUIT: #Quitte la partie quand on appuie sur "Quitter" (sous Windows 8 avec Python 2.6.6)
+        if event.type == QUIT: #Quitte la partie quand on appuie sur "Quitter" (bug sous Windows 8 avec Python 2.7)
             Infinie = 0 #Fin de la Boucle (FIN MAIN PROGRAMME)
         if event.type == KEYDOWN and event.key == K_SPACE: #Test Espace
             #Dans l'ordre: Création, Chargement, Positionnement du texte et Rafraichissement du Plateau de Jeu
@@ -173,21 +198,40 @@ while Infinie == 1:
             #else:
                 #print("Nombre de navire max atteint")
         #réinitialisation du plateau
-        if event.type == KEYDOWN and event.key == K_UP: 
-            #réinitialisation du nombre de bateau en jeu
-            CountShip = 0          
-            #Réinitialisation des Grilles
-            IniListeCaseGrille1()
-            IniListeCaseGrille2()
-            from Fonction_Ship import Grille1
-            from Fonction_Ship import Grille2
-            #Réinitialisation du Plateau de Jeu
-            fenetre.blit(fond, (0,0))
-            fenetre.blit(Quad1, (100,100))
-            fenetre.blit(Quad1, (600,100))
-            fenetre.blit(Ligne, (80,100))
-            fenetre.blit(Ligne, (580,100))
-            fenetre.blit(Colonne, (100,75))
-            fenetre.blit(Colonne, (600,75))
-            pygame.display.flip()
+        if event.type == KEYDOWN and event.key == K_UP:
+            #Demande de confirmation
+            #RealQuit = raw_input("Vous-vous vraiment reinitialiser la partie ? (o/n): "
+            #if RealQuit == "o":          
+                #réinitialisation du nombre de bateau en jeu
+                CountShip = 0          
+                #Réinitialisation des Grilles
+                IniListeCaseGrille1()
+                IniListeCaseGrille2()
+                from Fonction_Ship import Grille1
+                from Fonction_Ship import Grille2
+                #Réinitialisation du Plateau de Jeu
+                fenetre.blit(fond, (0,0))
+                fenetre.blit(Quad1, (100,100))
+                fenetre.blit(Quad1, (600,100))
+                fenetre.blit(Ligne, (80,100))
+                fenetre.blit(Ligne, (580,100))
+                fenetre.blit(Colonne, (100,75))
+                fenetre.blit(Colonne, (600,75))
+                #Placement des Textes sur le Plateau de Jeu
+                fenetre.blit(Instr1, (100,580))
+                fenetre.blit(Instr2, (100,595))
+                fenetre.blit(Instr3, (450,595))
+                fenetre.blit(Instr4, (100,610))
+                fenetre.blit(Instr5, (450,610))
+                fenetre.blit(Instr6, (100,625))
+                fenetre.blit(Instr7, (450,625))
+                fenetre.blit(Instr8, (100,640))
+                fenetre.blit(Instr9, (450,640))
+                fenetre.blit(Instr10, (100,655))
+                fenetre.blit(Instr11, (100,670))
+                pygame.display.flip()
+                #Message Réinitialisation
+                print("Reinitialisation de la partie")
+            #else:
+                #print("Reinitialisation annulee")
 #FIN MAIN PROGRAMME
