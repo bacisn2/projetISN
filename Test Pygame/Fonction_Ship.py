@@ -9,6 +9,12 @@ Created on Thu Mar 27 17:21:26 2014
 #IMPORTATION DES DICOS
 import Dico_Ship
 import Dico_Grille1
+#INITIALISATION DES COMPTEURS DE NAVIRES
+Nb2Case = 0
+Nb3Case = 0
+Nb4Case = 0
+Nb5Case = 0
+Nb6Case = 0
 
 #PARTIE FONCTIONS D'INITIALISATION
 #Fonctions d'Initialisation des Grilles
@@ -342,7 +348,12 @@ def ListShip_for_Chgmt_State():
     global Bat
     global Coord
     global EchecPosition
-    if Bat == "LitShip" or Bat == "Voiler": #bateau "2 cases" horizontale
+    global Nb2Case
+    global Nb3Case
+    global Nb4Case
+    global Nb5Case
+    global Nb6Case
+    if Bat == "LitShip" or Bat == "Voilier": #bateau "2 cases" horizontale
         #Prologue: Appelle de la Fonction vérif quadrillage & autres navires
         NbCase = 2 #Nombre de case du navire (sert pour les fonctions suivantes)
         Fonction_Verif_Position_Brute_for_H()
@@ -350,9 +361,10 @@ def ListShip_for_Chgmt_State():
             #Appelle la Fonction qui change l'état de la 1er Case
             Chgmt_State_Case1()
             #Appelle la fonction qui gérera la modifiaction de l'état des autres cases du bâteau
-            Grille1_Navire_Horizontale() 
+            Grille1_Navire_Horizontale()
+            Nb2Case = Nb2Case+1
         
-    elif Bat == "LitShipV" or Bat == "VoilerV": #Bateau "2 cases" verticale
+    elif Bat == "LitShipV" or Bat == "VoilierV": #Bateau "2 cases" verticale
         #Prologue: Appelle de la Fonction vérif quadrillage & autres navires
         NbCase = 2 #Nombre de case du navire (sert pour les fonctions suivantes)
         Fonction_Verif_Position_Brute_for_V()
@@ -361,6 +373,7 @@ def ListShip_for_Chgmt_State():
             Chgmt_State_Case1()
             #Appelle la fonction qui gérera la modifiaction de l'état des autres cases du bateau 
             Grille1_Navire_Verticale()
+            Nb2Case = Nb2Case+1
         
     elif Bat == "SM" or Bat == "MNB" or Bat == "MNR": #Sous-Marin (3 cases) ou autres navire "3 cases" horizontale
         #Prologue: Appelle de la Fonction vérif quadrillage & autres navires
@@ -371,6 +384,7 @@ def ListShip_for_Chgmt_State():
             Chgmt_State_Case1()
             #Appelle la fonction qui gérera la modifiaction de l'état des autres cases du bateau 
             Grille1_Navire_Horizontale()
+            Nb3Case = Nb3Case+1
         
     elif Bat == "SMV" or Bat == "MNBV" or Bat == "MNRV": #Sous-Marin (3 cases) ou autres navire "3 cases" verticale
         #Prologue: Appelle de la Fonction vérif quadrillage & autres navires
@@ -381,6 +395,7 @@ def ListShip_for_Chgmt_State():
             Chgmt_State_Case1()
             #Appelle la fonction qui gérera la modifiaction de l'état des autres cases du bateau 
             Grille1_Navire_Verticale()
+            Nb3Case = Nb3Case+1
         
     elif Bat == "CuirBase" or Bat == "Cuir2": #Bateau "4 cases" horizontale
         #Prologue: Appelle de la Fonction vérif quadrillage & autres navires
@@ -391,6 +406,7 @@ def ListShip_for_Chgmt_State():
             Chgmt_State_Case1()
             #Appelle la fonction qui gérera la modifiaction de l'état des autres cases du bateau 
             Grille1_Navire_Horizontale()
+            Nb4Case = Nb4Case+1
         
     elif Bat == "CuirBaseV" or Bat == "Cuir2V": #Bateau "4 cases" verticale
         #Prologue: Appelle de la Fonction vérif quadrillage & autres navires
@@ -400,7 +416,8 @@ def ListShip_for_Chgmt_State():
             #Appelle la Fonction qui change l'état de la 1er Case
             Chgmt_State_Case1()
             #Appelle la fonction qui gérera la modifiaction de l'état des autres cases du bateau 
-            Grille1_Navire_Verticale()                
+            Grille1_Navire_Verticale()
+            Nb4Case = Nb4Case+1                
         
     elif Bat == "PA": #Bateau "5 cases" horizontale
         #Prologue: Appelle de la Fonction vérif quadrillage & autres navires
@@ -411,6 +428,7 @@ def ListShip_for_Chgmt_State():
             Chgmt_State_Case1()
             #Appelle la fonction qui gérera la modifiaction de l'état des autres cases du bateau 
             Grille1_Navire_Horizontale()
+            Nb5Case = Nb5Case+1
         
     elif Bat == "PAV": #Bateau "5 cases" verticale
         #Prologue: Appelle de la Fonction vérif quadrillage & autres navires
@@ -420,7 +438,8 @@ def ListShip_for_Chgmt_State():
             #Appelle la Fonction qui change l'état de la 1er Case
             Chgmt_State_Case1()
             #Appelle la fonction qui gérera la modifiaction de l'état des autres cases du bateau 
-            Grille1_Navire_Verticale() 
+            Grille1_Navire_Verticale()
+            Nb5Case = Nb5Case+1
 
     elif Bat == "CuirSuper": #Bateau "6 cases" horizontale
         #Prologue: Appelle de la Fonction vérif quadrillage & autres navires
@@ -431,6 +450,7 @@ def ListShip_for_Chgmt_State():
             Chgmt_State_Case1()
             #Appelle la fonction qui gérera la modifiaction de l'état des autres cases du bateau 
             Grille1_Navire_Horizontale()
+            Nb6Case = Nb6Case+1
         
     elif Bat == "CuirSuperV": #Bateau "6 cases" verticale
         #Prologue: Appelle de la Fonction vérif quadrillage & autres navires
@@ -440,6 +460,34 @@ def ListShip_for_Chgmt_State():
             #Appelle la Fonction qui change l'état de la 1er Case
             Chgmt_State_Case1()
             #Appelle la fonction qui gérera la modifiaction de l'état des autres cases du bateau 
-            Grille1_Navire_Verticale()  
-#FIN PARTIE CHANGEMENT DE L'ETAT DE LA VARIABLE "BATEAU/PAS BATEAU" (BPB)             
-#FIN PARTIE FONCTION POSITIONNEMENT DES NAVIRES 
+            Grille1_Navire_Verticale()
+            Nb6Case = Nb6Case+1
+    print("\n")
+    print("Nombre de Navire 2 Cases: " + str(Nb2Case))
+    print("Nombre de Navire 3 Cases: " + str(Nb3Case))
+    print("Nombre de Navire 4 Cases: " + str(Nb4Case))
+    print("Nombre de Navire 5 Cases: " + str(Nb5Case))
+    print("Nombre de Navire 6 Cases: " + str(Nb6Case))
+#FIN PARTIE CHANGEMENT DE L'ETAT DE LA VARIABLE "BATEAU/PAS BATEAU" (BPB)
+#PARTIE VERIFICATION FINALE
+def Verification_Final_Grille1():
+    global Nb2Case
+    global Nb3Case
+    global Nb4Case
+    global Nb5Case
+    global Nb6Case
+    global EchecVerifFinal
+        
+def Reinitialisation_NbXCase():
+    global Nb2Case
+    global Nb3Case
+    global Nb4Case
+    global Nb5Case
+    global Nb6Case
+    Nb2Case = 0
+    Nb3Case = 0
+    Nb4Case = 0
+    Nb5Case = 0
+    Nb6Case = 0
+#FIN PARTIE VERIFICATION FINALE             
+#FIN PARTIE FONCTIONs POSITIONNEMENT DES NAVIRES 

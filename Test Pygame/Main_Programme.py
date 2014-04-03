@@ -33,7 +33,45 @@ import Dico_Ship
 #FIN PARTIE IMPORTATION PROGRAMME UTILE 
 #(NB: d'autres importation seront faîtes quand le programme sera plus avancée)
 
-#PARTIE INITIALISATION DU JEU
+#FONCTION REINITIALISATION:
+def REINITIALISATION_PARTIE():
+    global CountShip
+    global EchecVerifFinal
+    global Grille1
+    global Grille2
+    #réinitialisation du nombre de bateau en jeu
+    Reinitialisation_NbXCase()
+    CountShip = 0
+    EchecVerifFinal = False          
+    #Réinitialisation des Grilles
+    IniListeCaseGrille1()
+    IniListeCaseGrille2()
+    from Fonction_Ship import Grille1
+    from Fonction_Ship import Grille2
+    #Réinitialisation du Plateau de Jeu
+    fenetre.blit(fond, (0,0))
+    fenetre.blit(Quad1, (100,100))
+    fenetre.blit(Quad1, (600,100))
+    fenetre.blit(Ligne, (80,100))
+    fenetre.blit(Ligne, (580,100))
+    fenetre.blit(Colonne, (100,75))
+    fenetre.blit(Colonne, (600,75))
+    #Placement des Textes sur le Plateau de Jeu
+    fenetre.blit(Instr1, (100,580))
+    fenetre.blit(Instr2, (100,595))
+    fenetre.blit(Instr3, (450,595))
+    fenetre.blit(Instr4, (100,610))
+    fenetre.blit(Instr5, (450,610))
+    fenetre.blit(Instr6, (100,625))
+    fenetre.blit(Instr7, (450,625))
+    fenetre.blit(Instr8, (100,640))
+    fenetre.blit(Instr9, (450,640))
+    fenetre.blit(Instr10, (100,655))
+    fenetre.blit(Instr11, (100,670))
+    pygame.display.flip()
+#FIN FONCTION REINITIALISATION
+    
+#PARTIE INItIALISATION DU JEU
 #Ini Pygame + fond pour les textes
 pygame.init()
 pygame.font.init()
@@ -83,7 +121,7 @@ CasePlayer1 = Dico_Grille1.GrillePlayer1
 BateauPlayer = Dico_Ship.Ship1
 Infinie = 1 #Fait tourner indéfiniment le programme
 CountShip = 0 #Compteur Navires
-
+EchecVerifFinal = False
 #Liste des commandes pour le début
 #Création des Textes
 TextD1 = "Il y a 9 navires possibles, chacun possede un code propre que voici pour facilite leur saisi:"
@@ -96,7 +134,7 @@ TextD7 = "Cuirasse Standard (4 cases) --> Code: \"CuirBase\""
 TextD8 = "Cuirasse Version 2 (4 cases) --> Code: \"Cuir2\""
 TextD9 = "Porte Avion (5 cases) --> Code: \"PA\""
 TextD10 = "Super Cuirasse (6 cases) --> Code: \"CuirSuper\""
-TextD11 = "Ces codes placent vos bateaux de maniere horizontal, \n pour les placer verticalement, rajouter \"V\" apres les codes ci-dessus"
+TextD11 = "Ces codes placent vos bateaux de maniere horizontal, pour les placer verticalement, rajouter \"V\" apres les codes ci-dessus"
 #Chargement des Textes
 Instr1 = Info.render(TextD1, 1, (0,0,0))
 Instr2 = Info.render(TextD2, 1, (0,0,0))
@@ -176,7 +214,7 @@ while Infinie == 1:
         #Placement du bateau sur la Grille de Gauche
         if event.type == KEYDOWN and event.key == K_b:
             #Placement des bateau en jeu
-            while CountShip < 6:
+            while CountShip < 10:
                 #Appelle de la Fonction de position du Navire
                 #Cette Fonction appelera une sous-fontion qui à son tour 
                 #appelera deux sous-fonctions (choix entre les deux)
@@ -190,48 +228,34 @@ while Infinie == 1:
                     NewBat = BateauPlayer[Bat] #Chargement de la Case
                     fenetre.blit(NewBat, CasePlayer1[Coord]) #Placement de l'image du bateau
                     pygame.display.flip() #Rafraichissement du Plateau de Jeu
-                    print("\n")
-                    print("Nouvelle Grille1")
-                    print(Grille1)
-                    print("\n")
+                    #print("\n")
+                    #print("Nouvelle Grille1")
+                    #print(Grille1)
                     print("Nombre de Bateaux: " + str(CountShip))
-            #else:
-                #print("Nombre de navire max atteint")
+                    print("\nBateau suivant:")
+            from Fonction_Ship import Nb2Case
+            from Fonction_Ship import Nb3Case
+            from Fonction_Ship import Nb4Case
+            from Fonction_Ship import Nb5Case
+            from Fonction_Ship import Nb6Case
+            if Nb2Case == 3 and Nb3Case == 3 and Nb4Case == 2 and Nb5Case == 1 and Nb6Case == 1:
+                print("OK pour la liste de navires")
+                EchecVerifFinal = False
+            else:
+                print("Vous n'avez pas respecte la liste de navire requit\nVeuillez recommencer")
+                EchecVerifFinal = True
+                
         #réinitialisation du plateau
-        if event.type == KEYDOWN and event.key == K_UP:
+        if event.type == KEYDOWN and event.key == K_UP :
             #Demande de confirmation
-            #RealQuit = raw_input("Vous-vous vraiment reinitialiser la partie ? (o/n): "
-            #if RealQuit == "o":          
-                #réinitialisation du nombre de bateau en jeu
-                CountShip = 0          
-                #Réinitialisation des Grilles
-                IniListeCaseGrille1()
-                IniListeCaseGrille2()
-                from Fonction_Ship import Grille1
-                from Fonction_Ship import Grille2
-                #Réinitialisation du Plateau de Jeu
-                fenetre.blit(fond, (0,0))
-                fenetre.blit(Quad1, (100,100))
-                fenetre.blit(Quad1, (600,100))
-                fenetre.blit(Ligne, (80,100))
-                fenetre.blit(Ligne, (580,100))
-                fenetre.blit(Colonne, (100,75))
-                fenetre.blit(Colonne, (600,75))
-                #Placement des Textes sur le Plateau de Jeu
-                fenetre.blit(Instr1, (100,580))
-                fenetre.blit(Instr2, (100,595))
-                fenetre.blit(Instr3, (450,595))
-                fenetre.blit(Instr4, (100,610))
-                fenetre.blit(Instr5, (450,610))
-                fenetre.blit(Instr6, (100,625))
-                fenetre.blit(Instr7, (450,625))
-                fenetre.blit(Instr8, (100,640))
-                fenetre.blit(Instr9, (450,640))
-                fenetre.blit(Instr10, (100,655))
-                fenetre.blit(Instr11, (100,670))
-                pygame.display.flip()
+            RealQuit = raw_input("Vous-vous vraiment reinitialiser la partie ? (o/n): ")
+            if RealQuit == "o":          
+                REINITIALISATION_PARTIE()
                 #Message Réinitialisation
                 print("Reinitialisation de la partie")
-            #else:
-                #print("Reinitialisation annulee")
+            else:
+                print("Reinitialisation annulee")
+        if EchecVerifFinal == True:
+            REINITIALISATION_PARTIE()
+            print("Appuyez sur \"b\" pour recommencer la saisi")
 #FIN MAIN PROGRAMME
