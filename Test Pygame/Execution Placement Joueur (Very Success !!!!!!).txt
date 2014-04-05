@@ -1,0 +1,1933 @@
+Entrez le bateau
+CuirSuper
+Entrez sa case
+A1
+
+
+IndexCase = 0
+
+
+Fonction_Verif_Position_Brute
+0
+[105, 105]
+[125, 105]
+[145, 105]
+[165, 105]
+[185, 105]
+[205, 105]
+OK for Position Brute
+
+
+Verif_VariableBPB_in_Grille1 (Case/Varibale)
+Case 1
+0
+0
+Case 2
+1
+0
+Case 3
+2
+0
+Case 4
+3
+0
+Case 5
+4
+0
+Case 6
+5
+0
+
+
+Chgmt_State_Case1
+0
+[(105, 105), 0, 0, 0]
+[(105, 105), 1, 0, 0]
+
+
+Grille1_Navire_Horizontale
+1
+[(125, 105), 0, 0, 0]
+[(125, 105), 1, 0, 0]
+2
+[(145, 105), 0, 0, 0]
+[(145, 105), 1, 0, 0]
+3
+[(165, 105), 0, 0, 0]
+[(165, 105), 1, 0, 0]
+4
+[(185, 105), 0, 0, 0]
+[(185, 105), 1, 0, 0]
+5
+[(205, 105), 0, 0, 0]
+[(205, 105), 1, 0, 0]
+
+
+Nombre de Navire 2 Cases: 0
+Nombre de Navire 3 Cases: 0
+Nombre de Navire 4 Cases: 0
+Nombre de Navire 5 Cases: 0
+Nombre de Navire 6 Cases: 1
+Nombre de Bateaux: 1
+Appuyez sur "b" pour placer un nouveau navire ou 
+lancer la verification de votre positionnement
+
+
+Entrez le bateau
+PAV
+Entrez sa case
+D18
+
+
+IndexCase = 77
+
+
+Fonction_Verif_Position_Brute
+77
+[445, 165]
+[445, 185]
+[445, 205]
+[445, 225]
+[445, 245]
+OK for Position Brute
+
+
+Verif_VariableBPB_in_Grille1 (Case/Varibale)
+Case 1
+77
+0
+Case 2
+97
+0
+Case 3
+117
+0
+Case 4
+137
+0
+Case 5
+157
+0
+
+
+Chgmt_State_Case1
+77
+[(445, 165), 0, 0, 0]
+[(445, 165), 1, 0, 0]
+
+
+Grille1_Navire_Horizontale
+97
+[(445, 185), 0, 0, 0]
+[(445, 185), 1, 0, 0]
+117
+[(445, 205), 0, 0, 0]
+[(445, 205), 1, 0, 0]
+137
+[(445, 225), 0, 0, 0]
+[(445, 225), 1, 0, 0]
+157
+[(445, 245), 0, 0, 0]
+[(445, 245), 1, 0, 0]
+
+
+Nombre de Navire 2 Cases: 0
+Nombre de Navire 3 Cases: 0
+Nombre de Navire 4 Cases: 0
+Nombre de Navire 5 Cases: 1
+Nombre de Navire 6 Cases: 1
+Nombre de Bateaux: 2
+Appuyez sur "b" pour placer un nouveau navire ou 
+lancer la verification de votre positionnement
+
+
+Entrez le bateau
+CuirBase
+Entrez sa case
+F5
+
+
+IndexCase = 104
+
+
+Fonction_Verif_Position_Brute
+104
+[185, 205]
+[205, 205]
+[225, 205]
+[245, 205]
+OK for Position Brute
+
+
+Verif_VariableBPB_in_Grille1 (Case/Varibale)
+Case 1
+104
+0
+Case 2
+105
+0
+Case 3
+106
+0
+Case 4
+107
+0
+
+
+Chgmt_State_Case1
+104
+[(185, 205), 0, 0, 0]
+[(185, 205), 1, 0, 0]
+
+
+Grille1_Navire_Horizontale
+105
+[(205, 205), 0, 0, 0]
+[(205, 205), 1, 0, 0]
+106
+[(225, 205), 0, 0, 0]
+[(225, 205), 1, 0, 0]
+107
+[(245, 205), 0, 0, 0]
+[(245, 205), 1, 0, 0]
+
+
+Nombre de Navire 2 Cases: 0
+Nombre de Navire 3 Cases: 0
+Nombre de Navire 4 Cases: 1
+Nombre de Navire 5 Cases: 1
+Nombre de Navire 6 Cases: 1
+Nombre de Bateaux: 3
+Appuyez sur "b" pour placer un nouveau navire ou 
+lancer la verification de votre positionnement
+
+
+Entrez le bateau
+Cuir2
+Entrez sa case
+D2
+
+
+IndexCase = 61
+
+
+Fonction_Verif_Position_Brute
+61
+[125, 165]
+[145, 165]
+[165, 165]
+[185, 165]
+OK for Position Brute
+
+
+Verif_VariableBPB_in_Grille1 (Case/Varibale)
+Case 1
+61
+0
+Case 2
+62
+0
+Case 3
+63
+0
+Case 4
+64
+0
+
+
+Chgmt_State_Case1
+61
+[(125, 165), 0, 0, 0]
+[(125, 165), 1, 0, 0]
+
+
+Grille1_Navire_Horizontale
+62
+[(145, 165), 0, 0, 0]
+[(145, 165), 1, 0, 0]
+63
+[(165, 165), 0, 0, 0]
+[(165, 165), 1, 0, 0]
+64
+[(185, 165), 0, 0, 0]
+[(185, 165), 1, 0, 0]
+
+
+Nombre de Navire 2 Cases: 0
+Nombre de Navire 3 Cases: 0
+Nombre de Navire 4 Cases: 2
+Nombre de Navire 5 Cases: 1
+Nombre de Navire 6 Cases: 1
+Nombre de Bateaux: 4
+Appuyez sur "b" pour placer un nouveau navire ou 
+lancer la verification de votre positionnement
+
+
+Entrez le bateau
+SM
+Entrez sa case
+A15
+
+
+IndexCase = 14
+
+
+Fonction_Verif_Position_Brute
+14
+[385, 105]
+[405, 105]
+[425, 105]
+OK for Position Brute
+
+
+Verif_VariableBPB_in_Grille1 (Case/Varibale)
+Case 1
+14
+0
+Case 2
+15
+0
+Case 3
+16
+0
+
+
+Chgmt_State_Case1
+14
+[(385, 105), 0, 0, 0]
+[(385, 105), 1, 0, 0]
+
+
+Grille1_Navire_Horizontale
+15
+[(405, 105), 0, 0, 0]
+[(405, 105), 1, 0, 0]
+16
+[(425, 105), 0, 0, 0]
+[(425, 105), 1, 0, 0]
+
+
+Nombre de Navire 2 Cases: 0
+Nombre de Navire 3 Cases: 1
+Nombre de Navire 4 Cases: 2
+Nombre de Navire 5 Cases: 1
+Nombre de Navire 6 Cases: 1
+Nombre de Bateaux: 5
+Appuyez sur "b" pour placer un nouveau navire ou 
+lancer la verification de votre positionnement
+
+
+Entrez le bateau
+MNR
+Entrez sa case
+K5
+
+
+IndexCase = 204
+
+
+Fonction_Verif_Position_Brute
+204
+[185, 305]
+[205, 305]
+[225, 305]
+OK for Position Brute
+
+
+Verif_VariableBPB_in_Grille1 (Case/Varibale)
+Case 1
+204
+0
+Case 2
+205
+0
+Case 3
+206
+0
+
+
+Chgmt_State_Case1
+204
+[(185, 305), 0, 0, 0]
+[(185, 305), 1, 0, 0]
+
+
+Grille1_Navire_Horizontale
+205
+[(205, 305), 0, 0, 0]
+[(205, 305), 1, 0, 0]
+206
+[(225, 305), 0, 0, 0]
+[(225, 305), 1, 0, 0]
+
+
+Nombre de Navire 2 Cases: 0
+Nombre de Navire 3 Cases: 2
+Nombre de Navire 4 Cases: 2
+Nombre de Navire 5 Cases: 1
+Nombre de Navire 6 Cases: 1
+Nombre de Bateaux: 6
+Appuyez sur "b" pour placer un nouveau navire ou 
+lancer la verification de votre positionnement
+
+
+Entrez le bateau
+MNBV
+Entrez sa case
+I13
+
+
+IndexCase = 172
+
+
+Fonction_Verif_Position_Brute
+172
+[345, 265]
+[345, 285]
+[345, 305]
+OK for Position Brute
+
+
+Verif_VariableBPB_in_Grille1 (Case/Varibale)
+Case 1
+172
+0
+Case 2
+192
+0
+Case 3
+212
+0
+
+
+Chgmt_State_Case1
+172
+[(345, 265), 0, 0, 0]
+[(345, 265), 1, 0, 0]
+
+
+Grille1_Navire_Horizontale
+192
+[(345, 285), 0, 0, 0]
+[(345, 285), 1, 0, 0]
+212
+[(345, 305), 0, 0, 0]
+[(345, 305), 1, 0, 0]
+
+
+Nombre de Navire 2 Cases: 0
+Nombre de Navire 3 Cases: 3
+Nombre de Navire 4 Cases: 2
+Nombre de Navire 5 Cases: 1
+Nombre de Navire 6 Cases: 1
+Nombre de Bateaux: 7
+Appuyez sur "b" pour placer un nouveau navire ou 
+lancer la verification de votre positionnement
+
+
+Entrez le bateau
+LitShip
+Entrez sa case
+T15
+
+
+IndexCase = 394
+
+
+Fonction_Verif_Position_Brute
+394
+[385, 485]
+[405, 485]
+OK for Position Brute
+
+
+Verif_VariableBPB_in_Grille1 (Case/Varibale)
+Case 1
+394
+0
+Case 2
+395
+0
+
+
+Chgmt_State_Case1
+394
+[(385, 485), 0, 0, 0]
+[(385, 485), 1, 0, 0]
+
+
+Grille1_Navire_Horizontale
+395
+[(405, 485), 0, 0, 0]
+[(405, 485), 1, 0, 0]
+
+
+Nombre de Navire 2 Cases: 1
+Nombre de Navire 3 Cases: 3
+Nombre de Navire 4 Cases: 2
+Nombre de Navire 5 Cases: 1
+Nombre de Navire 6 Cases: 1
+Nombre de Bateaux: 8
+Appuyez sur "b" pour placer un nouveau navire ou 
+lancer la verification de votre positionnement
+
+
+Entrez le bateau
+LitShipV
+Entrez sa case
+R3
+
+
+IndexCase = 342
+
+
+Fonction_Verif_Position_Brute
+342
+[145, 445]
+[145, 465]
+OK for Position Brute
+
+
+Verif_VariableBPB_in_Grille1 (Case/Varibale)
+Case 1
+342
+0
+Case 2
+362
+0
+
+
+Chgmt_State_Case1
+342
+[(145, 445), 0, 0, 0]
+[(145, 445), 1, 0, 0]
+
+
+Grille1_Navire_Horizontale
+362
+[(145, 465), 0, 0, 0]
+[(145, 465), 1, 0, 0]
+
+
+Nombre de Navire 2 Cases: 2
+Nombre de Navire 3 Cases: 3
+Nombre de Navire 4 Cases: 2
+Nombre de Navire 5 Cases: 1
+Nombre de Navire 6 Cases: 1
+Nombre de Bateaux: 9
+Appuyez sur "b" pour placer un nouveau navire ou 
+lancer la verification de votre positionnement
+
+
+Entrez le bateau
+Voilier
+Entrez sa case
+O10
+
+
+IndexCase = 289
+
+
+Fonction_Verif_Position_Brute
+289
+[285, 385]
+[305, 385]
+OK for Position Brute
+
+
+Verif_VariableBPB_in_Grille1 (Case/Varibale)
+Case 1
+289
+0
+Case 2
+290
+0
+
+
+Chgmt_State_Case1
+289
+[(285, 385), 0, 0, 0]
+[(285, 385), 1, 0, 0]
+
+
+Grille1_Navire_Horizontale
+290
+[(305, 385), 0, 0, 0]
+[(305, 385), 1, 0, 0]
+
+
+Nombre de Navire 2 Cases: 3
+Nombre de Navire 3 Cases: 3
+Nombre de Navire 4 Cases: 2
+Nombre de Navire 5 Cases: 1
+Nombre de Navire 6 Cases: 1
+Nombre de Bateaux: 10
+Appuyez sur "b" pour placer un nouveau navire ou 
+lancer la verification de votre positionnement
+
+
+OK pour la liste de navires
+TotalShip: 0
+
+
+IndexCase = 0
+1er case: 
+[(105, 105), 1, 0, 1]
+
+
+dessus = False
+dessous = True
+gauche = False
+droite = True
+TupleCoordTestAbsisse (test droite): 125
+TupleCoordTestOrdonnee (test dessus): 85
+IndexTestgauche: -1
+IndexTestdessous: 20
+
+
+passage --> case dessous
+passage --> case dessous droite
+passage --> case droite
+
+Fin Passage vérif PI
+ListeCases (dans l'ordre du dessin)
+[(485, 485), 0, 0, 0]
+[(485, 105), 0, 0, 0]
+[(105, 125), 0, 0, 1]
+Horizontal = 1
+Vertical = 0
+
+
+Verif_Final_PII_NavireH
+
+
+Case: 2
+Index: 0
+TupleAbsisse: 145
+Case testé: 
+[(145, 105), 1, 0, 0]
+case dessous: 
+[(145, 125), 0, 0, 0]
+
+Case après ckeck
+Case testé: 
+[(145, 105), 1, 0, 1]
+case dessous: 
+[(145, 125), 0, 0, 1]
+
+
+Case: 3
+Index: 1
+TupleAbsisse: 165
+Case testé: 
+[(165, 105), 1, 0, 0]
+case dessous: 
+[(165, 125), 0, 0, 0]
+
+Case après ckeck
+Case testé: 
+[(165, 105), 1, 0, 1]
+case dessous: 
+[(165, 125), 0, 0, 1]
+
+
+Case: 4
+Index: 2
+TupleAbsisse: 185
+Case testé: 
+[(185, 105), 1, 0, 0]
+case dessous: 
+[(185, 125), 0, 0, 0]
+
+Case après ckeck
+Case testé: 
+[(185, 105), 1, 0, 1]
+case dessous: 
+[(185, 125), 0, 0, 1]
+
+
+Case: 5
+Index: 3
+TupleAbsisse: 205
+Case testé: 
+[(205, 105), 1, 0, 0]
+case dessous: 
+[(205, 125), 0, 0, 0]
+
+Case après ckeck
+Case testé: 
+[(205, 105), 1, 0, 1]
+case dessous: 
+[(205, 125), 0, 0, 1]
+
+
+Case: 6
+Index: 4
+TupleAbsisse: 225
+Case testé: 
+[(225, 105), 0, 0, 0]
+case dessous: 
+[(225, 125), 0, 0, 0]
+
+Case après ckeck
+Case testé: 
+[(225, 105), 0, 0, 1]
+case dessous: 
+[(225, 125), 0, 0, 1]
+TotalShip: 1
+
+
+IndexCase = 0
+
+
+IndexCase = 1
+
+
+IndexCase = 2
+
+
+IndexCase = 3
+
+
+IndexCase = 4
+
+
+IndexCase = 5
+
+
+IndexCase = 14
+1er case: 
+[(385, 105), 1, 0, 1]
+
+
+dessus = False
+dessous = True
+gauche = True
+droite = True
+TupleCoordTestAbsisse (test droite): 405
+TupleCoordTestOrdonnee (test dessus): 85
+IndexTestgauche: 13
+IndexTestdessous: 34
+
+
+passage --> case dessous
+passage --> case dessous droite
+passage --> case dessous gauche
+passage --> case gauche
+passage --> case droite
+
+Fin Passage vérif PI
+ListeCases (dans l'ordre du dessin)
+[(365, 105), 0, 0, 1]
+[(365, 125), 0, 0, 1]
+[(385, 125), 0, 0, 1]
+[(405, 125), 0, 0, 1]
+[(405, 105), 1, 0, 1]
+Horizontal = 1
+Vertical = 0
+
+
+Verif_Final_PII_NavireH
+
+
+Case: 2
+Index: 14
+TupleAbsisse: 425
+Case testé: 
+[(425, 105), 1, 0, 0]
+case dessous: 
+[(425, 125), 0, 0, 0]
+
+Case après ckeck
+Case testé: 
+[(425, 105), 1, 0, 1]
+case dessous: 
+[(425, 125), 0, 0, 1]
+
+
+Case: 3
+Index: 15
+TupleAbsisse: 445
+Case testé: 
+[(445, 105), 0, 0, 0]
+case dessous: 
+[(445, 125), 0, 0, 0]
+
+Case après ckeck
+Case testé: 
+[(445, 105), 0, 0, 1]
+case dessous: 
+[(445, 125), 0, 0, 1]
+TotalShip: 2
+
+
+IndexCase = 0
+
+
+IndexCase = 1
+
+
+IndexCase = 2
+
+
+IndexCase = 3
+
+
+IndexCase = 4
+
+
+IndexCase = 5
+
+
+IndexCase = 14
+
+
+IndexCase = 15
+
+
+IndexCase = 16
+
+
+IndexCase = 61
+1er case: 
+[(125, 165), 1, 0, 1]
+
+
+dessus = True
+dessous = True
+gauche = True
+droite = True
+TupleCoordTestAbsisse (test droite): 145
+TupleCoordTestOrdonnee (test dessus): 145
+IndexTestgauche: 60
+IndexTestdessous: 81
+
+
+passage --> case dessus
+passage --> case dessus droite
+passage --> case gauche
+passage --> case dessous
+passage --> case dessous droite
+passage --> case dessous gauche
+passage --> case gauche
+passage --> case droite
+
+Fin Passage vérif PI
+ListeCases (dans l'ordre du dessin)
+[(145, 145), 0, 0, 1]
+[(125, 145), 0, 0, 1]
+[(105, 145), 0, 0, 1]
+[(105, 165), 0, 0, 1]
+[(105, 185), 0, 0, 1]
+[(125, 185), 0, 0, 1]
+[(145, 185), 0, 0, 1]
+[(145, 165), 1, 0, 1]
+Horizontal = 1
+Vertical = 0
+
+
+Verif_Final_PII_NavireH
+
+
+Case: 2
+Index: 61
+TupleAbsisse: 165
+Case testé: 
+[(165, 165), 1, 0, 0]
+case dessus: 
+[(165, 145), 0, 0, 0]
+case dessous: 
+[(165, 185), 0, 0, 0]
+
+Case après ckeck
+Case testé: 
+[(165, 165), 1, 0, 1]
+case dessus: 
+[(165, 145), 0, 0, 1]
+case dessous: 
+[(165, 185), 0, 0, 1]
+
+
+Case: 3
+Index: 62
+TupleAbsisse: 185
+Case testé: 
+[(185, 165), 1, 0, 0]
+case dessus: 
+[(185, 145), 0, 0, 0]
+case dessous: 
+[(185, 185), 0, 0, 0]
+
+Case après ckeck
+Case testé: 
+[(185, 165), 1, 0, 1]
+case dessus: 
+[(185, 145), 0, 0, 1]
+case dessous: 
+[(185, 185), 0, 0, 1]
+
+
+Case: 4
+Index: 63
+TupleAbsisse: 205
+Case testé: 
+[(205, 165), 0, 0, 0]
+case dessus: 
+[(205, 145), 0, 0, 0]
+case dessous: 
+[(205, 185), 0, 0, 0]
+
+Case après ckeck
+Case testé: 
+[(205, 165), 0, 0, 1]
+case dessus: 
+[(205, 145), 0, 0, 1]
+case dessous: 
+[(205, 185), 0, 0, 1]
+TotalShip: 3
+
+
+IndexCase = 0
+
+
+IndexCase = 1
+
+
+IndexCase = 2
+
+
+IndexCase = 3
+
+
+IndexCase = 4
+
+
+IndexCase = 5
+
+
+IndexCase = 14
+
+
+IndexCase = 15
+
+
+IndexCase = 16
+
+
+IndexCase = 61
+
+
+IndexCase = 62
+
+
+IndexCase = 63
+
+
+IndexCase = 64
+
+
+IndexCase = 77
+1er case: 
+[(445, 165), 1, 0, 1]
+
+
+dessus = True
+dessous = True
+gauche = True
+droite = True
+TupleCoordTestAbsisse (test droite): 465
+TupleCoordTestOrdonnee (test dessus): 145
+IndexTestgauche: 76
+IndexTestdessous: 97
+
+
+passage --> case dessus
+passage --> case dessus droite
+passage --> case gauche
+passage --> case dessous
+passage --> case dessous droite
+passage --> case dessous gauche
+passage --> case gauche
+passage --> case droite
+
+Fin Passage vérif PI
+ListeCases (dans l'ordre du dessin)
+[(465, 145), 0, 0, 1]
+[(445, 145), 0, 0, 1]
+[(425, 145), 0, 0, 1]
+[(425, 165), 0, 0, 1]
+[(425, 185), 0, 0, 1]
+[(445, 185), 1, 0, 1]
+[(465, 185), 0, 0, 1]
+[(465, 165), 0, 0, 1]
+Horizontal = 0
+Vertical = 1
+
+
+Verif_Final_PII_NavireV
+
+
+Case: 2
+Index: 77
+TupleOrdonnee: 485
+Case testé: 
+[(445, 205), 1, 0, 0]
+case gauche: 
+[(425, 205), 0, 0, 0]
+case droite: 
+[(465, 205), 0, 0, 0]
+
+Case après ckeck
+Case testé: 
+[(445, 205), 1, 0, 1]
+case gauche: 
+[(425, 205), 0, 0, 1]
+case droite: 
+[(465, 205), 0, 0, 1]
+
+
+Case: 3
+Index: 97
+TupleOrdonnee: 505
+Case testé: 
+[(445, 225), 1, 0, 0]
+case gauche: 
+[(425, 225), 0, 0, 0]
+case droite: 
+[(465, 225), 0, 0, 0]
+
+Case après ckeck
+Case testé: 
+[(445, 225), 1, 0, 1]
+case gauche: 
+[(425, 225), 0, 0, 1]
+case droite: 
+[(465, 225), 0, 0, 1]
+
+
+Case: 4
+Index: 117
+TupleOrdonnee: 525
+Case testé: 
+[(445, 245), 1, 0, 0]
+case gauche: 
+[(425, 245), 0, 0, 0]
+case droite: 
+[(465, 245), 0, 0, 0]
+
+Case après ckeck
+Case testé: 
+[(445, 245), 1, 0, 1]
+case gauche: 
+[(425, 245), 0, 0, 1]
+case droite: 
+[(465, 245), 0, 0, 1]
+
+
+Case: 5
+Index: 137
+TupleOrdonnee: 545
+Case testé: 
+[(445, 265), 0, 0, 0]
+case gauche: 
+[(425, 265), 0, 0, 0]
+case droite: 
+[(465, 265), 0, 0, 0]
+
+Case après ckeck
+Case testé: 
+[(445, 265), 0, 0, 1]
+case gauche: 
+[(425, 265), 0, 0, 1]
+case droite: 
+[(465, 265), 0, 0, 1]
+TotalShip: 4
+
+
+IndexCase = 0
+
+
+IndexCase = 1
+
+
+IndexCase = 2
+
+
+IndexCase = 3
+
+
+IndexCase = 4
+
+
+IndexCase = 5
+
+
+IndexCase = 14
+
+
+IndexCase = 15
+
+
+IndexCase = 16
+
+
+IndexCase = 61
+
+
+IndexCase = 62
+
+
+IndexCase = 63
+
+
+IndexCase = 64
+
+
+IndexCase = 77
+
+
+IndexCase = 97
+
+
+IndexCase = 104
+1er case: 
+[(185, 205), 1, 0, 1]
+
+
+dessus = True
+dessous = True
+gauche = True
+droite = True
+TupleCoordTestAbsisse (test droite): 205
+TupleCoordTestOrdonnee (test dessus): 185
+IndexTestgauche: 103
+IndexTestdessous: 124
+
+
+passage --> case dessus
+passage --> case dessus droite
+passage --> case gauche
+passage --> case dessous
+passage --> case dessous droite
+passage --> case dessous gauche
+passage --> case gauche
+passage --> case droite
+
+Fin Passage vérif PI
+ListeCases (dans l'ordre du dessin)
+[(205, 185), 0, 0, 1]
+[(185, 185), 0, 0, 1]
+[(165, 185), 0, 0, 1]
+[(165, 205), 0, 0, 1]
+[(165, 225), 0, 0, 1]
+[(185, 225), 0, 0, 1]
+[(205, 225), 0, 0, 1]
+[(205, 205), 1, 0, 1]
+Horizontal = 1
+Vertical = 0
+
+
+Verif_Final_PII_NavireH
+
+
+Case: 2
+Index: 104
+TupleAbsisse: 225
+Case testé: 
+[(225, 205), 1, 0, 0]
+case dessus: 
+[(225, 185), 0, 0, 0]
+case dessous: 
+[(225, 225), 0, 0, 0]
+
+Case après ckeck
+Case testé: 
+[(225, 205), 1, 0, 1]
+case dessus: 
+[(225, 185), 0, 0, 1]
+case dessous: 
+[(225, 225), 0, 0, 1]
+
+
+Case: 3
+Index: 105
+TupleAbsisse: 245
+Case testé: 
+[(245, 205), 1, 0, 0]
+case dessus: 
+[(245, 185), 0, 0, 0]
+case dessous: 
+[(245, 225), 0, 0, 0]
+
+Case après ckeck
+Case testé: 
+[(245, 205), 1, 0, 1]
+case dessus: 
+[(245, 185), 0, 0, 1]
+case dessous: 
+[(245, 225), 0, 0, 1]
+
+
+Case: 4
+Index: 106
+TupleAbsisse: 265
+Case testé: 
+[(265, 205), 0, 0, 0]
+case dessus: 
+[(265, 185), 0, 0, 0]
+case dessous: 
+[(265, 225), 0, 0, 0]
+
+Case après ckeck
+Case testé: 
+[(265, 205), 0, 0, 1]
+case dessus: 
+[(265, 185), 0, 0, 1]
+case dessous: 
+[(265, 225), 0, 0, 1]
+TotalShip: 5
+
+
+IndexCase = 0
+
+
+IndexCase = 1
+
+
+IndexCase = 2
+
+
+IndexCase = 3
+
+
+IndexCase = 4
+
+
+IndexCase = 5
+
+
+IndexCase = 14
+
+
+IndexCase = 15
+
+
+IndexCase = 16
+
+
+IndexCase = 61
+
+
+IndexCase = 62
+
+
+IndexCase = 63
+
+
+IndexCase = 64
+
+
+IndexCase = 77
+
+
+IndexCase = 97
+
+
+IndexCase = 104
+
+
+IndexCase = 105
+
+
+IndexCase = 106
+
+
+IndexCase = 107
+
+
+IndexCase = 117
+
+
+IndexCase = 137
+
+
+IndexCase = 157
+
+
+IndexCase = 172
+1er case: 
+[(345, 265), 1, 0, 1]
+
+
+dessus = True
+dessous = True
+gauche = True
+droite = True
+TupleCoordTestAbsisse (test droite): 365
+TupleCoordTestOrdonnee (test dessus): 245
+IndexTestgauche: 171
+IndexTestdessous: 192
+
+
+passage --> case dessus
+passage --> case dessus droite
+passage --> case gauche
+passage --> case dessous
+passage --> case dessous droite
+passage --> case dessous gauche
+passage --> case gauche
+passage --> case droite
+
+Fin Passage vérif PI
+ListeCases (dans l'ordre du dessin)
+[(365, 245), 0, 0, 1]
+[(345, 245), 0, 0, 1]
+[(325, 245), 0, 0, 1]
+[(325, 265), 0, 0, 1]
+[(325, 285), 0, 0, 1]
+[(345, 285), 1, 0, 1]
+[(365, 285), 0, 0, 1]
+[(365, 265), 0, 0, 1]
+Horizontal = 0
+Vertical = 1
+
+
+Verif_Final_PII_NavireV
+
+
+Case: 2
+Index: 172
+TupleOrdonnee: 385
+Case testé: 
+[(345, 305), 1, 0, 0]
+case gauche: 
+[(325, 305), 0, 0, 0]
+case droite: 
+[(365, 305), 0, 0, 0]
+
+Case après ckeck
+Case testé: 
+[(345, 305), 1, 0, 1]
+case gauche: 
+[(325, 305), 0, 0, 1]
+case droite: 
+[(365, 305), 0, 0, 1]
+
+
+Case: 3
+Index: 192
+TupleOrdonnee: 405
+Case testé: 
+[(345, 325), 0, 0, 0]
+case gauche: 
+[(325, 325), 0, 0, 0]
+case droite: 
+[(365, 325), 0, 0, 0]
+
+Case après ckeck
+Case testé: 
+[(345, 325), 0, 0, 1]
+case gauche: 
+[(325, 325), 0, 0, 1]
+case droite: 
+[(365, 325), 0, 0, 1]
+TotalShip: 6
+
+
+IndexCase = 0
+
+
+IndexCase = 1
+
+
+IndexCase = 2
+
+
+IndexCase = 3
+
+
+IndexCase = 4
+
+
+IndexCase = 5
+
+
+IndexCase = 14
+
+
+IndexCase = 15
+
+
+IndexCase = 16
+
+
+IndexCase = 61
+
+
+IndexCase = 62
+
+
+IndexCase = 63
+
+
+IndexCase = 64
+
+
+IndexCase = 77
+
+
+IndexCase = 97
+
+
+IndexCase = 104
+
+
+IndexCase = 105
+
+
+IndexCase = 106
+
+
+IndexCase = 107
+
+
+IndexCase = 117
+
+
+IndexCase = 137
+
+
+IndexCase = 157
+
+
+IndexCase = 172
+
+
+IndexCase = 192
+
+
+IndexCase = 204
+1er case: 
+[(185, 305), 1, 0, 1]
+
+
+dessus = True
+dessous = True
+gauche = True
+droite = True
+TupleCoordTestAbsisse (test droite): 205
+TupleCoordTestOrdonnee (test dessus): 285
+IndexTestgauche: 203
+IndexTestdessous: 224
+
+
+passage --> case dessus
+passage --> case dessus droite
+passage --> case gauche
+passage --> case dessous
+passage --> case dessous droite
+passage --> case dessous gauche
+passage --> case gauche
+passage --> case droite
+
+Fin Passage vérif PI
+ListeCases (dans l'ordre du dessin)
+[(205, 285), 0, 0, 1]
+[(185, 285), 0, 0, 1]
+[(165, 285), 0, 0, 1]
+[(165, 305), 0, 0, 1]
+[(165, 325), 0, 0, 1]
+[(185, 325), 0, 0, 1]
+[(205, 325), 0, 0, 1]
+[(205, 305), 1, 0, 1]
+Horizontal = 1
+Vertical = 0
+
+
+Verif_Final_PII_NavireH
+
+
+Case: 2
+Index: 204
+TupleAbsisse: 225
+Case testé: 
+[(225, 305), 1, 0, 0]
+case dessus: 
+[(225, 285), 0, 0, 0]
+case dessous: 
+[(225, 325), 0, 0, 0]
+
+Case après ckeck
+Case testé: 
+[(225, 305), 1, 0, 1]
+case dessus: 
+[(225, 285), 0, 0, 1]
+case dessous: 
+[(225, 325), 0, 0, 1]
+
+
+Case: 3
+Index: 205
+TupleAbsisse: 245
+Case testé: 
+[(245, 305), 0, 0, 0]
+case dessus: 
+[(245, 285), 0, 0, 0]
+case dessous: 
+[(245, 325), 0, 0, 0]
+
+Case après ckeck
+Case testé: 
+[(245, 305), 0, 0, 1]
+case dessus: 
+[(245, 285), 0, 0, 1]
+case dessous: 
+[(245, 325), 0, 0, 1]
+TotalShip: 7
+
+
+IndexCase = 0
+
+
+IndexCase = 1
+
+
+IndexCase = 2
+
+
+IndexCase = 3
+
+
+IndexCase = 4
+
+
+IndexCase = 5
+
+
+IndexCase = 14
+
+
+IndexCase = 15
+
+
+IndexCase = 16
+
+
+IndexCase = 61
+
+
+IndexCase = 62
+
+
+IndexCase = 63
+
+
+IndexCase = 64
+
+
+IndexCase = 77
+
+
+IndexCase = 97
+
+
+IndexCase = 104
+
+
+IndexCase = 105
+
+
+IndexCase = 106
+
+
+IndexCase = 107
+
+
+IndexCase = 117
+
+
+IndexCase = 137
+
+
+IndexCase = 157
+
+
+IndexCase = 172
+
+
+IndexCase = 192
+
+
+IndexCase = 204
+
+
+IndexCase = 205
+
+
+IndexCase = 206
+
+
+IndexCase = 212
+
+
+IndexCase = 289
+1er case: 
+[(285, 385), 1, 0, 1]
+
+
+dessus = True
+dessous = True
+gauche = True
+droite = True
+TupleCoordTestAbsisse (test droite): 305
+TupleCoordTestOrdonnee (test dessus): 365
+IndexTestgauche: 288
+IndexTestdessous: 309
+
+
+passage --> case dessus
+passage --> case dessus droite
+passage --> case gauche
+passage --> case dessous
+passage --> case dessous droite
+passage --> case dessous gauche
+passage --> case gauche
+passage --> case droite
+
+Fin Passage vérif PI
+ListeCases (dans l'ordre du dessin)
+[(305, 365), 0, 0, 1]
+[(285, 365), 0, 0, 1]
+[(265, 365), 0, 0, 1]
+[(265, 385), 0, 0, 1]
+[(265, 405), 0, 0, 1]
+[(285, 405), 0, 0, 1]
+[(305, 405), 0, 0, 1]
+[(305, 385), 1, 0, 1]
+Horizontal = 1
+Vertical = 0
+
+
+Verif_Final_PII_NavireH
+
+
+Case: 2
+Index: 289
+TupleAbsisse: 325
+Case testé: 
+[(325, 385), 0, 0, 0]
+case dessus: 
+[(325, 365), 0, 0, 0]
+case dessous: 
+[(325, 405), 0, 0, 0]
+
+Case après ckeck
+Case testé: 
+[(325, 385), 0, 0, 1]
+case dessus: 
+[(325, 365), 0, 0, 1]
+case dessous: 
+[(325, 405), 0, 0, 1]
+TotalShip: 8
+
+
+IndexCase = 0
+
+
+IndexCase = 1
+
+
+IndexCase = 2
+
+
+IndexCase = 3
+
+
+IndexCase = 4
+
+
+IndexCase = 5
+
+
+IndexCase = 14
+
+
+IndexCase = 15
+
+
+IndexCase = 16
+
+
+IndexCase = 61
+
+
+IndexCase = 62
+
+
+IndexCase = 63
+
+
+IndexCase = 64
+
+
+IndexCase = 77
+
+
+IndexCase = 97
+
+
+IndexCase = 104
+
+
+IndexCase = 105
+
+
+IndexCase = 106
+
+
+IndexCase = 107
+
+
+IndexCase = 117
+
+
+IndexCase = 137
+
+
+IndexCase = 157
+
+
+IndexCase = 172
+
+
+IndexCase = 192
+
+
+IndexCase = 204
+
+
+IndexCase = 205
+
+
+IndexCase = 206
+
+
+IndexCase = 212
+
+
+IndexCase = 289
+
+
+IndexCase = 290
+
+
+IndexCase = 342
+1er case: 
+[(145, 445), 1, 0, 1]
+
+
+dessus = True
+dessous = True
+gauche = True
+droite = True
+TupleCoordTestAbsisse (test droite): 165
+TupleCoordTestOrdonnee (test dessus): 425
+IndexTestgauche: 341
+IndexTestdessous: 362
+
+
+passage --> case dessus
+passage --> case dessus droite
+passage --> case gauche
+passage --> case dessous
+passage --> case dessous droite
+passage --> case dessous gauche
+passage --> case gauche
+passage --> case droite
+
+Fin Passage vérif PI
+ListeCases (dans l'ordre du dessin)
+[(165, 425), 0, 0, 1]
+[(145, 425), 0, 0, 1]
+[(125, 425), 0, 0, 1]
+[(125, 445), 0, 0, 1]
+[(125, 465), 0, 0, 1]
+[(145, 465), 1, 0, 1]
+[(165, 465), 0, 0, 1]
+[(165, 445), 0, 0, 1]
+Horizontal = 0
+Vertical = 1
+
+
+Verif_Final_PII_NavireV
+
+
+Case: 2
+Index: 342
+TupleOrdonnee: 185
+Case testé: 
+[(145, 485), 0, 0, 0]
+case gauche: 
+[(125, 485), 0, 0, 0]
+case droite: 
+[(165, 485), 0, 0, 0]
+
+Case après ckeck
+Case testé: 
+[(145, 485), 0, 0, 1]
+case gauche: 
+[(125, 485), 0, 0, 1]
+case droite: 
+[(165, 485), 0, 0, 1]
+TotalShip: 9
+
+
+IndexCase = 0
+
+
+IndexCase = 1
+
+
+IndexCase = 2
+
+
+IndexCase = 3
+
+
+IndexCase = 4
+
+
+IndexCase = 5
+
+
+IndexCase = 14
+
+
+IndexCase = 15
+
+
+IndexCase = 16
+
+
+IndexCase = 61
+
+
+IndexCase = 62
+
+
+IndexCase = 63
+
+
+IndexCase = 64
+
+
+IndexCase = 77
+
+
+IndexCase = 97
+
+
+IndexCase = 104
+
+
+IndexCase = 105
+
+
+IndexCase = 106
+
+
+IndexCase = 107
+
+
+IndexCase = 117
+
+
+IndexCase = 137
+
+
+IndexCase = 157
+
+
+IndexCase = 172
+
+
+IndexCase = 192
+
+
+IndexCase = 204
+
+
+IndexCase = 205
+
+
+IndexCase = 206
+
+
+IndexCase = 212
+
+
+IndexCase = 289
+
+
+IndexCase = 290
+
+
+IndexCase = 342
+
+
+IndexCase = 362
+
+
+IndexCase = 394
+1er case: 
+[(385, 485), 1, 0, 1]
+
+
+dessus = True
+dessous = False
+gauche = True
+droite = True
+TupleCoordTestAbsisse (test droite): 405
+TupleCoordTestOrdonnee (test dessus): 465
+IndexTestgauche: 393
+IndexTestdessous: 414
+
+
+passage --> case dessus
+passage --> case dessus droite
+passage --> case gauche
+passage --> case gauche
+passage --> case droite
+
+Fin Passage vérif PI
+ListeCases (dans l'ordre du dessin)
+[(405, 465), 0, 0, 1]
+[(385, 465), 0, 0, 1]
+[(365, 465), 0, 0, 1]
+[(365, 485), 0, 0, 1]
+[(405, 485), 1, 0, 1]
+Horizontal = 1
+Vertical = 0
+
+
+Verif_Final_PII_NavireH
+
+
+Case: 2
+Index: 394
+TupleAbsisse: 425
+Case testé: 
+[(425, 485), 0, 0, 0]
+case dessus: 
+[(425, 465), 0, 0, 0]
+
+Case après ckeck
+Case testé: 
+[(425, 485), 0, 0, 1]
+case dessus: 
+[(425, 465), 0, 0, 1]
+
+
+FIN DU TEST DE VERIFICATION
+Verifiction termine, aucun probleme detecte, 
+l'IA pose ses navires et la partie peut commencer

@@ -214,7 +214,7 @@ while Infinie == 1:
         #Placement du bateau sur la Grille de Gauche
         if event.type == KEYDOWN and event.key == K_b:
             #Placement des bateau en jeu
-            while CountShip < 10:
+            if CountShip < 10:
                 #Appelle de la Fonction de position du Navire
                 #Cette Fonction appelera une sous-fontion qui à son tour 
                 #appelera deux sous-fonctions (choix entre les deux)
@@ -232,18 +232,26 @@ while Infinie == 1:
                     #print("Nouvelle Grille1")
                     #print(Grille1)
                     print("Nombre de Bateaux: " + str(CountShip))
-                    print("\nBateau suivant:")
-            from Fonction_Ship import Nb2Case
-            from Fonction_Ship import Nb3Case
-            from Fonction_Ship import Nb4Case
-            from Fonction_Ship import Nb5Case
-            from Fonction_Ship import Nb6Case
-            if Nb2Case == 3 and Nb3Case == 3 and Nb4Case == 2 and Nb5Case == 1 and Nb6Case == 1:
-                print("OK pour la liste de navires")
-                EchecVerifFinal = False
+                    print("Appuyez sur \"b\" pour placer un nouveau navire ou \nlancer la verification de votre positionnement")
+                    print("\n")
             else:
-                print("Vous n'avez pas respecte la liste de navire requit\nVeuillez recommencer")
-                EchecVerifFinal = True
+                from Fonction_Ship import Nb2Case
+                from Fonction_Ship import Nb3Case
+                from Fonction_Ship import Nb4Case
+                from Fonction_Ship import Nb5Case
+                from Fonction_Ship import Nb6Case
+                if Nb2Case == 3 and Nb3Case == 3 and Nb4Case == 2 and Nb5Case == 1 and Nb6Case == 1:
+                    print("OK pour la liste de navires")
+                    EchecVerifFinal = False
+                    Verification_Final_Grille1()
+                    from Fonction_Ship import Echec
+                    if Echec == True:
+                        EchecVerifFinal = True
+                    else:
+                        print("Verifiction termine, aucun probleme detecte, \nl'IA pose ses navires et la partie peut commencer")
+                else:
+                    print("Vous n'avez pas respecte la liste de navire requit\nVeuillez recommencer")
+                    EchecVerifFinal = True
                 
         #réinitialisation du plateau
         if event.type == KEYDOWN and event.key == K_UP :
@@ -259,3 +267,4 @@ while Infinie == 1:
             REINITIALISATION_PARTIE()
             print("Appuyez sur \"b\" pour recommencer la saisi")
 #FIN MAIN PROGRAMME
+raw_input() #attend une action du joueur pour fermé le programme (nécessaire sous Python 2.7 pour éviter les sorties trop brutales)
