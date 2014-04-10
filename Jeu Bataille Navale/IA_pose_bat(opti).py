@@ -7,37 +7,33 @@ Created on Sat Apr 05 18:35:51 2014
 
 import random
 
-<<<<<<< HEAD
-def IA_Pose_Bat():
+def IA_Pose_Bat(): #Pose des bateaux par l'IA
     #on globalise toutes les variables
-=======
-def IA_Pose_Bat() : #Pose des bateaux par l'IA
->>>>>>> b8449c024f1bc890e9a59a0cf019fc8d54c1dc93
     global batcase
     global IndexCase
     global Grille2
     global EchecPosition
-<<<<<<< HEAD
-    x = 0 #compteur pour mettre dix bateaux
-    ListShip = [6,5,4,4,3,3,3,2,2,2]
-    while x < 10 :
-        batcase = ListShip[x]
-        b = random.randint(0,1) #aléatoire pour verticale ou horizontal
-        IndexCase = random.randint(0, 398) #choisi une case au hasard dans Grille2
-        if b == 0 :
-            Case = Grille2[IndexCase]
-            #appelle fonction
-        else:
-            Case = Grille2[IndexCase]
-            #appelle fonction 
-        if EchecPosition == False:
-            if b == 0:
-                #appelle Fonction BPB
-                Check_IA_Ship_H
-            else:
-                #appelle Fonction BPB
-                Check_IA_Ship_V                
-            x = x+1
+    global Case
+    EchecPosition = False #On initialise l'echec de position
+    x = 0 #Variable pour le déplacement dans la liste listship
+    listship = [6,5,4,4,3,3,3,2,2,2] #Nombre de cases des différents bateaux
+    while x < 10 : #Dix fois pour dix bateaux
+        batcase = listship[x] #Le nombre de case d'un beateau celon la position dans la liste
+        b = random.randint(0,1) #Variable pour le choix Verticale/Horizontal du bateau (0 = vertical, choix arbitraire)
+        IndexCase = random.randint(0,398) #Choix d'un index dans la liste des coordonnées Grille2
+        if b == 0 : #Choix Verticale du bateau
+            case = Grille2[IndexCase] #La case de positionnement du bateau celon l'index choisis 
+            Fonction_Verif_PositionIA_Brute_for_V() #Appel fonction vérifiant position bateaux verticaux dans Grille2
+            Verif_VariableVPV_in_Grille2_for_V() #Appel fonction qui vérifie que que le navire ne soit ni sur un emplacement déjà pris ni sur une case adjacente à celui-ci
+        else : #Choix Horizontal du bateau
+            case = Grille2[IndexCase]   
+            Fonction_Verif_PositionIA_Brute_for_H() #Appel fonction vérifiant position bateaux horizontaux dans Grille2
+            Verif_VariableVPV_in_Grille2_for_H() #Appel fonction qui vérifie que que le navire ne soit ni sur un emplacement déjà pris ni sur une case adjacente à celui-ci
+        if EchecPosition == False : #On ne place le bateau que s'il peut être placé
+            #Appelle fonction changement BPB
+            Check_IA_Ship() #fonction qui ckeck les cases pour éviter que les bateaux suivant y soient placés
+            x = x + 1 #bateau suivant
+        EchecPosition = False #Réinitialisation de l'echec de posistion
             
 def Check_IA_Ship():
     #On globalise les variables
@@ -199,7 +195,7 @@ def Check_PII_NavireH_IA(): #Spécifique aux navires horizontaux
             Grille2[IndexCase-18][3] = 1 #On n'oublie pas de checker la Case 
         if dessous == True:  #On vérifie que la case en dessous existe...
             Grille2[IndexCase+22][3] = 1 #On n'oublie pas de checker la Case
-    
+    #Partie qui se fait une fois toutes les cases du navires ckeckées (on va sur les celles juste après)
     if droite == True: #On check les cases à droite si elles existent
         Grille2[IndexCase+3][3] = 1 #On check la Case
         if dessus == True: #On vérifie que la case au dessus existe...
@@ -252,7 +248,7 @@ def Check_PII_NavireV_IA(): #Spécifique aux navires verticaux
             Grille2[IndexCase+39][3] = 1 #On n'oublie pas de checker la Case 
         if droite == True:  #On vérifie que la case en dessous existe...
             Grille2[IndexCase+41][3] = 1 #On n'oublie pas de checker la Case
-    
+    #Partie qui se fait une fois toutes les cases du navires ckeckées (on va sur les celles juste après)
     if dessous == True: #On check les cases en dessous si elle existe
         IndexCase = IndexCase+1
         Grille2[IndexCase+60][3] = 1 #On check la Case
@@ -272,24 +268,6 @@ def Check_PII_NavireV_IA(): #Spécifique aux navires verticaux
         print("case dessous: ")
         print(Grille2[IndexCase+41])
     #FIN Partie TEST
-=======
-    global Case
-    EchecPosition = False #On initialise l'echec de position
-    x = 0 #Variable pour le déplacement dans la liste listship
-    listship = [6,5,4,4,3,3,3,2,2,2] #Nombre de cases des différents bateaux
-    while x < 10 : #Dix fois pour dix bateaux
-        batcase = listship[x] #Le nombre de case d'un beateau celon la position dans la liste
-        b = random.randint(0,1) #Variable pour le choix Verticale/Horizontal du bateau
-        IndexCase = random.randint(0,398) #Choix d'un index dans la liste des coordonnées Grille2
-        if b == 0 : #Choix Verticale du bateau
-            case = Grille2[IndexCase] #La case de positionnement du bateau celon l'index choisis 
-            Fonction_Verif_PositionIA_Brute_for_V() #Appel fonction vérifiant position bateaux verticaux dans Grille2 
-        else : #Choix Horizontal du bateau
-            case = Grille2[IndexCase]   
-            Fonction_Verif_PositionIA_Brute_for_H() #Appel fonction vérifiant position bateaux horizontaux dans Grille2
-        if EchecPosition == False : 
-            x = x + 1
-        EchecPosition = False #Réinitialisation de l'echec de posistion
             
 #Vérifient que le bateau ne soit pas hors case (spécifique aux navires Verticaux)
 def Fonction_Verif_PositionIA_Brute_for_V() : 
@@ -347,4 +325,58 @@ def Fonction_Verif_PositionIA_Brute_for_H() :
     if EchecPosition == False :
         print("OK for Position Brute") #Test
 
->>>>>>> b8449c024f1bc890e9a59a0cf019fc8d54c1dc93
+
+def Verif_VariableVPV_in_Grille2_for_V():
+    #On globalise toutes les variables
+    global batcase
+    global Grille2
+    global IndexCase
+    global EchecPosition  
+    i = 1 #On commence à la case 1 du bateau (car il n'a pas de case 0)
+    #Boucle qui vérifie que le bateau n'est pas sur un emplacement déjà pris ou imprenable
+    #VPV = varibale "Vérifié/Pas Vérifié" de la case => Pour l'IA correspont au ckeckage de la case après position du navire
+    print("\n")
+    print("Verif_VariableBPB_in_Grille2 (Case/Varibale)")
+    while i <= batcase:
+        VariableVPV = Grille2[IndexCase][3] #Grille2[IndexCase][3] = VPV de la "CaseListe"
+        print("Case " + str(i))        
+        print(IndexCase)
+        print(VariableVPV)
+        if VariableVPV == 0: #on vérifie l'état de VPV
+            if i < batcase: #On passe à la case suivante s'il y en a une (évite entre autre les bug en T20...)
+                i = i+1
+                IndexCase = IndexCase+20 #Index suivant
+                VariableVPV = Grille2[IndexCase][3] #Variable VPV de case suivante
+            else:
+                i = i+1
+        else:
+            EchecPosition = True  
+            break
+
+
+def Verif_VariableVPV_in_Grille2_for_H():
+    #On globalise toutes les variables
+    global batcase
+    global Grille2
+    global IndexCase
+    global EchecPosition  
+    i = 1 #On commence à la case 1 du bateau (car il n'a pas de case 0)
+    #Boucle qui vérifie que le bateau n'est pas sur un emplacement déjà pris ou imprenable
+    #VPV = varibale "Vérifié/Pas Vérifié" de la case => Pour l'IA correspont au ckeckage de la case après position du navire
+    print("\n")
+    print("Verif_VariableVPV_in_Grille2 (Case/Varibale)")
+    while i <= batcase:
+        VariableVPV = Grille2[IndexCase][3] #Grille2[IndexCase][3] = VPV de la "CaseListe"
+        print("Case " + str(i))        
+        print(IndexCase)
+        print(VariableVPV)
+        if VariableVPV == 0: #on vérifie l'état de BPB
+            if i < batcase: #On passe à la case suivante s'il y en a une (évite entre autre les bug en T20...)
+                i = i+1
+                IndexCase = IndexCase+1 #Index suivant
+                VariableBPB = Grille2[IndexCase][3] #Variable VPV de case suivante
+            else:
+                i = i+1
+        else:
+            EchecPosition = True  
+            break
