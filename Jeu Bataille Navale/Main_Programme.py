@@ -39,10 +39,14 @@ def REINITIALISATION_PARTIE():
     global EchecVerifFinal
     global Grille1
     global Grille2
-    #réinitialisation du nombre de bateau en jeu
+    global PlacementIA
+    global Initialisation
+    #réinitialisation des variables de début utile
     Reinitialisation_NbXCase()
     CountShip = 0
-    EchecVerifFinal = False          
+    EchecVerifFinal = False
+    PlacementIA = False
+    Initialisation = True           
     #Réinitialisation des Grilles
     IniListeCaseGrille1()
     IniListeCaseGrille2()
@@ -122,6 +126,9 @@ BateauPlayer = Dico_Ship.Ship1
 Infinie = 1 #Fait tourner indéfiniment le programme
 CountShip = 0 #Compteur Navires
 EchecVerifFinal = False
+PlacementIA = False
+Initialisation = True
+
 #Liste des commandes pour le début
 #Création des Textes
 TextD1 = "Il y a 9 navires possibles, chacun possede un code propre que voici pour facilite leur saisi:"
@@ -168,12 +175,6 @@ while Infinie == 1:
     for event in pygame.event.get(): #Fait la liste des évènements possible (appuyer sur une touche, souris, etc...)
         if event.type == QUIT: #Quitte la partie quand on appuie sur "Quitter" (bug sous Windows 8 avec Python 2.7)
             Infinie = 0 #Fin de la Boucle (FIN MAIN PROGRAMME)
-        if event.type == KEYDOWN and event.key == K_SPACE: #Test Espace
-            #Dans l'ordre: Création, Chargement, Positionnement du texte et Rafraichissement du Plateau de Jeu
-            Obj = "Espace"
-            Esp = font.render(Obj, 1, (0,0,0))
-            fenetre.blit(Esp, (200,500))
-            pygame.display.flip()
         if event.type == KEYDOWN and event.key == K_ESCAPE: #Message Mystère
             #Création des Textes
             Obj2 = "N'essayez pas de vous echapper..."
@@ -187,32 +188,8 @@ while Infinie == 1:
             #Rafraichissement du Plateau de Jeu
             pygame.display.flip()   
             
-#PARTIE OBSOLETE 
-        #la variable "Bateau/pas Bateau" n'est pas prise en compte pour ces positionnement
-        #if event.type == KEYDOWN and event.key == K_KP5: #Placement bateau 5 cases (K6)
-        #    CountShip = CountShip + 1            
-        #    Bat = pygame.image.load("bateau 23.jpg").convert_alpha()
-        #    fenetre.blit(Bat, (205,305))
-        #    pygame.display.flip()
-        #if event.type == KEYDOWN and event.key == K_KP2: #Placement bateau 2 cases (T19)
-        #    CountShip = CountShip + 1            
-        #    Bat = pygame.image.load("bateau 10.jpg").convert_alpha()
-        #    fenetre.blit(Bat, (465,485))
-        #    pygame.display.flip()            
-        #if event.type == KEYDOWN and event.key == K_KP4: #Placement du bateau 4 cases (A1)
-        #    CountShip = CountShip + 1            
-        #    Bat = pygame.image.load("bateau 22.jpg").convert_alpha()
-        #    fenetre.blit(Bat, (105,105))
-        #    pygame.display.flip()
-        #if event.type == KEYDOWN and event.key == K_KP3: #Placement du bateau 3 cases (J15)
-        #    CountShip = CountShip + 1
-        #    Bat = pygame.image.load("sous-marin 1 V.jpg").convert_alpha()
-        #    fenetre.blit(Bat, (385,285))
-        #    pygame.display.flip()
-#FIN PARTIE OBSOLETE
-            
-        #Placement du bateau sur la Grille de Gauche
-        if event.type == KEYDOWN and event.key == K_b:
+        #Placement navire (joueur puis IA) + vérification position joueur
+        if event.type == KEYDOWN and event.key == K_SPACE and Initialisation == True:
             #Placement des bateau en jeu
             if CountShip < 10:
                 #Appelle de la Fonction de position du Navire
@@ -234,7 +211,7 @@ while Infinie == 1:
                     print("Nombre de Bateaux: " + str(CountShip))
                     print("Appuyez sur \"b\" pour placer un nouveau navire ou \nlancer la verification de votre positionnement")
                     print("\n")
-            else:
+            else: #Une fois les dix navires posés
                 from Fonction_Ship import Nb2Case
                 from Fonction_Ship import Nb3Case
                 from Fonction_Ship import Nb4Case
@@ -247,12 +224,17 @@ while Infinie == 1:
                     from Fonction_Ship import Echec
                     if Echec == True:
                         EchecVerifFinal = True
-                    else:
+                    else: #Passage au placement de l'IA
+                        PlacementIA = True
                         print("Verifiction termine, aucun probleme detecte, \nl'IA pose ses navires et la partie peut commencer")
+                        print("\nPositionnement des navires de l'IA en cours. \nMerci de patientez quelques instants...")
+                        IA_Pose_Bat()#Appelle Fonction IA_Pose_Bat
+                        Initialisation = False #Empêche le replacement des navires de l'IA une fois la partie lancée
+                        print("\nPlacement de l'IA terminé, c'est à vous de commencer")
                 else:
                     print("Vous n'avez pas respecte la liste de navire requit\nVeuillez recommencer")
                     EchecVerifFinal = True
-                
+                      
         #réinitialisation du plateau
         if event.type == KEYDOWN and event.key == K_UP :
             #Demande de confirmation
