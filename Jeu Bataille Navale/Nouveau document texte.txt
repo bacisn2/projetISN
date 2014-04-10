@@ -1,39 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Apr 05 18:35:51 2014
-
-@author: mickael
-"""
-
-import random
-
-def IA_Pose_Bat():
-    #on globalise toutes les variables
-    global batcase
-    global IndexCase
-    global Grille2
-    global EchecPosition
-    x = 0 #compteur pour mettre dix bateaux
-    ListShip = [6,5,4,4,3,3,3,2,2,2]
-    while x < 10 :
-        batcase = ListShip[x]
-        b = random.randint(0,1) #al√©atoire pour verticale ou horizontal
-        IndexCase = random.randint(0, 398) #choisi une case au hasard dans Grille2
-        if b == 0 :
-            Case = Grille2[IndexCase]
-            #appelle fonction
-        else:
-            Case = Grille2[IndexCase]
-            #appelle fonction 
-        if EchecPosition == False:
-            if b == 0:
-                #appelle Fonction BPB
-                Check_IA_Ship_H
-            else:
-                #appelle Fonction BPB
-                Check_IA_Ship_V                
-            x = x+1
-            
 def Check_IA_Ship():
     #On globalise les variables
     global Grille2
@@ -49,21 +13,21 @@ def Check_IA_Ship():
     Grille2[IndexCase][3] = 1
     print("1er case: ")
     print(Grille2[IndexCase])
-    #Variable Boll√©enne qui d√©termine si il existe des cases en dessous/dessus/droite/gauche 
+    #Variable BollÈenne qui dÈtermine si il existe des cases en dessous/dessus/droite/gauche 
     #de la case choisi (on part du principe que "oui"), True = la (les) case(s) existe(nt)
     dessus = True
     dessous = True
     droite = True
     gauche = True
-    #Variable qui d√©termine le sens du navire (Horizontale/Verticale)
+    #Variable qui dÈtermine le sens du navire (Horizontale/Verticale)
     H = 0
     V = 0
     TupleCoord = list(Grille2[IndexCase][0])
-    #d√©termination des cases existante (quatre test)
+    #dÈtermination des cases existante (quatre test)
     #Si les test sont "Vrais", alors les cases en question n'existent pas
-    if IndexCase-1 < 0: #Y a-t-il une case √† gauche ?
+    if IndexCase-1 < 0: #Y a-t-il une case ‡ gauche ?
         gauche = False
-    if TupleCoord[0]+20 > 485: #Y a-t-il une case √† droite ?
+    if TupleCoord[0]+20 > 485: #Y a-t-il une case ‡ droite ?
         droite = False
     if IndexCase+20 > len(Grille2): #Y a-t-il une case en dessous ?
         dessous = False
@@ -84,46 +48,46 @@ def Check_IA_Ship():
     #FIN Partie TEST
                     
     #Travail sur les cases du dessus (si elles existent):
-    if dessus == True: #Cases sup√©rieures
+    if dessus == True: #Cases supÈrieures
         print("passage --> case dessus")
         Grille2[IndexCase-20][3] = 1 #On n'oublie pas de checker la case dans le cas contraire
-        if droite == True: #Case sup√©rieure droite (diagonale)
+        if droite == True: #Case supÈrieure droite (diagonale)
             print("passage --> case dessus droite")
             Grille2[IndexCase-19][3] = 1 #On n'oublie pas de checker la case dans le cas contraire
-        if gauche == True: #Case  sup√©rieure gauche (diagonale)
+        if gauche == True: #Case  supÈrieure gauche (diagonale)
             print("passage --> case gauche")
             Grille2[IndexCase-21][3] = 1 #On n'oublie pas de checker la case dans le cas contraire  
         
     #Travail sur les cases du dessous (si elles existent):        
     if dessous == True: 
         print("passage --> case dessous")
-        if droite == True: #Case inf√©rieure droite (diagonale)
+        if droite == True: #Case infÈrieure droite (diagonale)
             print("passage --> case dessous droite")
             Grille2[IndexCase+21][3] = 1 #On n'oublie pas de checker la case dans le cas contraire
-        if gauche == True: #Case inf√©rieure gauche (diagonale)
+        if gauche == True: #Case infÈrieure gauche (diagonale)
             print("passage --> case dessous gauche")
             Grille2[IndexCase+19][3] = 1 #On n'oublie pas de checker la case dans le cas contraire
-        if Grille2[IndexCase+20][1] == 1: #Case imm√©diatement au dessous 
+        if Grille2[IndexCase+20][1] == 1: #Case immÈdiatement au dessous 
             Grille2[IndexCase+20][3] = 1  #On check la Case                          
-            V = V+1 #Si un bateau se trouve ici, c'est que le navire doit √™tre vertical
+            V = V+1 #Si un bateau se trouve ici, c'est que le navire doit Ítre vertical
         else:
             Grille2[IndexCase+20][3] = 1  #On check la Case
             
-    #Travail sur la case √† gauche (si elle existe):          
+    #Travail sur la case ‡ gauche (si elle existe):          
     if gauche == True:
         print("passage --> case gauche")
         Grille2[IndexCase-1][3] = 1 #On n'oublie pas de checker la case dans le cas contraire 
-    #Travail sur la case √† droite (si elle existe):        
+    #Travail sur la case ‡ droite (si elle existe):        
     if droite == True:
         print("passage --> case droite")
-        if Grille2[IndexCase+1][1] == 1: #Case imm√©diatement √† droite
+        if Grille2[IndexCase+1][1] == 1: #Case immÈdiatement ‡ droite
             Grille2[IndexCase+1][3] = 1  #On check la Case
-            H = H+1 #Si un bateau se trouve ici, c'est que le navire doit √™tre horizontal
+            H = H+1 #Si un bateau se trouve ici, c'est que le navire doit Ítre horizontal
         else:
             Grille2[IndexCase+1][3] = 1  #On check la Case
                         
     #Partie TEST (la suppression de la partie devra se faire une fois celle-ci inutile)
-    #Les nombreux test de variables servent √† √©viter des bugs li√©s √† l'affichage des cases (au cas o√π elles n'existeraient pas)
+    #Les nombreux test de variables servent ‡ Èviter des bugs liÈs ‡ l'affichage des cases (au cas o˘ elles n'existeraient pas)
     print("\nFin Passage check PI")
     print("ListeCases (dans l'ordre du dessin)")
     if dessus == True:
@@ -147,21 +111,21 @@ def Check_IA_Ship():
     print("\n")
     #FIN Partie TEST
                 
-    #D√©termination du type de navire (Horizontale/Verticale) √† l'aide des variable H/V:                   
+    #DÈtermination du type de navire (Horizontale/Verticale) ‡ l'aide des variable H/V:                   
     if H > 0 and V == 0: #Le bateau est-il Horizontal ?
-        #La technique utilis√© pourra √™tre r√©utiliser pour la programme "Coulage des Navires" de l'IA
+        #La technique utilisÈ pourra Ítre rÈutiliser pour la programme "Coulage des Navires" de l'IA
         print("Verif_Final_PII_NavireH")                        
         Check_PII_NavireH_IA()
     elif H == 0 and V > 0: #Le bateau est-il Verticale ?
-        #La technique utilis√© pourra √™tre r√©utiliser pour la programme "Coulage des Navires" de l'IA
+        #La technique utilisÈ pourra Ítre rÈutiliser pour la programme "Coulage des Navires" de l'IA
         print("Verif_Final_PII_NavireV")                        
         Check_PII_NavireV_IA()
     print("\n")
-    print("FIN DU CHECK DU NAVIRE") #Utile √† savoir
+    print("FIN DU CHECK DU NAVIRE") #Utile ‡ savoir
     print("\n")
 
     
-def Check_PII_NavireH_IA(): #Sp√©cifique aux navires horizontaux
+def Check_PII_NavireH_IA(): #SpÈcifique aux navires horizontaux
     #on globalise les variables
     global Grille2
     global dessus
@@ -170,15 +134,15 @@ def Check_PII_NavireH_IA(): #Sp√©cifique aux navires horizontaux
     global TupleCoord
     global Echec
     global batcase
-    NbCase = 2 #On commence √† la deuxi√®me case
-    for NbCase in range (batcase): #La boucle tourne tant que l'on est pas arriv√© √† la fin du bateau
+    NbCase = 2 #On commence ‡ la deuxiËme case
+    for NbCase in range (batcase): #La boucle tourne tant que l'on est pas arrivÈ ‡ la fin du bateau
         print("\n")
         print("Case: " + str(NbCase))
         print("Index: " + str(IndexCase)) 
 
         #Partie TEST (la suppression de la partie devra se faire une fois celle-ci inutile)
         print("TupleAbsisse: " + str(TupleCoord[0]+20*NbCase))
-        print("Case test√©: ")
+        print("Case testÈ: ")
         print(Grille2[IndexCase+2])
         if dessus == True:
             print("case dessus: ")
@@ -190,21 +154,21 @@ def Check_PII_NavireH_IA(): #Sp√©cifique aux navires horizontaux
             
         #La case suivante appartient t'elle au bateau ?
         Grille2[IndexCase+2][3] = 1 #On check la Case
-        if dessus == True: #On v√©rifie que la case au dessus existe...
+        if dessus == True: #On vÈrifie que la case au dessus existe...
             Grille2[IndexCase-18][3] = 1 #On n'oublie pas de checker la Case 
-        if dessous == True:  #On v√©rifie que la case en dessous existe...
+        if dessous == True:  #On vÈrifie que la case en dessous existe...
             Grille2[IndexCase+22][3] = 1 #On n'oublie pas de checker la Case
     
-    if droite == True: #On check les cases √† droite si elles existent
+    if droite == True: #On check les cases ‡ droite si elles existent
         Grille2[IndexCase+3][3] = 1 #On check la Case
-        if dessus == True: #On v√©rifie que la case au dessus existe...
+        if dessus == True: #On vÈrifie que la case au dessus existe...
             Grille2[IndexCase-17][3] = 1 #On n'oublie pas de checker la Case 
-        if dessous == True:  #On v√©rifie que la case en dessous existe...
+        if dessous == True:  #On vÈrifie que la case en dessous existe...
             Grille2[IndexCase+23][3] = 1 #On n'oublie pas de checker la Case
                 
     #Partie TEST (la suppression de la partie devra se faire une fois celle-ci inutile)
-    print("\nCase apr√®s ckeck")
-    print("Case test√©: ")
+    print("\nCase aprËs ckeck")
+    print("Case testÈ: ")
     print(Grille2[IndexCase+2])
     if dessus == True:
         print("case dessus: ")
@@ -214,7 +178,7 @@ def Check_PII_NavireH_IA(): #Sp√©cifique aux navires horizontaux
         print(Grille2[IndexCase+22])
     #FIN Partie TEST
     
-def Check_PII_NavireV_IA(): #Sp√©cifique aux navires verticaux
+def Check_PII_NavireV_IA(): #SpÈcifique aux navires verticaux
     #on globalise les variables
     global Grille2
     global gauche
@@ -223,15 +187,15 @@ def Check_PII_NavireV_IA(): #Sp√©cifique aux navires verticaux
     global TupleCoord
     global Echec
     global batcase
-    NbCase = 2 #On commence √† la deuxi√®me case
-    for NbCase in range (batcase): #La boucle tourne tant que l'on est pas arriv√© √† la fin du bateau
+    NbCase = 2 #On commence ‡ la deuxiËme case
+    for NbCase in range (batcase): #La boucle tourne tant que l'on est pas arrivÈ ‡ la fin du bateau
         print("\n")
         print("Case: " + str(NbCase))
         print("Index: " + str(IndexCase)) 
 
         #Partie TEST (la suppression de la partie devra se faire une fois celle-ci inutile)
         print("TupleAbsisse: " + str(TupleCoord[1]+20*NbCase))
-        print("Case test√©: ")
+        print("Case testÈ: ")
         print(Grille2[IndexCase+40])
         if gauche == True:
             print("case dessus: ")
@@ -243,22 +207,22 @@ def Check_PII_NavireV_IA(): #Sp√©cifique aux navires verticaux
             
         #La case suivante appartient t'elle au bateau ?
         Grille2[IndexCase+40][3] = 1 #On check la Case
-        if gauche == True: #On v√©rifie que la case au dessus existe...
+        if gauche == True: #On vÈrifie que la case au dessus existe...
             Grille2[IndexCase+39][3] = 1 #On n'oublie pas de checker la Case 
-        if droite == True:  #On v√©rifie que la case en dessous existe...
+        if droite == True:  #On vÈrifie que la case en dessous existe...
             Grille2[IndexCase+41][3] = 1 #On n'oublie pas de checker la Case
     
     if dessous == True: #On check les cases en dessous si elle existe
         IndexCase = IndexCase+1
         Grille2[IndexCase+60][3] = 1 #On check la Case
-        if gauche == True: #On v√©rifie que la case au dessus existe...
+        if gauche == True: #On vÈrifie que la case au dessus existe...
             Grille2[IndexCase+59][3] = 1 #On n'oublie pas de checker la Case 
-        if droite == True:  #On v√©rifie que la case en dessous existe...
+        if droite == True:  #On vÈrifie que la case en dessous existe...
             Grille2[IndexCase+61][3] = 1 #On n'oublie pas de checker la Case
                 
     #Partie TEST (la suppression de la partie devra se faire une fois celle-ci inutile)
-    print("\nCase apr√®s ckeck")
-    print("Case test√©: ")
+    print("\nCase aprËs ckeck")
+    print("Case testÈ: ")
     print(Grille2[IndexCase+40])
     if gauche == True:
         print("case dessus: ")

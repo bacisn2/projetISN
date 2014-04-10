@@ -322,6 +322,7 @@ def Fonction_Verif_Position_Brute_for_H(): #Spécifique aux navires Horizontaux
 #            break           
 
 #/!\: CETTE FONCTION EST PROVISOIREMENT DESACTIVE POUR FLUIDIFIER LE PROGRAMME 
+#def Verif_VariableBPB_in_Grille2_for_V()
 #    #On globalise toutes les variables
 #    global NbCase
 #    global Grille2
@@ -897,7 +898,181 @@ def Verif_Final_PII_NavireV(): #Spécifique aux navires verticaux
     NbCase = 2 #On commence à la deuxième case
     while FinBateau == False: #La boucle tourne tant que l'on est pas arrivé à la fin du bateau
         print("\n")
+        print("Case: def Verif_Final_PII_NavireH(): #Spécifique aux navires horizontaux
+    #on globalise les variables
+    global Grille1
+    global dessus
+    global dessous
+    global droite
+    global TupleCoord
+    global Echec
+    global j
+    FinBateau = False #Indique si on est au bout du navire (par défaut à "Non", on commence la vérif)
+    NbCase = 2 #On commence à la deuxième case
+    while FinBateau == False: #La boucle tourne tant que l'on est pas arrivé à la fin du bateau
+        print("\n")
         print("Case: " + str(NbCase))
+        print("Index: " + str(j))
+        if NbCase > 6: #Si le nombre de case testé excède 6 c'est qu'on passe sur un nouveau bateau: règles non respectés
+            print("deux de vos navires se touches\nVeuillez recommencer la saisi de vos navires")
+            Echec = True
+            break        
+        elif TupleCoord[0]+20*NbCase <= 485: #Coordonnées de l'hypothétique case suivante +1 (on vérifie si elle existe)
+        
+            #Partie TEST (la suppression de la partie devra se faire une fois celle-ci inutile)
+            print("TupleAbsisse: " + str(TupleCoord[0]+20*NbCase))
+            print("Case testé: ")
+            print(Grille1[j+2])
+            if dessus == True:
+                print("case dessus: ")
+                print(Grille1[j-18])
+            if dessous == True:
+                print("case dessous: ")
+                print(Grille1[j+22])
+            #FIN Partie TEST
+            
+            #La case suivante appartient t'elle au bateau ?
+            if Grille1[j+2][1] == 1: #On vérifie si la case suivante+1 contient un bateau
+                Grille1[j+2][3] = 1 #On check la Case
+                if dessus == True: #On vérifie que la case au dessus existe...
+                    if Grille1[j-18][1] == 1: #... et on regarde si un bateau si trouve
+                       print("deux de vos navires se touches\nVeuillez recommencer la saisi de vos navires")
+                       Echec = True
+                       break
+                    else:
+                      Grille1[j-18][3] = 1 #On n'oublie pas de checker la Case 
+                if dessous == True:  #On vérifie que la case en dessous existe...
+                    if Grille1[j+22][1] == 1: #... et on regarde si un bateau si trouve
+                       print("deux de vos navires se touches\nVeuillez recommencer la saisi de vos navires")
+                       Echec = True
+                       break
+                    else:
+                      Grille1[j+22][3] = 1 #On n'oublie pas de checker la Case
+            #On refait la même action en prenant en compte que l'on est à la fin du navire dans le cas contraire         
+            else:
+                Grille1[j+2][3] = 1 #On check la Case
+                if dessus == True: #On vérifie que la case au dessus existe...
+                    if Grille1[j-18][1] == 1: #... et on regarde si un bateau si trouve (correspond à la diagonale de la dernière case du bateau)
+                       print("deux de vos navires se touches\nVeuillez recommencer la saisi de vos navires")
+                       Echec = True
+                       break
+                    else:
+                      Grille1[j-18][3] = 1 #On n'oublie pas de checker la Case
+                if dessous == True: #On vérifie que la case en dessous existe...
+                    if Grille1[j+22][1] == 1: #... et on regarde si un bateau si trouve (correspond à la diagonale de la dernière case du bateau)
+                       print("deux de vos navires se touches\nVeuillez recommencer la saisi de vos navires")
+                       Echec = True
+                       break
+                    else:
+                      Grille1[j+22][3] = 1 #On n'oublie pas de checker la Case
+                FinBateau = True #On a tout vérifié et on est à la fin du bateau
+                
+            #Partie TEST (la suppression de la partie devra se faire une fois celle-ci inutile)
+            print("\nCase après ckeck")
+            print("Case testé: ")
+            print(Grille1[j+2])
+            if dessus == True:
+                print("case dessus: ")
+                print(Grille1[j-18])
+            if dessous == True:
+                print("case dessous: ")
+                print(Grille1[j+22])
+            #FIN Partie TEST
+            
+            #Une fois tout les tests terminés...
+            NbCase = NbCase+1 #Case suivante
+            j = j+1 #Index suivant            
+        else: #La case suivante n'existe pas: on est donc forcément à la fin du bateau
+            FinBateau = True
+    
+def Verif_Final_PII_NavireV(): #Spécifique aux navires verticaux
+    #On globalise les variables
+    global Grille1
+    global gauche
+    global dessous
+    global droite
+    global TupleCoord
+    global Echec
+    global j
+    FinBateau = False #Indique si on est au bout du navire (par défaut à "Non", on commence la vérif)
+    NbCase = 2 #On commence à la deuxième case
+    while FinBateau == False: #La boucle tourne tant que l'on est pas arrivé à la fin du bateau
+        print("\n")
+        print("Case: " + str(NbCase))
+        print("Index: " + str(j))
+        if NbCase > 6: #Si le nombre de case testé excède 6 c'est qu'on passe sur un nouveau bateau: règles non respectés
+            print("deux de vos navires se touches\nVeuillez recommencer la saisi de vos navires")
+            Echec = True
+            break        
+        elif TupleCoord[1]+20*NbCase <= 485: #Coordonnées de l'hypothétique case suivante +1 (on vérifie si elle existe)
+            
+            #PARTIE TEST (la suppression de la partie devra se faire une fois celle-ci inutile)
+            print("TupleOrdonnee: " + str(TupleCoord[0]+20*NbCase))
+            print("Case testé: ")
+            print(Grille1[j+40])
+            if gauche == True:
+                print("case gauche: ")
+                print(Grille1[j+39])
+            if droite == True:
+                print("case droite: ")
+                print(Grille1[j+41])
+            #FIN PARTIE TEST
+            
+            #La case suivante appartient t'elle au bateau ?
+            if Grille1[j+40][1] == 1:  #On vérifie si la case suivante+1 contient un bateau
+                Grille1[j+40][3] = 1 #On check la Case
+                if gauche == True: #On vérifie que la case à gauche existe...
+                    if Grille1[j+39][1] == 1: #... et on regarde si un bateau si trouve
+                       print("deux de vos navires se touches\nVeuillez recommencer la saisi de vos navires")
+                       Echec = True
+                       break
+                    else:
+                      Grille1[j+39][3] = 1 #On n'oublie pas de checker la Case
+                if droite == True: #On vérifie que la case à droite existe...
+                    if Grille1[j+41][1] == 1: #... et on regarde si un bateau si trouve
+                       print("deux de vos navires se touches\nVeuillez recommencer la saisi de vos navires")
+                       Echec = True
+                       break
+                    else:
+                      Grille1[j+41][3] = 1 #On n'oublie pas de checker la Case
+                      
+            #On refait la même action en prenant en compte que l'on est à la fin du navire dans le cas contraire         
+            else:
+                Grille1[j+40][3] = 1 #On check la Case
+                if gauche == True: #On vérifie que la case à gauche existe...
+                    if Grille1[j+39][1] == 1:  #... et on regarde si un bateau si trouve (correspond à la diagonale de la dernière case du bateau)
+                       print("deux de vos navires se touches\nVeuillez recommencer la saisi de vos navires")
+                       Echec = True
+                       break
+                    else:
+                      Grille1[j+39][3] = 1 #On n'oublie pas de checker la Case
+                if droite == True: #On vérifie que la case à droite existe...
+                    if Grille1[j+41][1] == 1: #... et on regarde si un bateau si trouve (correspond à la diagonale de la dernière case du bateau)
+                       print("deux de vos navires se touches\nVeuillez recommencer la saisi de vos navires")
+                       Echec = True
+                       break
+                    else:
+                      Grille1[j+41][3] = 1 #On n'oublie pas de checker la Case
+                FinBateau = True #On a tout vérifié et on est à la fin du bateau
+            
+            #PARTIE TEST (la suppression de la partie devra se faire une fois celle-ci inutile)
+            print("\nCase après ckeck")
+            print("Case testé: ")
+            print(Grille1[j+40])
+            if gauche == True:
+                print("case gauche: ")
+                print(Grille1[j+39])
+            if droite == True:
+                print("case droite: ")
+                print(Grille1[j+41])
+            #FIN PARTIE TEST    
+            
+            #Une fois tout les tests terminés...
+            NbCase = NbCase+1 #Case suivante
+            j = j+20 #Index suivant 
+            
+        else: #La case suivante n'existe pas: on est donc forcément à la fin du bateau
+            FinBateau = True" + str(NbCase))
         print("Index: " + str(j))
         if NbCase > 6: #Si le nombre de case testé excède 6 c'est qu'on passe sur un nouveau bateau: règles non respectés
             print("deux de vos navires se touches\nVeuillez recommencer la saisi de vos navires")
