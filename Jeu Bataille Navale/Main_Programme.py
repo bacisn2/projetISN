@@ -74,7 +74,23 @@ def REINITIALISATION_PARTIE():
     fenetre.blit(Instr11, (100,670))
     pygame.display.flip()
 #FIN FONCTION REINITIALISATION
-    
+
+
+#FONCTION TEST POSITION IA
+#Fonction qui affiche la position des navires de l'IA une fois son placement terminé
+#Son but a uniquement un test, elle sera supprimée sur la version final
+def Fonction_Test_Pose_IA():
+    global Grille2
+    i = 0
+    for i in range (400): #on test toutes les cases une part une
+        if Grille2[i][1] == 1: #test présence d'un navire
+          fenetre.blit(CarRouge, Grille2[i][0])  #Placement carrée rouge
+        else:
+          fenetre.blit(CarBleu, Grille2[i][0])  #Placement carrée bleu
+    pygame.display.flip() #on rafarîchit le plateau pour afficher les carrées
+#FIN FONCTION TEST POSITION IA
+
+     
 #PARTIE INItIALISATION DU JEU
 #Ini Pygame + fond pour les textes
 pygame.init()
@@ -120,6 +136,9 @@ fenetre.blit(Colonne, (600,75))
 #Rafraichit le Plateau de Jeu
 pygame.display.flip()
 
+#Chargement des carrées et croix pour le jeu (mais aucun placement pour le moment)
+CarRouge = pygame.image.load("Carree_Rouge.png")
+CarBleu = pygame.image.load("Carree_Bleu.png")
 #Importation Dicos + Initialisation Compteurs
 CasePlayer1 = Dico_Grille1.GrillePlayer1
 BateauPlayer = Dico_Ship.Ship1
@@ -230,6 +249,7 @@ while Infinie == 1:
                         print("\nPositionnement des navires de l'IA en cours. \nMerci de patientez quelques instants...")
                         IA_Pose_Bat()#Appelle Fonction IA_Pose_Bat
                         Initialisation = False #Empêche le replacement des navires de l'IA une fois la partie lancée
+                        Fonction_Test_Pose_IA() #Appelle Fonction test (suppression pour la version finale)                        
                         print("\nPlacement de l'IA terminé, c'est à vous de commencer")
                 else:
                     print("Vous n'avez pas respecte la liste de navire requit\nVeuillez recommencer")
