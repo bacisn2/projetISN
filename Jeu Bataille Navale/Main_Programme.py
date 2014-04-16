@@ -39,13 +39,15 @@ def REINITIALISATION_PARTIE():
     global EchecVerifFinal
     global Grille1
     global Grille2
-    global PlacementIA
+    global TourJoueur
+    global TourIA
     global Initialisation
     #réinitialisation des variables de début utile
     Reinitialisation_NbXCase()
     CountShip = 0
     EchecVerifFinal = False
-    PlacementIA = False
+    TourJoueur = False
+    TourIA = False
     Initialisation = True           
     #Réinitialisation des Grilles
     IniListeCaseGrille1()
@@ -87,6 +89,16 @@ def Fonction_Test_Pose_IA():
           fenetre.blit(CarRouge, Grille2[i][0])  #Placement carrée rouge
         else:
           fenetre.blit(CarBleu, Grille2[i][0])  #Placement carrée bleu
+    pygame.display.flip() #on rafarîchit le plateau pour afficher les carrées
+
+def testcroix_rond():
+    global CaseIA
+    x = 0
+    for x in range (len(CaseIA)): #permet de tester la liste de cases de l'IA
+        if CaseIA[x][1] == 1: #test présence d'un navire
+            fenetre.blit(CroixRouge, CaseIA[x][0])  #Placement croix
+        else:
+          fenetre.blit(RondBleu, CaseIA[x][0])  #Placement rond
     pygame.display.flip() #on rafarîchit le plateau pour afficher les carrées
 #FIN FONCTION TEST POSITION IA
 
@@ -139,14 +151,18 @@ pygame.display.flip()
 #Chargement des carrées et croix pour le jeu (mais aucun placement pour le moment)
 CarRouge = pygame.image.load("Carree_Rouge.png")
 CarBleu = pygame.image.load("Carree_Bleu.png")
+RondBleu = pygame.image.load("rond.png").convert_alpha()
+CroixRouge = pygame.image.load("Croix.png").convert_alpha()
+
 #Importation Dicos + Initialisation Compteurs
 CasePlayer1 = Dico_Grille1.GrillePlayer1
 BateauPlayer = Dico_Ship.Ship1
 Infinie = 1 #Fait tourner indéfiniment le programme
 CountShip = 0 #Compteur Navires
 EchecVerifFinal = False
-PlacementIA = False
 Initialisation = True
+TourJoueur = False
+TourIA = False
 
 #Liste des commandes pour le début
 #Création des Textes
@@ -189,7 +205,8 @@ fenetre.blit(Instr11, (100,670))
 pygame.display.flip()
 #FIN PARTIE INITIALISATION DU JEU
 
-#MAIN PROGRAMME         
+#MAIN PROGRAMME
+from Search_Ship_IA import *         
 while Infinie == 1:
     for event in pygame.event.get(): #Fait la liste des évènements possible (appuyer sur une touche, souris, etc...)
         if event.type == QUIT: #Quitte la partie quand on appuie sur "Quitter" (bug sous Windows 8 avec Python 2.7)
@@ -244,17 +261,32 @@ while Infinie == 1:
                     if Echec == True:
                         EchecVerifFinal = True
                     else: #Passage au placement de l'IA
-                        PlacementIA = True
                         print("Verifiction termine, aucun probleme detecte, \nl'IA pose ses navires et la partie peut commencer")
                         print("\nPositionnement des navires de l'IA en cours. \nMerci de patientez quelques instants...")
                         IA_Pose_Bat()#Appelle Fonction IA_Pose_Bat
                         Initialisation = False #Empêche le replacement des navires de l'IA une fois la partie lancée
-                        Fonction_Test_Pose_IA() #Appelle Fonction test (suppression pour la version finale)                        
+                        Fonction_Test_Pose_IA() #Appelle Fonction test (suppression pour la version finale)
+                        Define_List_Case_and_Strategie() #création CaseIA + choix stratégie (= fin Initialisation)
                         print("\nPlacement de l'IA terminé, c'est à vous de commencer")
+                        Initialisation = False
+                        TourIA = True
                 else:
                     print("Vous n'avez pas respecte la liste de navire requit\nVeuillez recommencer")
                     EchecVerifFinal = True
-                      
+        
+        #Tours de jeu
+        if TourIA == True: #Tour de l'IA
+            from Search_Ship_IA import CaseIA
+            testcroix_rond() #test CaseIA + affichage croix et rond
+            #Passage tour du Joueur
+            TourIA = False
+            TourJoueur = True
+            
+        #if TourJoueur == True: #Tour du Joueur
+            #Passage tour de l'IA
+            #TourIA = True
+            #TourJoueur = False    
+            
         #réinitialisation du plateau
         if event.type == KEYDOWN and event.key == K_UP :
             #Demande de confirmation
