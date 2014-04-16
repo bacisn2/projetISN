@@ -56,7 +56,7 @@ ELEMENT NECESSAIRE:
 
 			--> détermination de la stratégie d'attaque de l'IA (3 choix), stratégie "une case sur deux"
 
-				- principe de la stratégie: l'IA choisit une case sur deux et cadrille le plateau entièrement de cette manière (ainsi il est sur de ne r�ter aucun b�teau et de cadriller de mani�re la plus efficace possible)
+				- principe de la stratégie: l'IA choisit une case sur deux et quadrille le plateau entièrement de cette manière (ainsi il est sur de ne r�ter aucun b�teau et de cadriller de mani�re la plus efficace possible)
 
 					- les cases que choisit l'IA sont déterminées à l'avance (ce sera une liste à parcourir dans un sens ou dans l'autre)
 
@@ -80,10 +80,6 @@ ELEMENT NECESSAIRE:
 				- si la variable vaut 0 (= l'IA a touché dans l'eau) le programme affiche "dans l'eau", le tour du joueur commence et l'IA reste sur ce programme
 
 				- si la variable vaut 1 (= l'IA a touché un bateau) le programme affiche "touché", le tour du joueur commence et l'IA passe au programme de coulage du navire
-
-			--> le programme affiche "coulé" si nécessaire
-
-				- le programme aura regardé les cases restantes du navires pour déterminer s'il est coulé
 
 			--> la case choisit est mise en évidence (croix si touché ou rond si dans l'eau)
 
