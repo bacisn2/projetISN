@@ -1288,7 +1288,7 @@ def Check_PII_NavireH_IA(): #Spécifique aux navires horizontaux
             Grille2[j+20][3] = 1 #On n'oublie pas de checker la Case
     #Partie qui se fait une fois toutes les cases du navires ckeckées (on va sur les celles juste après)
     TestCoord = list(Grille2[j][0])
-    if TestCoord[0] <= 985: #Y a-t-il une case deux cases à droite ?
+    if TestCoord[0] < 985: #Y a-t-il une case deux cases à droite ?
         j = j+1        
         Grille2[j][3] = 1 #On check la Case
         if dessus == True: #On vérifie que la case au dessus existe...
