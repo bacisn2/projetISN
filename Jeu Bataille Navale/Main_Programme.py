@@ -206,7 +206,8 @@ pygame.display.flip()
 #FIN PARTIE INITIALISATION DU JEU
 
 #MAIN PROGRAMME
-from Search_Ship_IA import *         
+from Search_Ship_IA import *   
+from TourJoueur import *       
 while Infinie == 1:
     for event in pygame.event.get(): #Fait la liste des évènements possible (appuyer sur une touche, souris, etc...)
         if event.type == QUIT: #Quitte la partie quand on appuie sur "Quitter" (bug sous Windows 8 avec Python 2.7)
@@ -282,10 +283,11 @@ while Infinie == 1:
             TourIA = False
             TourJoueur = True
             
-        #if TourJoueur == True: #Tour du Joueur
+        if TourJoueur == True: #Tour du Joueur
+            TourJoueur()
             #Passage tour de l'IA
-            #TourIA = True
-            #TourJoueur = False    
+            TourIA = True
+            TourJoueur = False    
             
         #réinitialisation du plateau
         if event.type == KEYDOWN and event.key == K_UP :
