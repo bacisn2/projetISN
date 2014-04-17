@@ -7,13 +7,15 @@ Created on Wed Apr 16 16:47:41 2014
 
 # Liste des fonctions utile pour le programme de recherche de navire de l'IA
 
-#import Fonction_Ship
+import Fonction_Ship
 from random import *
 from Fonction_Ship import Grille1
 import pygame
 from pygame.locals import *
 pygame.init()
 pygame.font.init()
+#obligé d'initialiser une fenêtre pour faire fonctionner le pygame.image.load
+#fenetre = pygame.display.set_mode((1200, 900)) 
 
 def Define_List_Case_and_Strategie():
     global Grille1
@@ -30,8 +32,6 @@ def Define_List_Case_and_Strategie():
     Random = False
     #Liste des cases que l'IA choisira)
     CaseIA = []
-    #Les boucles permettent d'ajouter les bonnes cases dans la liste "CaseIA", 
-    #une case sur deux n'est pas exactement la bonne définition
     for x in range(0, 20):
         if x % 2 == 0:
             CaseIA.append(Grille1[x])
@@ -95,86 +95,80 @@ def Define_List_Case_and_Strategie():
     print("Liste Case IA:")
     print(CaseIA)
     print("\n")
-    #Détermination de la stratégie
-    x = randint(1,3) #stratégie aléatoire
+    x = randint(1,3)
     print("choix strategie = " + str(x))
-    if x == 1: #choix: du début vers la fin
+    if x == 1:
         A_Z = True
         print("Strategie A a Z")
-    elif x == 2: #choix: de la fin vers le début
+        #Stratégie A à Z
+    elif x == 2:
         Z_A = True
         print("Strategie Z a A")
-    else: #choix: aléatoire, sans procédé propre
+        #Stratégie Z à A
+    else:
         Random = True
         print("Strategie Case Aleatoire")
-    Choice = 0 #Initialisation "choix de la case"
+        #Stratégie case aléatoire
+    Choice = 0
         
-def Search_Ship(fenetre, CasePlayer1, RondBleu, CroixRouge): #On utilise certaines variables du Main
+def Search_Ship(fenetre, CasePlayer1):
     global CaseIA
     global A_Z
     global Z_A
     global Random
     global Choice
-    Tour = False #Ini du Tour
-    while Tour == False: #Le tour est-il terminé ?
-        if A_Z == True: #Si Stratégie "Début vers Fin"
-            #Détermination de la case
-            IndexCible = Choice 
-            Cible = CaseIA[IndexCible]
+    Tour = False
+    while Tour == False:
+        if A_Z == True:
+            Cible = CaseIA[Choice]
             print("cible = " + str(Cible))
-            #Test de la case: A-t-elle déjà été touché ? (inclus, "est-t-elle à côté d'un bateau coulé ?")
             if Cible[2] == 0:
-                Cible[2] = 1 #La case est maintenant touché
+                Cible[2] = 1
                 #print [c for c,Cible[0] in CasePlayer1.items() if CasePlayer1[c]==Cible[0]]
-                #Il y a-t-il un bateau sur la case touché ?
-                if Cible[1] == 0: 
-                    #On affiche dans l'eau et on place un carrée bleu
-                    print("dans l'eau") 
-                    fenetre.blit(RondBleu, CaseIA[IndexCible][0])  #Placement rond
-                else:
-                    #On affiche touché et on place un carrée rouge
-                    print("touche")
-                    fenetre.blit(CroixRouge, CaseIA[IndexCible][0]) #Placement croix
-                    #appelle fonction attaque
-                Tour = True #Fin du Tour de l'IA
-        elif Z_A == True: #Si Stratégie "Fin vers Début"
-            #Détermination de la case
-            IndexCible = (-Choice)-1 # ==> Depuis la fin, ex: si Choice = 1, IndexCase = (-1)-1 = -2 (avant dernière case)
-            Cible = CaseIA[IndexCible]
-            print("cible = " + str(Cible))
-            #Test de la case: A-t-elle déjà été touché ? (inclus, "est-t-elle à côté d'un bateau coulé ?")
-            if Cible[2] == 0:
-                Cible[2] = 1 #La case est maintenant touché
-                #print [c for c,Cible[0] in CasePlayer1.items() if CasePlayer1[c]==Cible[0]]
-                #Il y a-t-il un bateau sur la case touché ?
                 if Cible[1] == 0:
-                    #On affiche dans l'eau et on place un carrée bleu
                     print("dans l'eau")
-                    fenetre.blit(RondBleu, CaseIA[IndexCible][0])  #Placement rond
+                    fenetre.blit(RondBleu, CaseIA[x][0])  #Placement rond
                 else:
-                    #On affiche touché et on place un carrée rouge
                     print("touche")
-                    fenetre.blit(CroixRouge, CaseIA[IndexCible][0]) #Placement croix
+                    fenetre.blit(CroixRouge, CaseIA[x][0]) #Placement croix
                     #appelle fonction attaque
-                Tour = True #Fin du Tour de l'IA
-        elif Random == True: #Si Stratégie "Case Aléatoire"
-            #Détermination de la case
-            IndexCible = randint(0,len(CaseIA)) #==> Une case au hasard dans la liste
-            Cible = CaseIA[IndexCible]
+        elif Z_A == True:
+            Cible = CaseIA[(-Choice)-1]
             print("cible = " + str(Cible))
-            #Test de la case: A-t-elle déjà été touché ? (inclus, "est-t-elle à côté d'un bateau coulé ?")
             if Cible[2] == 0:
-                Cible[2] = 1 #La case est maintenant touché
+                Cible[2] = 1
                 #print [c for c,Cible[0] in CasePlayer1.items() if CasePlayer1[c]==Cible[0]]
-                #Il y a-t-il un bateau sur la case touché ?
                 if Cible[1] == 0:
-                    #On affiche dans l'eau et on place un carrée bleu
                     print("dans l'eau")
-                    fenetre.blit(RondBleu, CaseIA[IndexCible][0])  #Placement rond
+                    fenetre.blit(RondBleu, CaseIA[x][0])  #Placement rond
                 else:
-                    #On affiche touché et on place un carrée rouge
                     print("touche")
-                    fenetre.blit(CroixRouge, CaseIA[IndexCible][0]) #Placement croix
-                    #appelle fonction attaque      
-                Tour = True #Fin du Tour de l'IA
-        Choice = Choice+1 #On passe à la case suivante (en cas de succès ou échec)
+                    fenetre.blit(CroixRouge, CaseIA[x][0]) #Placement croix
+                    #appelle fonction attaque
+        elif Random == True:
+            Cible = CaseIA[randint(0,len(CaseIA))]
+            print("cible = " + str(Cible))
+            if Cible[2] == 0:
+                Cible[2] = 1
+                #print [c for c,Cible[0] in CasePlayer1.items() if CasePlayer1[c]==Cible[0]]
+                if Cible[1] == 0:
+                    print("dans l'eau")
+                    fenetre.blit(RondBleu, CaseIA[x][0])  #Placement rond
+                else:
+                    print("touche")
+                    fenetre.blit(CroixRouge, CaseIA[x][0]) #Placement croix
+                    #appelle fonction attaque        
+    Choice = Choice+1
+
+
+
+
+
+
+
+
+
+
+
+
+    

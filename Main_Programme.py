@@ -32,7 +32,12 @@ import Dico_Grille1
 import Dico_Ship
 #FIN PARTIE IMPORTATION PROGRAMME UTILE 
 #(NB: d'autres importation seront faîtes quand le programme sera plus avancée)
-
+import pygame
+from pygame.locals import *
+pygame.init()
+pygame.font.init()
+#obligé d'initialiser une fenêtre pour faire fonctionner le pygame.image.load
+fenetre = pygame.display.set_mode((1200, 900)) 
 #FONCTION REINITIALISATION:
 def REINITIALISATION_PARTIE():
     global CountShip
@@ -159,10 +164,10 @@ CasePlayer1 = Dico_Grille1.GrillePlayer1
 BateauPlayer = Dico_Ship.Ship1
 Infinie = 1 #Fait tourner indéfiniment le programme
 CountShip = 0 #Compteur Navires
-EchecVerifFinal = False #Variable d'échec de positionnement final (pour le joueur)
-Initialisation = True #permet d'entrer dans la partie de positionnement des navires
-TourJoueur = False #permet au joueur de jouer son tour
-TourIA = False #permet à l'IA de jouer son tour
+EchecVerifFinal = False
+Initialisation = True
+TourJoueur = False
+TourIA = False
 
 #Liste des commandes pour le début
 #Création des Textes
@@ -206,8 +211,7 @@ pygame.display.flip()
 #FIN PARTIE INITIALISATION DU JEU
 
 #MAIN PROGRAMME
-from Search_Ship_IA import *   
-from TourJoueur import *       
+from Search_Ship_IA import *         
 while Infinie == 1:
     for event in pygame.event.get(): #Fait la liste des évènements possible (appuyer sur une touche, souris, etc...)
         if event.type == QUIT: #Quitte la partie quand on appuie sur "Quitter" (bug sous Windows 8 avec Python 2.7)
@@ -266,39 +270,32 @@ while Infinie == 1:
                         print("\nPositionnement des navires de l'IA en cours. \nMerci de patientez quelques instants...")
                         IA_Pose_Bat()#Appelle Fonction IA_Pose_Bat
                         Initialisation = False #Empêche le replacement des navires de l'IA une fois la partie lancée
-                        #Fonction_Test_Pose_IA() #Appelle Fonction test (suppression pour la version finale)
+                        Fonction_Test_Pose_IA() #Appelle Fonction test (suppression pour la version finale)
                         Define_List_Case_and_Strategie() #création CaseIA + choix stratégie (= fin Initialisation)
                         print("\nPlacement de l'IA terminé, c'est à vous de commencer")
-                        print("Appuyez sur \"bas\" pour jouer")
-                        Initialisation = False #On ne pourra plus revenir dans cette partie
-                        TourJoueur = True #On permet au joueur de commencer à jouer
+                        Initialisation = False
+                        TourIA = True
                 else:
                     print("Vous n'avez pas respecte la liste de navire requit\nVeuillez recommencer")
                     EchecVerifFinal = True
         
-        #TOURS DE JEU (C'est l'heure du Duel !!)
+        #Tours de jeu
         if TourIA == True: #Tour de l'IA
-            print("\nTour IA")
             from Search_Ship_IA import CaseIA
             #testcroix_rond() #test CaseIA + affichage croix et rond
-            Search_Ship(fenetre, CasePlayer1, RondBleu, CroixRouge)  #Appelle de la fonction de tour de l'IA  
-            pygame.display.flip()
+            Search_Ship(fenetre, CasePlayer1)            
             #Passage tour du Joueur
             TourIA = False
             TourJoueur = True
-            print("A vous, appuyez sur \"bas\" pour jouer")
+            raw_input("Tour Suivant ?")
             
-        if TourJoueur == True and event.type == KEYDOWN and event.key == K_DOWN: #Tour du Joueur 
-            #dès qu'on appuie sur bas), permet au plateau de ne pas bugger et de laisser le joueur réfléchir            
-            print("\nTour Joueur")
-            Tour_Joueur(fenetre, CarBleu, CarRouge) #Appelle de la fonction de tour du joueur
-            pygame.display.flip()
+        if TourJoueur == True: #Tour du Joueur
             #Passage tour de l'IA
             TourIA = True
             TourJoueur = False    
             
         #réinitialisation du plateau
-        if event.type == KEYDOWN and event.key == K_UP : #Réinitialisation Volontaire (car on peut vouloir écourté la partie)
+        if event.type == KEYDOWN and event.key == K_UP :
             #Demande de confirmation
             RealQuit = raw_input("Vous-vous vraiment reinitialiser la partie ? (o/n): ")
             if RealQuit == "o":          
@@ -307,7 +304,7 @@ while Infinie == 1:
                 print("Reinitialisation de la partie")
             else:
                 print("Reinitialisation annulee")
-        if EchecVerifFinal == True: #Réinitialisation forcé en cas de mauvais positionnement
+        if EchecVerifFinal == True:
             REINITIALISATION_PARTIE()
             print("Appuyez sur \"b\" pour recommencer la saisi")
 #FIN MAIN PROGRAMME
