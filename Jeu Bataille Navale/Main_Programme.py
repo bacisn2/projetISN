@@ -303,6 +303,9 @@ while Infinie == 1:
                         Initialisation = False #Empêche le replacement des navires de l'IA une fois la partie lancée
                         #Fonction_Test_Pose_IA() #Appelle Fonction test (suppression pour la version finale)
                         Define_List_Case_and_Strategie() #création CaseIA + choix stratégie (= fin Initialisation)
+                        from Search_Ship_IA import A_Z    
+                        from Search_Ship_IA import Z_A
+                        from Search_Ship_IA import Random
                         print("\nPlacement de l'IA terminé, c'est à vous de commencer")
                         print("Appuyez sur \"gauche\" pour jouer")
                         Initialisation = False #On ne pourra plus revenir dans cette partie

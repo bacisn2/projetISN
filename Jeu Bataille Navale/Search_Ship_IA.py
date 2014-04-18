@@ -116,6 +116,7 @@ def Search_Ship(fenetre, CasePlayer1, RondBleu, CroixRouge, TextEAU, TextTOUCHE,
     #global Random
     global Choice
     Tour = False #Ini du Tour
+    Choice = 0 #On prend en compte que la stratégie peut avoir changé entre temps, la réinitialisation de "Choice" s'impose donc
     while Tour == False: #Le tour est-il terminé ?
         if A_Z == True: #Si Stratégie "Début vers Fin"
             #Détermination de la case
