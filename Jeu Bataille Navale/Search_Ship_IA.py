@@ -109,11 +109,11 @@ def Define_List_Case_and_Strategie():
         print("Strategie Case Aleatoire")
     Choice = 0 #Initialisation "choix de la case"
         
-def Search_Ship(fenetre, CasePlayer1, RondBleu, CroixRouge): #On utilise certaines variables du Main
+def Search_Ship(fenetre, CasePlayer1, RondBleu, CroixRouge, TextEAU, TextTOUCHE, TextCOULE, A_Z, Z_A, Random): #On utilise certaines variables du Main
     global CaseIA
-    global A_Z
-    global Z_A
-    global Random
+    #global A_Z
+    #global Z_A
+    #global Random
     global Choice
     Tour = False #Ini du Tour
     while Tour == False: #Le tour est-il terminé ?
@@ -131,10 +131,12 @@ def Search_Ship(fenetre, CasePlayer1, RondBleu, CroixRouge): #On utilise certain
                     #On affiche dans l'eau et on place un carrée bleu
                     print("dans l'eau") 
                     fenetre.blit(RondBleu, CaseIA[IndexCible][0])  #Placement rond
+                    fenetre.blit(TextEAU, (258, 530)) #Affichage du texte "Dans l'eau" sur le plateau
                 else:
                     #On affiche touché et on place un carrée rouge
                     print("touche")
                     fenetre.blit(CroixRouge, CaseIA[IndexCible][0]) #Placement croix
+                    fenetre.blit(TextTOUCHE, (258, 530)) #Affichage du texte "Touché" sur le plateau
                     #appelle fonction attaque
                 Tour = True #Fin du Tour de l'IA
         elif Z_A == True: #Si Stratégie "Fin vers Début"
@@ -151,10 +153,12 @@ def Search_Ship(fenetre, CasePlayer1, RondBleu, CroixRouge): #On utilise certain
                     #On affiche dans l'eau et on place un carrée bleu
                     print("dans l'eau")
                     fenetre.blit(RondBleu, CaseIA[IndexCible][0])  #Placement rond
+                    fenetre.blit(TextEAU, (258, 530)) #Affichage du texte "Dans l'eau" sur le plateau
                 else:
                     #On affiche touché et on place un carrée rouge
                     print("touche")
                     fenetre.blit(CroixRouge, CaseIA[IndexCible][0]) #Placement croix
+                    fenetre.blit(TextTOUCHE, (258, 530)) #Affichage du texte "Touché" sur le plateau
                     #appelle fonction attaque
                 Tour = True #Fin du Tour de l'IA
         elif Random == True: #Si Stratégie "Case Aléatoire"
@@ -171,10 +175,12 @@ def Search_Ship(fenetre, CasePlayer1, RondBleu, CroixRouge): #On utilise certain
                     #On affiche dans l'eau et on place un carrée bleu
                     print("dans l'eau")
                     fenetre.blit(RondBleu, CaseIA[IndexCible][0])  #Placement rond
+                    fenetre.blit(TextEAU, (258, 530)) #Affichage du texte "Dans l'eau" sur le plateau
                 else:
                     #On affiche touché et on place un carrée rouge
                     print("touche")
                     fenetre.blit(CroixRouge, CaseIA[IndexCible][0]) #Placement croix
+                    fenetre.blit(TextTOUCHE, (258, 530)) #Affichage du texte "Touché" sur le plateau
                     #appelle fonction attaque      
                 Tour = True #Fin du Tour de l'IA
         Choice = Choice+1 #On passe à la case suivante (en cas de succès ou échec)

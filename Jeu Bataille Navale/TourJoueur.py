@@ -10,7 +10,7 @@ from Fonction_Ship import Grille2
 #import random
 CasePlayer2 = Dico_Grille2.GrillePlayer2 #mit hors fonction car unutile de les refaire à chaque fois
 
-def Tour_Joueur(fenetre, CarBleu, CarRouge): #utilisation des arguments pour la fenetre et les carrées
+def Tour_Joueur(fenetre, CarBleu, CarRouge, TextEAU, TextTOUCHE, TextCOULE, Jeu): #utilisation des arguments pour la fenetre et les carrées
     global IndexCible
     global Grille2
     global cible
@@ -22,15 +22,22 @@ def Tour_Joueur(fenetre, CarBleu, CarRouge): #utilisation des arguments pour la 
         cible = raw_input()
         if cible in CasePlayer2 : 
             Fonction_Search_Index_CaseListe_for_Grille2(cible)
+            #Affichage de la Case
+            TextCaseBrut = cible
+            TextCase = Jeu.render(TextCaseBrut, 1, (0,0,0))
+            fenetre.blit(TextCase, (625, 515))
+            #Fin affichage de la case
             if Grille2[IndexCible][2] == 0 :
                 VariableBPB = Grille2[IndexCible][1]
                 if VariableBPB == 0 :
                     print("Dans l'eau")
                     fenetre.blit(CarBleu, Grille2[IndexCible][0])
+                    fenetre.blit(TextEAU, (758, 530)) #Affichage du texte "Dans l'eau" sur le plateau
                     Grille2[IndexCible][2] = 1
                 else :
                     print("Touche")
                     fenetre.blit(CarRouge, Grille2[IndexCible][0])
+                    fenetre.blit(TextTOUCHE, (758, 530)) #Affichage du texte "Touché" sur le plateau
                 Tir = True #je l'ai mis à True... il était à False
             else : #Ce n'est pas ce qu'il faut faire, le programme doit juste te dire que t'as touché une case
             #déjà touché... pas te faire recommencer gentillement ;)
