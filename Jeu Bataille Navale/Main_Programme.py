@@ -194,6 +194,8 @@ Initialisation = True #permet d'entrer dans la partie de positionnement des navi
 TourJoueur = False #permet au joueur de jouer son tour
 TourIA = False #permet à l'IA de jouer son tour
 CountTourIA = 1 #Compteur du nombre de tour de l'IA (pour le système de changement de stratégie)
+NbCoul = 0
+NbCoulIA = 0
 
 #Liste des commandes pour le début
 #Création des Textes
@@ -301,7 +303,7 @@ while Infinie == 1:
                         print("\nPositionnement des navires de l'IA en cours. \nMerci de patientez quelques instants...")
                         IA_Pose_Bat()#Appelle Fonction IA_Pose_Bat
                         Initialisation = False #Empêche le replacement des navires de l'IA une fois la partie lancée
-                        #Fonction_Test_Pose_IA() #Appelle Fonction test (suppression pour la version finale)
+                        Fonction_Test_Pose_IA() #Appelle Fonction test (suppression pour la version finale)
                         Define_List_Case_and_Strategie() #création CaseIA + choix stratégie (= fin Initialisation)
                         from Search_Ship_IA import A_Z    
                         from Search_Ship_IA import Z_A
@@ -372,7 +374,7 @@ while Infinie == 1:
             fenetre.blit(CaseText, (600, 505))
             fenetre.blit(CaseText, (733, 505))
             fenetre.blit(CaseText, (869, 505))
-            Tour_Joueur(fenetre, CarBleu, CarRouge, TextEAU, TextTOUCHE, TextCOULE, Jeu) #Appelle de la fonction de tour du joueur
+            Tour_Joueur(fenetre, CarBleu, CarRouge, TextEAU, TextTOUCHE, TextCOULE, Jeu, NbCoul) #Appelle de la fonction de tour du joueur
             pygame.display.flip()
             #Passage tour de l'IA
             TourIA = True

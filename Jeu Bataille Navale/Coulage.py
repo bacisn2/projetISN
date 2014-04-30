@@ -5,108 +5,79 @@ Created on Thu Apr 17 20:37:51 2014
 @author: mickael
 """
 
-def Coulage() :
+def Coulage(Grille2, IndexCible, NbCoul) :
     from Fonction_Ship import Grille2
-    global IndexCible
-    global Grille2
-    global NbCoul
+    liste = []
+    x = 0
+    z = 0
     if Grille2[IndexCible-1][1] == 1 :
         a = IndexCible-1
+        liste.append(a)
         if Grille2[IndexCible-2][1] == 1 :
             b = IndexCible-2
+            liste.append(b)
             if Grille2[IndexCible-3][1] == 1 :
                 c = IndexCible-3
+                liste.append(c)
                 if Grille2[IndexCible-4][1] == 1 :
                     d = IndexCible-4
+                    liste.append(d)
                     if Grille2[IndexCible-5][1] == 1 :
                         e = IndexCible-5
-    else :
+                        liste.append(e)
+    if Grille2[IndexCible+1][1] == 1 :
         a = IndexCible+1
-    if Grille2[IndexCible+2][1] == 1 :
-        b = IndexCible+2
-        if Grille2[IndexCible+3][1] == 1 :
-            c = IndexCible+3
-            if Grille2[IndexCible+4][1] == 1 :
-                d = IndexCible+4
-                if Grille2[IndexCible+5][1] == 1 :
-                    e = IndexCible+5
+        liste.append(a)
+        if Grille2[IndexCible+2][1] == 1 :
+            b = IndexCible+2
+            liste.append(b)
+            if Grille2[IndexCible+3][1] == 1 :
+                c = IndexCible+3
+                liste.append(c)
+                if Grille2[IndexCible+4][1] == 1 :
+                    d = IndexCible+4
+                    liste.append(d)
+                    if Grille2[IndexCible+5][1] == 1 :
+                        e = IndexCible+5
+                        liste.append(e)
     if Grille2[IndexCible-20][1] == 1 :
         a = IndexCible-20
+        liste.append(a)
         if Grille2[IndexCible-40][1] == 1 :
             b = IndexCible-40
+            liste.append(b)
             if Grille2[IndexCible-60][1] == 1 :
                 c = IndexCible-60
+                liste.append(c)
                 if Grille2[IndexCible-80][1] == 1 :
                     d = IndexCible-80
+                    liste.append(d)
                     if Grille2[IndexCible-100][1] == 1 :
                         e = IndexCible-100
-    else :
+                        liste.append(e)
+    if Grille2[IndexCible+20][1] == 1 :
         a = IndexCible+20
-    if Grille2[IndexCible+40][1] == 1 :
-        b = IndexCible+40
-        if Grille2[IndexCible+60][1] == 1 :
-            c = IndexCible+60
-            if Grille2[IndexCible+80][1] == 1 :
-                d = IndexCible+80
-                if Grille2[IndexCible+100][1] == 1 :
-                    e = IndexCible+100
-    if Grille2[a][2] == 1 :
-        if Grille2[b][2] == 1 :
-            if Grille2[c][2] == 1 :
-                if Grille2[d][2] == 1 :
-                    if Grille2[e][2] == 1 :
-                        NbCoul = NbCoul + 1
-                        print "Coulé"
-                        
-def CoulageIA() :
-    from Fonction_Ship import Grille1
-    global IndexCible
-    global Grille2
-    global NbCoulIA
-    if Grille1[IndexCible-1][1] == 1 :
-        a = IndexCible-1
-        if Grille1[IndexCible-2][1] == 1 :
-            b = IndexCible-2
-            if Grille1[IndexCible-3][1] == 1 :
-                c = IndexCible-3
-                if Grille1[IndexCible-4][1] == 1 :
-                    d = IndexCible-4
-                    if Grille1[IndexCible-5][1] == 1 :
-                        e = IndexCible-5
-    else :
-        a = IndexCible+1
-    if Grille1[IndexCible+2][1] == 1 :
-        b = IndexCible+2
-        if Grille1[IndexCible+3][1] == 1 :
-            c = IndexCible+3
-            if Grille1[IndexCible+4][1] == 1 :
-                d = IndexCible+4
-                if Grille1[IndexCible+5][1] == 1 :
-                    e = IndexCible+5
-    if Grille1[IndexCible-20][1] == 1 :
-        a = IndexCible-20
-        if Grille1[IndexCible-40][1] == 1 :
-            b = IndexCible-40
-            if Grille1[IndexCible-60][1] == 1 :
-                c = IndexCible-60
-                if Grille1[IndexCible-80][1] == 1 :
-                    d = IndexCible-80
-                    if Grille1[IndexCible-100][1] == 1 :
-                        e = IndexCible-100
-    else :
-        a = IndexCible+20
-    if Grille1[IndexCible+40][1] == 1 :
-        b = IndexCible+40
-        if Grille1[IndexCible+60][1] == 1 :
-            c = IndexCible+60
-            if Grille1[IndexCible+80][1] == 1 :
-                d = IndexCible+80
-                if Grille1[IndexCible+100][1] == 1 :
-                    e = IndexCible+100
-    if Grille1[a][2] == 1 :
-        if Grille1[b][2] == 1 :
-            if Grille1[c][2] == 1 :
-                if Grille1[d][2] == 1 :
-                    if Grille1[e][2] == 1 :
-                        NbCoulIA = NbCoulIA + 1
-                        print "Coulé"
+        liste.append(a)
+        if Grille2[IndexCible+40][1] == 1 :
+            b = IndexCible+40
+            liste.append(b)
+            if Grille2[IndexCible+60][1] == 1 :
+                c = IndexCible+60
+                liste.append(c)
+                if Grille2[IndexCible+80][1] == 1 :
+                    d = IndexCible+80
+                    liste.append(d)
+                    if Grille2[IndexCible+100][1] == 1 :
+                        e = IndexCible+100
+                        liste.append(e)
+    print "liste index coulage :"
+    print liste     
+    while x < len(liste) :
+        if Grille2[liste[x]][2] == 1 :
+            z = z + 1
+        x = x + 1
+    if x == z :
+        print "Coulé"
+        print "NbCoul avant rajout :" + str(NbCoul)
+        NbCoul = NbCoul + 1
+        print "Le nombre de bateau coulé est de " + str(NbCoul)

@@ -6,11 +6,13 @@ Created on Thu Apr 17 16:11:16 2014
 """
 #import Dico_Ship
 import Dico_Grille2
+from Coulage import *
 from Fonction_Ship import Grille2
 #import random
 CasePlayer2 = Dico_Grille2.GrillePlayer2 #mit hors fonction car unutile de les refaire à chaque fois
 
-def Tour_Joueur(fenetre, CarBleu, CarRouge, TextEAU, TextTOUCHE, TextCOULE, Jeu): #utilisation des arguments pour la fenetre et les carrées
+def Tour_Joueur(fenetre, CarBleu, CarRouge, TextEAU, TextTOUCHE, TextCOULE, Jeu, NbCoul): 
+#utilisation des arguments pour la fenetre et les carrées
     global IndexCible
     global Grille2
     global cible
@@ -27,17 +29,18 @@ def Tour_Joueur(fenetre, CarBleu, CarRouge, TextEAU, TextTOUCHE, TextCOULE, Jeu)
             TextCase = Jeu.render(TextCaseBrut, 1, (0,0,0))
             fenetre.blit(TextCase, (625, 515))
             #Fin affichage de la case
-            if Grille2[IndexCible][2] == 0 : #Vérification si la case a déjà été touchée
+            if Grille2[IndexCible][2] == 0 : #Vérification si la case n'a pas déjà été touchée
+                Grille2[IndexCible][2] = 1 #La case passe de "non touchée" (=0) à touchée (=1)
                 VariableBPB = Grille2[IndexCible][1] #Variable de la présence d'un bateau ou pas
                 if VariableBPB == 0 : #Si il n'y a pas de bateau
                     print("Dans l'eau")
                     fenetre.blit(CarBleu, Grille2[IndexCible][0])
                     fenetre.blit(TextEAU, (758, 530)) #Affichage du texte "Dans l'eau" sur le plateau
-                    Grille2[IndexCible][2] = 1 #La case passe de "non touchée" (=0) à touchée (=1)
                 else :
                     print("Touche")
                     fenetre.blit(CarRouge, Grille2[IndexCible][0])
                     fenetre.blit(TextTOUCHE, (758, 530)) #Affichage du texte "Touché" sur le plateau
+                    Coulage(Grille2, IndexCible, NbCoul)
                 Tir = True 
             else : 
                 print("Case deja touchee, tir perdue")

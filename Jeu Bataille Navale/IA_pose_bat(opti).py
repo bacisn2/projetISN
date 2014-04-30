@@ -18,7 +18,7 @@ def IA_Pose_Bat(): #Pose des bateaux par l'IA
     x = 0 #Variable pour le déplacement dans la liste listship
     listship = [6,5,4,4,3,3,3,2,2,2] #Nombre de cases des différents bateaux
     while x < 10 : #Dix fois pour dix bateaux
-        batcase = listship[x] #Le nombre de case d'un beateau celon la position dans la liste
+        batcase = listship[x] #Le nombre de case d'un bateau celon la position dans la liste
         b = random.randint(0,1) #Variable pour le choix Verticale/Horizontal du bateau (0 = vertical, choix arbitraire)
         IndexCase = random.randint(0,398) #Choix d'un index dans la liste des coordonnées Grille2
         if b == 0 : #Choix Verticale du bateau
