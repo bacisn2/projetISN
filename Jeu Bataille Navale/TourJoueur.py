@@ -16,35 +16,34 @@ def Tour_Joueur(fenetre, CarBleu, CarRouge, TextEAU, TextTOUCHE, TextCOULE, Jeu)
     global cible
     global Dico_Grille2
     global CasePlayer2
-    Tir = False
+    Tir = False #Variable limitant le nombre de tir à un
     print("Choisir une cible")
-    while Tir == False :
-        cible = raw_input()
-        if cible in CasePlayer2 : 
+    while Tir == False : 
+        cible = raw_input() #Le joueur entre la case qu'il veut cibler
+        if cible in CasePlayer2 : #Vérification de l'éxistance de la case
             Fonction_Search_Index_CaseListe_for_Grille2(cible)
             #Affichage de la Case
             TextCaseBrut = cible
             TextCase = Jeu.render(TextCaseBrut, 1, (0,0,0))
             fenetre.blit(TextCase, (625, 515))
             #Fin affichage de la case
-            if Grille2[IndexCible][2] == 0 :
-                VariableBPB = Grille2[IndexCible][1]
-                if VariableBPB == 0 :
+            if Grille2[IndexCible][2] == 0 : #Vérification si la case a déjà été touchée
+                VariableBPB = Grille2[IndexCible][1] #Variable de la présence d'un bateau ou pas
+                if VariableBPB == 0 : #Si il n'y a pas de bateau
                     print("Dans l'eau")
                     fenetre.blit(CarBleu, Grille2[IndexCible][0])
                     fenetre.blit(TextEAU, (758, 530)) #Affichage du texte "Dans l'eau" sur le plateau
-                    Grille2[IndexCible][2] = 1
+                    Grille2[IndexCible][2] = 1 #La case passe de "non touchée" (=0) à touchée (=1)
                 else :
                     print("Touche")
                     fenetre.blit(CarRouge, Grille2[IndexCible][0])
                     fenetre.blit(TextTOUCHE, (758, 530)) #Affichage du texte "Touché" sur le plateau
-                Tir = True #je l'ai mis à True... il était à False
-            else : #Ce n'est pas ce qu'il faut faire, le programme doit juste te dire que t'as touché une case
-            #déjà touché... pas te faire recommencer gentillement ;)
-                print("Case deja touchee, en choisir une autre")
+                Tir = True 
+            else : 
+                print("Case deja touchee, tir perdue")
+                Tir = True
         else : 
             print("Cette case n'existe pas, en choisir une autre")
-        Tir = True
         
 def Fonction_Search_Index_CaseListe_for_Grille2(cible):
     #On globalise toutes les variables
