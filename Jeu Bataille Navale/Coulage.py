@@ -5,8 +5,9 @@ Created on Thu Apr 17 20:37:51 2014
 @author: mickael
 """
 
-def Coulage(Grille2, IndexCible, NbCoul) :
-    from Fonction_Ship import Grille2
+def Coulage(Grille2, IndexCible):#, NbCoulInterm) :
+    from TourJoueur import NbCoulInterm
+    global NbCoulInterm
     liste = [] #Liste des index des cases qui vont devoir être vérifiées (touché ou non)
     x = 0 #Variable pour le parcourt de la liste des index
     z = 0 #Variable du nombre de case avec bateau qui sont touchées
@@ -81,7 +82,7 @@ def Coulage(Grille2, IndexCible, NbCoul) :
             z = z + 1 #Incrémentation de la variable du nombre de case avec bateau qui sont touchées
         x = x + 1 #Incrémentation de x pour le parcourt de la boucle
     if x == z : #Si le nombre de case avec bateau qui sont touchée est égal au nombre de case devant être vérifiée
-        print "Coulé" #print pour test
-        print "NbCoul avant rajout :" + str(NbCoul) #print pour test
-        NbCoul = NbCoul + 1
-        print "Le nombre de bateau coulé est de " + str(NbCoul)
+        print "Coule" #print pour test
+        print "NbCoul avant rajout :" + str(NbCoulInterm) #print pour test
+        NbCoulInterm = NbCoulInterm + 1
+        print "Le nombre de bateau coule est de " + str(NbCoulInterm)
