@@ -253,8 +253,8 @@ while Infinie == 1:
             Esp2 = font.render(Obj2, 1, (255,0,0))
             Esp3 = font.render(Obj3, 1, (255,0,0))
             #Placement des Textes
-            fenetre.blit(Esp2, (800,500))
-            fenetre.blit(Esp3, (800,525))
+            fenetre.blit(Esp2, (800,25))
+            fenetre.blit(Esp3, (800,50))
             #Rafraichissement du Plateau de Jeu
             pygame.display.flip()   
             
@@ -303,7 +303,7 @@ while Infinie == 1:
                         print("\nPositionnement des navires de l'IA en cours. \nMerci de patientez quelques instants...")
                         IA_Pose_Bat()#Appelle Fonction IA_Pose_Bat
                         Initialisation = False #Empêche le replacement des navires de l'IA une fois la partie lancée
-                        Fonction_Test_Pose_IA() #Appelle Fonction test (suppression pour la version finale)
+                        #Fonction_Test_Pose_IA() #Appelle Fonction test (suppression pour la version finale)
                         Define_List_Case_and_Strategie() #création CaseIA + choix stratégie (= fin Initialisation)
                         from Search_Ship_IA import A_Z    
                         from Search_Ship_IA import Z_A
@@ -321,8 +321,7 @@ while Infinie == 1:
             print("\nTour IA")
             
             #Système de changement de Stratégie de l'IA InGame 
-            #en fonction du nombre de tour passé, un changement par tour possible = + aléatoire
-            
+            #en fonction du nombre de tour passé, un changement par tour possible = + aléatoire            
             #Placé directement dans le tour de l'IA pour éviter de refaire 50 fois le même changement en 
             #attendant que le joueur appuie sur une touche...
             if CountTourIA % 4 == 0: #Passage Stratégie Random
@@ -356,6 +355,8 @@ while Infinie == 1:
             #testcroix_rond() #test CaseIA + affichage croix et rond
             #Appelle de la fonction de tour de l'IA  
             Search_Ship(fenetre, CasePlayer1, RondBleu, CroixRouge, TextEAU, TextTOUCHE, TextCOULE, A_Z, Z_A, Random)
+            from Search_Ship_IA import NbCoulIA
+            print("NbCoulIA in MainProgramme = " +str(NbCoulIA))
             pygame.display.flip()
             #Passage tour du Joueur
             TourIA = False

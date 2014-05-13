@@ -6,7 +6,7 @@ Created on Thu Apr 17 16:11:16 2014
 """
 #import Dico_Ship
 import Dico_Grille2
-#from Coulage import *
+#from Texte_IA import *
 from Fonction_Ship import Grille2
 #import random
 CasePlayer2 = Dico_Grille2.GrillePlayer2 #mit hors de la fonction car unutile de les refaire à chaque fois
@@ -43,7 +43,7 @@ def Tour_Joueur(fenetre, CarBleu, CarRouge, TextEAU, TextTOUCHE, TextCOULE, Jeu)
                     print("Touche")
                     fenetre.blit(CarRouge, Grille2[IndexCible][0])
                     fenetre.blit(TextTOUCHE, (758, 530)) #Affichage du texte "Touché" sur le plateau
-                    Coulage(Grille2, IndexCible)#, NbCoulInterm
+                    Coulage(Grille2, IndexCible, fenetre, TextCOULE)
                     print("NbCoul in TourJoueur = " + str(NbCoul))
                 Tir = True 
             else : 
@@ -64,7 +64,7 @@ def Fonction_Search_Index_CaseListe_for_Grille2(cible):
             print("IndexCase = " + str(IndexCible)) #
             break #si on sort du quadrillage, rien de sert de continuer, on quitte la fonction
 
-def Coulage(Grille2, IndexCible):#, NbCoulInterm) :
+def Coulage(Grille2, IndexCible, fenetre, TextCOULE):#, NbCoulInterm) :
     global NbCoul
     liste = [] #Liste des index des cases qui vont devoir être vérifiées (touché ou non)
     x = 0 #Variable pour le parcourt de la liste des index
@@ -133,14 +133,14 @@ def Coulage(Grille2, IndexCible):#, NbCoulInterm) :
                         e = IndexCible+100
                         liste.append(e)
     #Début des vérifications case par case si il y a un bateau ou non
-    print "liste index coulage :" #print pour test
-    print liste #print pour test
+    print("liste index coulage : " + str(liste)) #print pour test
     while x < len(liste) : #Boucle avec incrémentation de x jusqu'au nombre d'élément dans la liste
         if Grille2[liste[x]][2] == 1 : #Vérification si la case a été touchée ou non
             z = z + 1 #Incrémentation de la variable du nombre de case avec bateau qui sont touchées
         x = x + 1 #Incrémentation de x pour le parcourt de la boucle
     if x == z : #Si le nombre de case avec bateau qui sont touchée est égal au nombre de case devant être vérifiée
-        print "Coule" #print pour test
-        print "NbCoul avant rajout :" + str(NbCoul) #print pour test
+        print("Coule") #print pour test
+        print("NbCoul avant rajout :" + str(NbCoul)) #print pour test
         NbCoul = NbCoul + 1
-        print "Le nombre de bateau coule est de " + str(NbCoul)            
+        fenetre.blit(TextCOULE, (914, 530)) #Affichage du texte "Touché" sur le plateau
+        print("Le nombre de bateau coule est de " + str(NbCoul))            
