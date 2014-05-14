@@ -43,10 +43,14 @@ def REINITIALISATION_PARTIE():
     global TourJoueur
     global TourIA
     global Initialisation
+    global NbCoul
+    global NbCoulIA
     #réinitialisation des variables de début utile
     Reinitialisation_NbXCase()
     CountShip = 0
     CountTourIA = 1
+    NbCoul = 0
+    NbCoulIA = 0
     EchecVerifFinal = False
     TourJoueur = False
     TourIA = False
@@ -249,7 +253,11 @@ from TourJoueur import *
 while Infinie == 1:
     for event in pygame.event.get(): #Fait la liste des évènements possible (appuyer sur une touche, souris, etc...)
         if event.type == QUIT: #Quitte la partie quand on appuie sur "Quitter" (bug sous Windows 8 avec Python 2.7)
-            Infinie = 0 #Fin de la Boucle (FIN MAIN PROGRAMME)
+            quitter = raw_input("Tu veux vraiment nous quitter ? (o/n): ")
+            if quitter == "o":
+                Infinie = 0 #Fin de la Boucle (FIN MAIN PROGRAMME)
+            else:
+                print("je me disais bien aussi, reprenons alors !")
         if event.type == KEYDOWN and event.key == K_ESCAPE: #Message Mystère
             #Création des Textes
             Obj2 = "N'essayez pas de vous echapper..."
@@ -403,4 +411,3 @@ while Infinie == 1:
             REINITIALISATION_PARTIE()
             print("Appuyez sur \"b\" pour recommencer la saisi")
 #FIN MAIN PROGRAMME
-raw_input() #attend une action du joueur pour fermé le programme (nécessaire sous Python 2.7 pour éviter les sorties trop brutales)

@@ -9,56 +9,51 @@ Created on Thu Mar 27 17:21:26 2014
 
 #SOMMAIRE DES FONCTIONS (NB: Incomplet à ce jour: en attente des Fonctions pour les Parties V - VII et IX) - ligne: 10
 #I - PARTIE IMPORTATION DES DICOS ET INITIALISATION DES COMPTEURS DE NAVIRES
-#   Importaion Dico - ligne: 66
-#   Initialisation Compteurs Navires - ligne: 69
+#   Importaion Dico - ligne: 61
+#   Initialisation Compteurs Navires - ligne: 65
 #
 #II - PARTIE FONCTIONS D'INITIALISATION GRILLES
-#   Grille1 - ligne: 80
-#   Grille2 - ligne: 99
+#   Grille1 - ligne: 77
+#   Grille2 - ligne: 96
 #
 #III - PARTIE FONCTION POSITIONNEMENT DES NAVIRES
-#   Grille1_Pos_Navire (Entrée du bateau et de la case - For Joueur) - ligne: 122
-#   "A-FAIRE" Grille2_Pos_Navire (Entrée du bateau et de la case - For IA) - ligne: Unknow
+#   Grille1_Pos_Navire (Entrée du bateau et de la case - For Joueur) - ligne: 119
+#   IA_Pos_Bat (Entrée du bateau et de la case - For IA) - ligne: 145
 #
 #IV - PARTIE FONCTIONS VERIFICATION POSITIONNEMENT JOUEUR
-#   Notes utiles (commentaire) - ligne: 155
-#   Fonction_Search_Index_CaseListe_for_Grille1 (recherche l'index de la case à partir de ses coordonnées) - ligne: 165
-#   Verif_VariableBPB_in_Grille1_for_H (vérifie l'état de BPB pour les navires Horizontaux) - ligne: 181
-#   Verif_VariableBPB_in_Grille1_for_V (vérifie l'état de BPB pour les navires Verticaux) - ligne: 209
-#   Fonction_Verif_Position_Brute_for_V (vérifie que le bateau vertical est entièrement dans la grille) - ligne: 239
-#   Fonction_Verif_Position_Brute_for_H (vérifie que le bateau horizontal est entièrement dans la grille) - ligne: 275
+#   Notes utiles (commentaire) - ligne: 195
+#   Fonction_Search_Index_CaseListe_for_Grille1 (recherche l'index de la case à partir de ses coordonnées) - ligne: 206
+#   Verif_VariableBPB_in_Grille1_for_H (vérifie l'état de BPB pour les navires Horizontaux) - ligne: 222
+#   Verif_VariableBPB_in_Grille1_for_V (vérifie l'état de BPB pour les navires Verticaux) - ligne: 250
+#   Fonction_Verif_Position_Brute_for_V (vérifie que le bateau vertical est entièrement dans la grille) - ligne: 280
+#   Fonction_Verif_Position_Brute_for_H (vérifie que le bateau horizontal est entièrement dans la grille) - ligne: 316
 #
-#V - PARTIE FONCTIONS VERIFICATION POSITIONNEMENT IA (NB: Cette partie n'existe pas encore) 
-#   "A-FAIRE" Notes utiles (commentaire) - ligne: Unknow
-#   Fonction_Search_Index_CaseListe_for_Grille2 (recherche l'index de la case à partir de ses coordonnées) - ligne: 315
-#   Verif_VariableBPB_in_Grille2_for_H (vérifie l'état de BPB pour les navires Horizontaux) - ligne: 325
-#   Verif_VariableBPB_in_Grille2_for_V (vérifie l'état de BPB pour les navires Verticaux) - ligne: 352
-#   "A-FAIRE" (vérifie que le bateau vertical est entièrement dans la grille) - ligne: Unknow
-#   "A-FAIRE" (vérifie que le bateau horizontal est entièrement dans la grille) - ligne: Unknow
+#V - PARTIE FONCTIONS VERIFICATION POSITIONNEMENT IA 
+#   Fonction_Verif_PositionIA_Brute_for_V (vérifie que le bateau vertical est entièrement dans la grille) - ligne: 357
+#   Fonction_Verif_PositionIA_Brute_for_H (vérifie que le bateau horizontal est entièrement dans la grille) - ligne: 386
+#   Verif_VariableVPV_in_Grille2_for_V (vérifie l'état de BPB pour les navires Verticaux) - ligne: 415
+#   Verif_VariableVPV_in_Grille2_for_H (vérifie l'état de BPB pour les navires Horizontaux) - ligne: 445
 #
 #VI - PARTIE CHANGEMENT DE L'ETAT DE LA VARIABLE "BATEAU/PAS BATEAU" (BPB) JOUEUR
-#   Grille1_Navire_Horizontale (change BPB pour les autres cases des navires horizontaux) - ligne: 387
-#   Grille1_Navire_Verticale (change BPB pour les autres cases des navires verticaux) - ligne: 408
-#   Chgmt_State_Case1 (change BPB pour la première case du navire choisi) - ligne: 429
-#   ListShip_for_Chgmt_State (Fonction Maître de la Partie: détermine le navire choisi et appelle les fonctions ci-dessus au besoins) - ligne: 448
+#   Grille1_Navire_Horizontale (change BPB pour les autres cases des navires horizontaux) - ligne: 482
+#   Grille1_Navire_Verticale (change BPB pour les autres cases des navires verticaux) - ligne: 503
+#   Chgmt_State_Case1 (change BPB pour la première case du navire choisi) - ligne: 524
+#   ListShip_for_Chgmt_State (Fonction Maître de la Partie: détermine le navire choisi et appelle les fonctions ci-dessus au besoins) - ligne: 543
 #
 #VII - PARTIE CHANGEMENT DE L'ETAT DE LA VARIABLE "BATEAU/PAS BATEAU" (BPB) IA
-#   "A-FAIRE" (change BPB pour les autres cases des navires horizontaux) - ligne: Unknow
-#   "A-FAIRE" (change BPB pour les autres cases des navires verticaux) - ligne: Unknow
-#   "A-FAIRE" (change BPB pour la première case du navire choisi) - ligne: Unknow
-#   "A-FAIRE" (Fonction Maître de la Partie: détermine le navire choisi et appelle les fonctions ci-dessus au besoins) - ligne: Unknow
+#   Grille2_Navire_Horizontale (change BPB pour les cases des navires horizontaux) - ligne: 679
+#   Grille2_Navire_Verticale (change BPB pour les cases des navires verticaux) - ligne: 706
 #
 #VIII - PARTIE VERIFICATION FINALE JOUEUR
-#   Verification_Final_Grille1 (Fonction Maître de la Partie: gère la première case et évite les bug lié à des cases inexistantes) - ligne: 596
-#   Verif_Final_PII_NavireH (vérifie les cases adjacentes des cases suivantes des navires horizontaux) - ligne: 800
-#   Verif_Final_PII_NavireV (vérifie les cases adjacentes des cases suivantes des navires verticaux) - ligne: 887
-#   Reinitialisation_NbXCase (réinitialise les Compteurs Navires en case de réinitialisation de la partie) - ligne: 981
+#   Verification_Final_Grille1 (Fonction Maître de la Partie: gère la première case et évite les bug lié à des cases inexistantes) - ligne: 743
+#   Verif_Final_PII_NavireH (vérifie les cases adjacentes des cases suivantes des navires horizontaux) - ligne: 923
+#   Verif_Final_PII_NavireV (vérifie les cases adjacentes des cases suivantes des navires verticaux) - ligne: 1011
+#   Reinitialisation_NbXCase (réinitialise les Compteurs Navires en case de réinitialisation de la partie) - ligne: 1105
 #
 #IX - PARTIE CHECK CASE IA
-#   "A-FAIRE" (Fonction Maître de la Partie: gère la première case et évite les bug lié à des cases inexistantes) - ligne: Unknow
-#   "A-FAIRE" (vérifie les cases adjacentes des cases suivantes des navires horizontaux) - ligne: Unknow
-#   "A-FAIRE" (vérifie les cases adjacentes des cases suivantes des navires verticaux) - ligne: Unknow
-#   "A-FAIRE" (réinitialise les Compteurs Navires de l'IA en case de réinitialisation de la partie) - ligne: Unknow
+#   Check_IA_Ship (Fonction Maître de la Partie: gère la première case et évite les bug lié à des cases inexistantes) - ligne: 1121
+#   Ckeck_PII_NavireH_IA (vérifie les cases adjacentes des cases suivantes des navires horizontaux) - ligne: 1249
+#   Ckeck_PII_NavireV_IA (vérifie les cases adjacentes des cases suivantes des navires verticaux) - ligne: 1307
 # FIN SOMMAIRE DES FONCTIONS
 
 #DEBUT PROGRAMME "FONCTION_SHIP"
@@ -193,7 +188,7 @@ def IA_Pose_Bat(): #Pose des bateaux par l'IA
         
 #//////////////////////////////////////////////////////////////////////////////        
 #PARTIE FONCTIONS VERIFICATION POSITIONNEMENT JOUEUR
-#FonctionS qui vérifie que le navire ne soit pas hors quadrillage ou chevauche
+#Fonctions qui vérifie que le navire ne soit pas hors quadrillage ou chevauche
 #un autre navire pour éviter les bug dans le "Grille1": 
 #C'est la "Position Brute"
 
