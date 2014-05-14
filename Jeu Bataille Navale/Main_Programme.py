@@ -111,10 +111,15 @@ def testcroix_rond():
 #FIN FONCTION TEST POSITION IA
 
      
-#PARTIE INItIALISATION DU JEU
+#PARTIE INITIALISATION DU JEU
 #Ini Pygame + fond pour les textes
 pygame.init()
 pygame.font.init()
+#NB: comment fonctionne un fond pour texte:
+#Il est de la forme "NomFond = pygame.font.Font(None, nombre)"
+#"pygame.font.Font" est la fonction appelé auquel on attribue deux arguments:
+#- "None", permet un effet si on met autre chose mais pour le projet, "None" suffit
+#- un nombre, qui défini la taille des lettres que ce font contiendra: c'est ce qui différencie un fond d'un autre 
 Info = pygame.font.Font(None, 20) #Transparent pour l'affichage des Textes (version 15 px)
 font = pygame.font.Font(None, 30) #Transparent pour l'affichage des Textes (version 30 px)
 Jeu = pygame.font.Font(None, 60) #Transparent pour l'affichage des Textes du jeu (version 60 px)
@@ -150,7 +155,7 @@ pygame.display.flip()
 Ligne = pygame.image.load("Ligne_Tableau.jpg")
 Colonne = pygame.image.load("Colonne_Tableau.jpg")
 CaseText = pygame.image.load("CaseTexte.png")
-#Positionne les images
+#Positionne les images grâce à la fonction "blit" de pygame
 fenetre.blit(Ligne, (80,100))
 fenetre.blit(Ligne, (580,100))
 fenetre.blit(Colonne, (100,75))

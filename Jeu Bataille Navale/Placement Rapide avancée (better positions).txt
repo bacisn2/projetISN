@@ -15,6 +15,6 @@ I2
 Voilier
 R16
 LitShip
-G10
+O10
 LitShipV
 J8

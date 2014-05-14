@@ -24,6 +24,8 @@ droite = False
 gauche = False
 haut = False
 bas = False
+Reference = [] #Case la plus à droite en haut, la case référence du bateau
+FirstCase = 0 #Index Première case touché, on y revient si on s'est trompé de sens
 
 
 def Define_List_Case_and_Strategie():
@@ -131,6 +133,8 @@ def Search_Ship(fenetre, CasePlayer1, RondBleu, CroixRouge, TextEAU, TextTOUCHE,
     global bas
     global NbAttaque
     global IndexCible
+    global Reference
+    global FirstCase
     #global IndexIntermforAttaque
     print("\nIn Tour IA")
     print("NbAttaque = " + str(NbAttaque))
@@ -166,12 +170,16 @@ def Search_Ship(fenetre, CasePlayer1, RondBleu, CroixRouge, TextEAU, TextTOUCHE,
                     else:
                         #On affiche touché et on place un carrée rouge
                         print("touche")
+                        print("IndexCible in CaseIA = " + str(IndexCible))
                         fenetre.blit(CroixRouge, CaseIA[IndexCible][0]) #Placement croix
                         fenetre.blit(TextTOUCHE, (258, 530)) #Affichage du texte "Touché" sur le plateau
+                        IndexCible = Grille1.index(Cible)
+                        print("IndexCible in Grille1 = " + str(IndexCible))
                         #appelle fonction attaque
                         InAttaque = True
                         NbAttaque = NbAttaque + 1
-                        #IndexIntermforAttaque = IndexCible
+                        Reference = Cible #On considère qu'on a touché la case de référence (ceci pourras être démenti par la suite)
+                        FirstCase = IndexCible #Voici la première case touché (ne change plus jusqu'au prochain navire)
                     Tour = True #Fin du Tour de l'IA
             elif Z_A == True: #Si Stratégie "Fin vers Début"
                 #Détermination de la case
@@ -191,12 +199,16 @@ def Search_Ship(fenetre, CasePlayer1, RondBleu, CroixRouge, TextEAU, TextTOUCHE,
                     else:
                         #On affiche touché et on place un carrée rouge
                         print("touche")
+                        print("IndexCible in CaseIA = " + str(IndexCible))
                         fenetre.blit(CroixRouge, CaseIA[IndexCible][0]) #Placement croix
                         fenetre.blit(TextTOUCHE, (258, 530)) #Affichage du texte "Touché" sur le plateau
+                        IndexCible = Grille1.index(Cible)
+                        print("IndexCible in Grille1 = " + str(IndexCible))
                         #appelle fonction attaque
                         InAttaque = True
                         NbAttaque = NbAttaque + 1
-                        #IndexIntermforAttaque = IndexCible
+                        Reference = Cible #On considère qu'on a touché la case de référence (ceci pourras être démenti par la suite)
+                        FirstCase = IndexCible #Voici la première case touché (ne change plus jusqu'au prochain navire)
                     Tour = True #Fin du Tour de l'IA
             elif Random == True: #Si Stratégie "Case Aléatoire"
                 #Détermination de la case
@@ -216,12 +228,16 @@ def Search_Ship(fenetre, CasePlayer1, RondBleu, CroixRouge, TextEAU, TextTOUCHE,
                     else:
                         #On affiche touché et on place un carrée rouge
                         print("touche")
+                        print("IndexCible in CaseIA = " + str(IndexCible))
                         fenetre.blit(CroixRouge, CaseIA[IndexCible][0]) #Placement croix
                         fenetre.blit(TextTOUCHE, (258, 530)) #Affichage du texte "Touché" sur le plateau
+                        IndexCible = Grille1.index(Cible)
+                        print("IndexCible in Grille1 = " + str(IndexCible))
                         #appelle fonction attaque
                         InAttaque = True
                         NbAttaque = NbAttaque + 1
-                        #IndexIntermforAttaque = IndexCible
+                        Reference = Cible #On considère qu'on a touché la case de référence (ceci pourras être démenti par la suite)
+                        FirstCase = IndexCible #Voici la première case touché (ne change plus jusqu'au prochain navire)
                     Tour = True #Fin du Tour de l'IA
             Choice = Choice+1 #On passe à la case suivante (en cas d'échec)
     print("NbCoulIA in TourIA = " + str(NbCoulIA))
@@ -236,12 +252,14 @@ def Attaque_Base_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, Te
     global NbCoulIA
     global NbCoulIANavire
     global IndexCible
-    print("\nIn Attaque_Base")
-    print("\nhaut: " + str(haut))
+    global reference
+    global FirstCase
+    print("In Attaque_Base")
+    print("haut: " + str(haut))
     print("droite: " + str(droite))
     print("gauche: " + str(gauche))
-    print("bas: " + str(bas) + "\n")
-    print("NbAttaque = " + str(NbAttaque))
+    print("bas: " + str(bas))
+    print("NbAttaque in start Tour = " + str(NbAttaque))
     if NbAttaque == 1: #Ne se fait qu'au début, recherche du sens du navire par un second tir
         while Tour == False: #Prend en compte le fait qu'une des 4 cases potentielles peut avoir été déjà touché
             NewCible = randint(1, 4) #choix aléatoire: Où attaquer maintenant ?
@@ -252,7 +270,7 @@ def Attaque_Base_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, Te
                     CaseCible = Grille1[IndexCible+1] #case à droite
                     if CaseCible[2] == 0: #La case a-t-elle été touché ?
                         Grille1[IndexCible+1][2] = 1 #On tir sur la case
-                        print("IndexCase = " + str(IndexCible+20))
+                        print("IndexCase = " + str(IndexCible+1))
                         print("Case: " + str(CaseCible))
                         print("Bateau ?: " + str(CaseCible[1]))
                         if CaseCible[1] == 1: #Il y a-t-il un bateau sur cette case ?
@@ -262,6 +280,7 @@ def Attaque_Base_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, Te
                             fenetre.blit(TextTOUCHE, (258, 530)) #Affichage du texte "Touché" sur le plateau
                             droite = True #Le bateau continue bien sur la droite (utile pour le tour suivant)
                             NbAttaque = NbAttaque +1
+                            IndexCible = IndexCible+1
                             Tour = True
                         else:
                             #On affiche dans l'eau et on place un carrée bleu
@@ -269,21 +288,24 @@ def Attaque_Base_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, Te
                             fenetre.blit(RondBleu, CaseCible[0])  #Placement rond
                             fenetre.blit(TextEAU, (258, 530)) #Affichage du texte "Dans l'eau" sur le plateau
                             Tour = True
+                            break
             elif NewCible == 2:
                 if list(Grille1[IndexCible][0])[0]-1 >= 105: #Il y a-t-il une case à gauche ?
                     CaseCible = Grille1[IndexCible-1] #case à gauche
                     if CaseCible[2] == 0: #La case a-t-elle été touché ?
                         Grille1[IndexCible-1][2] = 1 #On tir sur la case
-                        print("IndexCase = " + str(IndexCible+20))
+                        print("IndexCase = " + str(IndexCible-1))
                         print("Case: " + str(CaseCible))
                         print("Bateau ?: " + str(CaseCible[1]))
                         if CaseCible[1] == 1: #Il y a-t-il un bateau sur cette case ?
                             #On affiche touché et on place un carrée rouge
                             print("touche")
+                            Reference = CaseCible #Nouvelle case la plus à gauche: Nouvelle Référence
                             fenetre.blit(CroixRouge, CaseCible[0]) #Placement croix
                             fenetre.blit(TextTOUCHE, (258, 530)) #Affichage du texte "Touché" sur le plateau
                             gauche = True #Le bateau continue bien sur la gauche (utile pour le tour suivant)
                             NbAttaque = NbAttaque +1
+                            IndexCible = IndexCible-1
                             Tour = True
                         else:
                             #On affiche dans l'eau et on place un carrée bleu
@@ -291,21 +313,24 @@ def Attaque_Base_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, Te
                             fenetre.blit(RondBleu, CaseCible[0])  #Placement rond
                             fenetre.blit(TextEAU, (258, 530)) #Affichage du texte "Dans l'eau" sur le plateau
                             Tour = True
+                            break
             elif NewCible == 3:
                 if list(Grille1[IndexCible][0])[1]-20 >= 105: #Il y a-t-il une case en haut ?
                     CaseCible = Grille1[IndexCible-20] #case en haut
                     if CaseCible[2] == 0: #La case a-t-elle été touché ?
                         Grille1[IndexCible-20][2] = 1 #On tir sur la case
-                        print("IndexCase = " + str(IndexCible+20))
+                        print("IndexCase = " + str(IndexCible-20))
                         print("Case: " + str(CaseCible))
                         print("Bateau ?: " + str(CaseCible[1]))
                         if CaseCible[1] == 1: #Il y a-t-il un bateau sur cette case ?
                             #On affiche touché et on place un carrée rouge
                             print("touche")
+                            Reference = CaseCible #Nouvelle case la plus en haut: Nouvelle Référence
                             fenetre.blit(CroixRouge, CaseCible[0]) #Placement croix
                             fenetre.blit(TextTOUCHE, (258, 530)) #Affichage du texte "Touché" sur le plateau
                             haut = True #Le bateau continue bien vers le haut (utile pour le tour suivant)
                             NbAttaque = NbAttaque +1
+                            IndexCible = IndexCible-20
                             Tour = True
                         else:
                             #On affiche dans l'eau et on place un carrée bleu
@@ -313,6 +338,7 @@ def Attaque_Base_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, Te
                             fenetre.blit(RondBleu, CaseCible[0])  #Placement rond
                             fenetre.blit(TextEAU, (258, 530)) #Affichage du texte "Dans l'eau" sur le plateau
                             Tour = True
+                            break
             elif NewCible == 4:
                 if list(Grille1[IndexCible][0])[1]+20 <= 485: #Il y a-t-il une case en bas ?
                     CaseCible = Grille1[IndexCible+20] #case en bas
@@ -328,6 +354,7 @@ def Attaque_Base_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, Te
                             fenetre.blit(TextTOUCHE, (258, 530)) #Affichage du texte "Touché" sur le plateau
                             bas = True #Le bateau continue bien vers le bas (utile pour le tour suivant)
                             NbAttaque = NbAttaque +1
+                            IndexCible = IndexCible+20
                             Tour = True
                         else:
                             #On affiche dans l'eau et on place un carrée bleu
@@ -335,143 +362,262 @@ def Attaque_Base_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, Te
                             fenetre.blit(RondBleu, CaseCible[0])  #Placement rond
                             fenetre.blit(TextEAU, (258, 530)) #Affichage du texte "Dans l'eau" sur le plateau
                             Tour = True
+                            break 
             #Appelle fonction Nombre de Case
-            NbCoulIANavire = 3
+            CountNbCoulIANavire(Grille1, IndexCible)                
             if NbAttaque == NbCoulIANavire:
                 InAttaque = False
                 print("coule")
                 fenetre.blit(TextCOULE, (414, 530)) #Affichage du texte "Coulé" sur le plateau
-                NbCoulIA = NbCoulIA+1  
-            
+                NbCoulIA = NbCoulIA+1 #+1 navire coulé, la victoire est proche... 
     else:
         #Appelle fonction suivante
         Attaque_Avancee_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, TextEAU, TextCOULE)
-    IndexCible = IndexCible+1 #Index suivant pour prochain tour (il s'agit en fait de la case touché ce tour)
+    print("NbAttaque in End Tour = " + str(NbAttaque))
 
 def Attaque_Avancee_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, TextEAU, TextCOULE):
     global droite
     global gauche
     global haut
     global bas
-    global NbAttaque 
+    global NbAttaque
     global InAttaque
     global NbCoulIA
+    global NbCoulIANavire
     global IndexCible
-    print("\nIn Attaque Avancee")
-    print("\nhaut: " + str(haut))
+    global reference
+    global FirstCase
+    print("In Attaque Avancee")
+    print("haut: " + str(haut))
     print("droite: " + str(droite))
     print("gauche: " + str(gauche))
-    print("bas: " + str(bas) + "\n")
-    print("IndexCible = " +str(IndexCible))
+    print("bas: " + str(bas))
+    print("IndexCible base = " +str(IndexCible))
     while Tour == False:
         if droite == True: #Le bateau continue-t-il à droite ?
             if list(Grille1[IndexCible][0])[0]+20 <= 485: #Il y a-t-il une case à droite ?
                 CaseCible =  Grille1[IndexCible+1]
-                Grille1[IndexCible+1][2] = 1 #On touche la case
-                print("IndexCase = " + str(IndexCible+20))
-                print("Case: " + str(CaseCible))
-                print("Bateau ?: " + str(CaseCible[1]))
-                if CaseCible[1] == 1: #Il y a-t-il un bateau ?
-                    #On affiche touché et on place un carrée rouge
-                    print("touche")
-                    fenetre.blit(CroixRouge, CaseCible[0]) #Placement croix
-                    fenetre.blit(TextTOUCHE, (258, 530)) #Affichage du texte "Touché" sur le plateau
-                    NbAttaque = NbAttaque +1
-                    Tour = True
+                if CaseCible[2] == 0:
+                    Grille1[IndexCible+1][2] = 1 #On touche la case
+                    print("IndexCase = " + str(IndexCible+1))
+                    print("Case: " + str(CaseCible))
+                    print("Bateau ?: " + str(CaseCible[1]))
+                    if CaseCible[1] == 1: #Il y a-t-il un bateau ?
+                        #On affiche touché et on place un carrée rouge
+                        print("touche")
+                        fenetre.blit(CroixRouge, CaseCible[0]) #Placement croix
+                        fenetre.blit(TextTOUCHE, (258, 530)) #Affichage du texte "Touché" sur le plateau
+                        NbAttaque = NbAttaque +1
+                        IndexCible = IndexCible +1 #cible prochain tour
+                        Tour = True
+                    else:
+                        #On affiche dans l'eau et on place un carrée bleu
+                        print("dans l'eau")
+                        fenetre.blit(RondBleu, CaseCible[0])  #Placement rond
+                        fenetre.blit(TextEAU, (258, 530)) #Affichage du texte "Dans l'eau" sur le plateau 
+                        #Plus de bateau à droite: on continue à gauche pour le prochain tour
+                        droite = False
+                        gauche = True
+                        IndexCible = FirstCase+1 #On revient à la première case
+                        Tour = True
                 else:
-                    #On affiche dans l'eau et on place un carrée bleu
-                    print("dans l'eau")
-                    fenetre.blit(RondBleu, CaseCible[0])  #Placement rond
-                    fenetre.blit(TextEAU, (258, 530)) #Affichage du texte "Dans l'eau" sur le plateau 
-                    #Plus de bateau à droite: on continue à gauche pour le prochain tour
-                    droite = False
-                    gauche = True
-                    Tour = True
+                    IndexCible = FirstCase+1 #Déjà touché ? Alors c'était dans l'eau
             else: #Plus de case à droite: le bateau continue donc à gauche
                 droite = False
                 gauche = True 
-        if gauche == True: #Le bateau continue-t-il à gauche ?
+                IndexCible = FirstCase+1 #On revient à la première case
+        elif gauche == True: #Le bateau continue-t-il à gauche ?
             if list(Grille1[IndexCible][0])[0]-20 >= 105: #Il y a-t-il une case à gauche ?
                 CaseCible =  Grille1[IndexCible-1]
-                Grille1[IndexCible-1][2] = 1 #On touche la case
-                print("IndexCase = " + str(IndexCible+20))
-                print("Case: " + str(CaseCible))
-                print("Bateau ?: " + str(CaseCible[1]))
-                if CaseCible[1] == 1: #Il y a-t-il un bateau ?
-                    #On affiche touché et on place un carrée rouge
-                    print("touche")
-                    fenetre.blit(CroixRouge, CaseCible[0]) #Placement croix
-                    fenetre.blit(TextTOUCHE, (258, 530)) #Affichage du texte "Touché" sur le plateau
-                    NbAttaque = NbAttaque +1
-                    Tour = True
+                if CaseCible[2] == 0:
+                    Grille1[IndexCible-1][2] = 1 #On touche la case
+                    print("IndexCase = " + str(IndexCible-1))
+                    print("Case: " + str(CaseCible))
+                    print("Bateau ?: " + str(CaseCible[1]))
+                    if CaseCible[1] == 1: #Il y a-t-il un bateau ?
+                        #On affiche touché et on place un carrée rouge
+                        print("touche")
+                        fenetre.blit(CroixRouge, CaseCible[0]) #Placement croix
+                        fenetre.blit(TextTOUCHE, (258, 530)) #Affichage du texte "Touché" sur le plateau
+                        NbAttaque = NbAttaque +1
+                        IndexCible = IndexCible -1
+                        reference = CaseCible
+                        Tour = True
+                    else:
+                        #On affiche dans l'eau et on place un carrée bleu
+                        print("dans l'eau")
+                        fenetre.blit(RondBleu, CaseCible[0])  #Placement rond
+                        fenetre.blit(TextEAU, (258, 530)) #Affichage du texte "Dans l'eau" sur le plateau 
+                        #Plus de bateau à droite: on continue à gauche pour le prochain tour
+                        droite = True
+                        gauche = False
+                        IndexCible = FirstCase-1 #On revient à la première case
+                        Tour = True
                 else:
-                    #On affiche dans l'eau et on place un carrée bleu
-                    print("dans l'eau")
-                    fenetre.blit(RondBleu, CaseCible[0])  #Placement rond
-                    fenetre.blit(TextEAU, (258, 530)) #Affichage du texte "Dans l'eau" sur le plateau 
-                    #Plus de bateau à droite: on continue à gauche pour le prochain tour
-                    droite = True
-                    gauche = False
-                    Tour = True
+                    IndexCible = FirstCase-1 #Déjà touché ? Alors c'était dans l'eau
             else: #Plus de case à gauche: le bateau continue donc à droite
                 droite = True
-                gauche = False 
-        if haut == True: #Le bateau continue-t-il en haut ?
+                gauche = False
+                IndexCible = FirstCase-1 #On revient à la première case
+        elif haut == True: #Le bateau continue-t-il en haut ?
             if list(Grille1[IndexCible][0])[1]-20 >= 105: #Il y a-t-il une case en haut ?
                 CaseCible =  Grille1[IndexCible-20]
-                Grille1[IndexCible+20][2] = 1 #On touche la case
-                print("IndexCase = " + str(IndexCible+20))
-                print("Case: " + str(CaseCible))
-                print("Bateau ?: " + str(CaseCible[1]))
-                if CaseCible[1] == 1: #Il y a-t-il un bateau ?
-                    #On affiche touché et on place un carrée rouge
-                    print("touche")
-                    fenetre.blit(CroixRouge, CaseCible[0]) #Placement croix
-                    fenetre.blit(TextTOUCHE, (258, 530)) #Affichage du texte "Touché" sur le plateau
-                    NbAttaque = NbAttaque +1
-                    Tour = True
+                if CaseCible[2] == 0:
+                    Grille1[IndexCible-20][2] = 1 #On touche la case
+                    print("IndexCase = " + str(IndexCible-20))
+                    print("Case: " + str(CaseCible))
+                    print("Bateau ?: " + str(CaseCible[1]))
+                    if CaseCible[1] == 1: #Il y a-t-il un bateau ?
+                        #On affiche touché et on place un carrée rouge
+                        print("touche")
+                        fenetre.blit(CroixRouge, CaseCible[0]) #Placement croix
+                        fenetre.blit(TextTOUCHE, (258, 530)) #Affichage du texte "Touché" sur le plateau
+                        NbAttaque = NbAttaque +1
+                        IndexCible = IndexCible -20
+                        reference = CaseCible
+                        Tour = True
+                    else:
+                        #On affiche dans l'eau et on place un carrée bleu
+                        print("dans l'eau")
+                        fenetre.blit(RondBleu, CaseCible[0])  #Placement rond
+                        fenetre.blit(TextEAU, (258, 530)) #Affichage du texte "Dans l'eau" sur le plateau 
+                        #Plus de bateau à droite: on continue à gauche pour le prochain tour
+                        bas = True
+                        haut = False
+                        IndexCible = FirstCase-20 #On revient à la première case
+                        Tour = True
                 else:
-                    #On affiche dans l'eau et on place un carrée bleu
-                    print("dans l'eau")
-                    fenetre.blit(RondBleu, CaseCible[0])  #Placement rond
-                    fenetre.blit(TextEAU, (258, 530)) #Affichage du texte "Dans l'eau" sur le plateau 
-                    #Plus de bateau à droite: on continue à gauche pour le prochain tour
-                    bas = True
-                    haut = False
-                    Tour = True
+                    IndexCible = FirstCase-20 #Déjà touché ? Alors c'était dans l'eau
             else: #Plus de case à gauche: le bateau continue donc à droite
                 bas = True
                 haut = False
-        if bas == True: #Le bateau continue-t-il en bas ?
+                IndexCible = FirstCase-20 #On revient à la première case
+        elif bas == True: #Le bateau continue-t-il en bas ?
             if list(Grille1[IndexCible][0])[1]+20 <= 485: #Il y a-t-il une case en haut ?
                 CaseCible =  Grille1[IndexCible+20]
-                Grille1[IndexCible+20][2] = 1 #On touche la case
-                print("IndexCase = " + str(IndexCible+20))
-                print("Case: " + str(CaseCible))
-                print("Bateau ?: " + str(CaseCible[1]))
-                if CaseCible[1] == 1: #Il y a-t-il un bateau ?
-                    #On affiche touché et on place un carrée rouge
-                    print("touche")
-                    fenetre.blit(CroixRouge, CaseCible[0]) #Placement croix
-                    fenetre.blit(TextTOUCHE, (258, 530)) #Affichage du texte "Touché" sur le plateau
-                    NbAttaque = NbAttaque +1
-                    Tour = True
+                if CaseCible[2] == 0: #La case est-elle déjà touché ?
+                    Grille1[IndexCible+20][2] = 1 #On touche la case
+                    print("IndexCase = " + str(IndexCible+20))
+                    print("Case: " + str(CaseCible))
+                    print("Bateau ?: " + str(CaseCible[1]))
+                    if CaseCible[1] == 1: #Il y a-t-il un bateau ?
+                        #On affiche touché et on place un carrée rouge
+                        print("touche")
+                        fenetre.blit(CroixRouge, CaseCible[0]) #Placement croix
+                        fenetre.blit(TextTOUCHE, (258, 530)) #Affichage du texte "Touché" sur le plateau
+                        NbAttaque = NbAttaque +1
+                        IndexCible = IndexCible +20
+                        Tour = True
+                    else:
+                        #On affiche dans l'eau et on place un carrée bleu
+                        print("dans l'eau")
+                        fenetre.blit(RondBleu, CaseCible[0])  #Placement rond
+                        fenetre.blit(TextEAU, (258, 530)) #Affichage du texte "Dans l'eau" sur le plateau 
+                        #Plus de bateau à droite: on continue à gauche pour le prochain tour
+                        haut = True
+                        bas = False
+                        IndexCible = FirstCase+20 #On revient à la première case
+                        Tour = True
                 else:
-                    #On affiche dans l'eau et on place un carrée bleu
-                    print("dans l'eau")
-                    fenetre.blit(RondBleu, CaseCible[0])  #Placement rond
-                    fenetre.blit(TextEAU, (258, 530)) #Affichage du texte "Dans l'eau" sur le plateau 
-                    #Plus de bateau à droite: on continue à gauche pour le prochain tour
-                    haut = True
-                    bas = False
-                    Tour = True
+                   IndexCible = FirstCase+20 #Déjà touché ? Alors c'était dans l'eau 
             else: #Plus de case à gauche: le bateau continue donc à droite
                 haut = True
                 bas = False
+                IndexCible = FirstCase+20 #On revient à la première case
     if NbAttaque == NbCoulIANavire:
         InAttaque = False
         print("coule")
         fenetre.blit(TextCOULE, (414, 530)) #Affichage du texte "Touché" sur le plateau
-        NbCoulIA = NbCoulIA+1
-    IndexCible = IndexCible+1 #Index suivant pour prochain tour (il s'agit en fait de la case touché ce tour)
-        
+        NbCoulIA = NbCoulIA+1 #+ 1 navire coulé, la victoire est proche...
+
+def CountNbCoulIANavire(Grille1, IndexCible): #Fonction qui ressort le nombre de case du navire touché (d'après la fonction "coulage" de Mickaël)
+    global NbCoulIANavire
+    liste = [] #Liste des index des cases qui vont devoir être vérifiées (touché ou non)
+    #Début des vérifications case par case si il y a un bateau ou non
+    #De un en un pour les cases horizontales
+    #De vingt en vingt pour les cases verticales
+    CoordCible = list(Grille1[IndexCible][0]) #Transforme les coordonnées de l'IndexCible en liste pour être exploitées
+    if CoordCible[0] != 605 : #Vérifie la colonne de l'IndexCible
+        if Grille1[IndexCible-1][1] == 1 : #Vérification si il y a un bateaux
+            a = IndexCible-1 #Variable de l'index de la case
+            liste.append(a) #Rajout de cette variable dans la liste des index
+            if CoordCible[0] != 625 :
+                if Grille1[IndexCible-2][1] == 1 :
+                    b = IndexCible-2
+                    liste.append(b)
+                    if CoordCible[0] != 645 :
+                        if Grille1[IndexCible-3][1] == 1 :
+                            c = IndexCible-3
+                            liste.append(c)
+                            if CoordCible[0] != 665 :
+                                if Grille1[IndexCible-4][1] == 1 :
+                                    d = IndexCible-4
+                                    liste.append(d)
+                                    if CoordCible[0] != 685 :
+                                        if Grille1[IndexCible-5][1] == 1 :
+                                            e = IndexCible-5
+                                            liste.append(e)
+    if CoordCible[0] != 985 :
+        if Grille1[IndexCible+1][1] == 1 :
+            a = IndexCible+1
+            liste.append(a)
+            if CoordCible[0] != 965 :
+                if Grille1[IndexCible+2][1] == 1 :
+                    b = IndexCible+2
+                    liste.append(b)
+                    if CoordCible[0] != 945 :
+                        if Grille1[IndexCible+3][1] == 1 :
+                            c = IndexCible+3
+                            liste.append(c)
+                            if CoordCible[0] != 925 :
+                                if Grille1[IndexCible+4][1] == 1 :
+                                    d = IndexCible+4
+                                    liste.append(d)
+                                    if CoordCible[0] != 905 :
+                                        if Grille1[IndexCible+5][1] == 1 :
+                                            e = IndexCible+5
+                                            liste.append(e)
+    if CoordCible[1] != 105 : #Teste de la ligne pour CoordCible[1]
+        if Grille1[IndexCible-20][1] == 1 :
+            a = IndexCible-20
+            liste.append(a)
+            if CoordCible[1] != 125 :
+                if Grille1[IndexCible-40][1] == 1 :
+                    b = IndexCible-40
+                    liste.append(b)
+                    if CoordCible[1] != 145 :
+                        if Grille1[IndexCible-60][1] == 1 :
+                            c = IndexCible-60
+                            liste.append(c)
+                            if CoordCible[1] != 165 :
+                                if Grille1[IndexCible-80][1] == 1 :
+                                    d = IndexCible-80
+                                    liste.append(d)
+                                    if CoordCible[1] != 185 :
+                                        if Grille1[IndexCible-100][1] == 1 :
+                                            e = IndexCible-100
+                                            liste.append(e)
+    if CoordCible[1] != 485 :
+        if Grille1[IndexCible+20][1] == 1 :
+            a = IndexCible+20
+            liste.append(a)
+            if CoordCible[1] != 465 :
+                if Grille1[IndexCible+40][1] == 1 :
+                    b = IndexCible+40
+                    liste.append(b)
+                    if CoordCible[1] != 445 :
+                        if Grille1[IndexCible+60][1] == 1 :
+                            c = IndexCible+60
+                            liste.append(c)
+                            if CoordCible[1] != 425 :
+                                if Grille1[IndexCible+80][1] == 1 :
+                                    d = IndexCible+80
+                                    liste.append(d)
+                                    if CoordCible[1] != 405 :
+                                        if Grille1[IndexCible+100][1] == 1 :
+                                            e = IndexCible+100
+                                            liste.append(e)
+    #Début des vérifications case par case si il y a un bateau ou non
+    print("liste index coulage : " + str(liste)) #print pour test   
+    NbCoulIANavire = len(liste)+1 #le nombre de case est égale au nombre de terme de la liste + 1 pour la case de référence 
+    print("NbCoulIANavire = " + str(NbCoulIANavire))    
