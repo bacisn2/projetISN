@@ -252,7 +252,7 @@ def Attaque_Base_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, Te
     global NbCoulIA
     global NbCoulIANavire
     global IndexCible
-    global reference
+    global Reference
     global FirstCase
     print("In Attaque_Base")
     print("haut: " + str(haut))
@@ -386,7 +386,7 @@ def Attaque_Avancee_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE,
     global NbCoulIA
     global NbCoulIANavire
     global IndexCible
-    global reference
+    global Reference
     global FirstCase
     print("In Attaque Avancee")
     print("haut: " + str(haut))
@@ -444,7 +444,7 @@ def Attaque_Avancee_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE,
                         fenetre.blit(TextTOUCHE, (258, 530)) #Affichage du texte "Touché" sur le plateau
                         NbAttaque = NbAttaque +1
                         IndexCible = IndexCible -1
-                        reference = CaseCible
+                        Reference = CaseCible
                         Tour = True
                     else:
                         #On affiche dans l'eau et on place un carrée bleu
@@ -479,7 +479,7 @@ def Attaque_Avancee_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE,
                         fenetre.blit(TextTOUCHE, (258, 530)) #Affichage du texte "Touché" sur le plateau
                         NbAttaque = NbAttaque +1
                         IndexCible = IndexCible -20
-                        reference = CaseCible
+                        Reference = CaseCible
                         Tour = True
                     else:
                         #On affiche dans l'eau et on place un carrée bleu
@@ -537,7 +537,7 @@ def Attaque_Avancee_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE,
         InAttaque = False
         print("coule")
         fenetre.blit(TextCOULE, (414, 530)) #Affichage du texte "Touché" sur le plateau
-        Fonction_Ckeck_Coulage_Fin()
+        Fonction_Ckeck_Coulage_Fin() #pour considérer comme touché toutes les cases adjacentes au navires
         NbCoulIA = NbCoulIA+1 #+ 1 navire coulé, la victoire est proche...
 
 def CountNbCoulIANavire(Grille1, IndexCible): #Fonction qui ressort le nombre de case du navire touché (d'après la fonction "coulage" de Mickaël)
@@ -563,7 +563,7 @@ def CountNbCoulIANavire(Grille1, IndexCible): #Fonction qui ressort le nombre de
                                 if Grille1[IndexCible-4][1] == 1 :
                                     d = IndexCible-4
                                     liste.append(d)
-                             257       if CoordCible[0] != 685 :
+                                    if CoordCible[0] != 685 :
                                         if Grille1[IndexCible-5][1] == 1 :
                                             e = IndexCible-5
                                             liste.append(e)
@@ -581,7 +581,7 @@ def CountNbCoulIANavire(Grille1, IndexCible): #Fonction qui ressort le nombre de
                             liste.append(c)
                             if CoordCible[0] != 925 :
                                 if Grille1[IndexCible+4][1] == 1 :
-                             257       d = IndexCible+4
+                                    d = IndexCible+4
                                     liste.append(d)
                                     if CoordCible[0] != 905 :
                                         if Grille1[IndexCible+5][1] == 1 :
@@ -590,7 +590,7 @@ def CountNbCoulIANavire(Grille1, IndexCible): #Fonction qui ressort le nombre de
     if CoordCible[1] != 105 : #Teste de la ligne pour CoordCible[1]
         if Grille1[IndexCible-20][1] == 1 :
             a = IndexCible-20
-            liste.append(aH > 0 and V == 0)
+            liste.append(a)
             if CoordCible[1] != 125 :
                 if Grille1[IndexCible-40][1] == 1 :
                     b = IndexCible-40
@@ -612,7 +612,7 @@ def CountNbCoulIANavire(Grille1, IndexCible): #Fonction qui ressort le nombre de
             a = IndexCible+20
             liste.append(a)
             if CoordCible[1] != 465 :
-                if Grille1[I257ndexCible+40][1] == 1 :
+                if Grille1[IndexCible+40][1] == 1 :
                     b = IndexCible+40
                     liste.append(b)
                     if CoordCible[1] != 445 :
@@ -641,10 +641,10 @@ def Fonction_Ckeck_Coulage_Fin():
     global droite
     global NbCoulIANavire
     global Reference
-    j = Reference #J permet de manipuler IndexCase sans le modifier lui même
+    j = Grille1.index(Reference) #J permet de manipuler IndexCase sans le modifier lui même
     print("DEBUT CHECK COULAGE DU NAVIRE")
     print("IndexCase = " + str(j))
-    print("1er case: " + str(Grille1[j]))
+    print("1er case: " + str(Reference))
     #Variable Bolléenne qui détermine si il existe des cases en dessous/dessus/droite/gauche 
     #de la case choisi (on part du principe que "oui"), True = la (les) case(s) existe(nt)
     #Variable qui détermine le sens du navire (Horizontale/Verticale)
@@ -688,7 +688,7 @@ def Fonction_Ckeck_Coulage_Fin():
             Grille1[j+20][2] = 1  #On touche la case                          
             
     #Travail sur la case à gauche (si elle existe):          
-    if case_gauhche == True:
+    if case_gauche == True:
         print("passage --> case gauche")
         Grille1[j-1][2] = 1 #On touche la case
     #Travail sur la case à droite (si elle existe):        
@@ -705,7 +705,7 @@ def Fonction_Ckeck_Coulage_Fin():
     elif bas == True or haut == True: #Le bateau est-il Verticale ?
         #La technique utilisé pourra être réutiliser pour la programme "Coulage des Navires" de l'IA
         print("Check_Coulage_NavireV")                        
-        Check_Coulage_NavireV(j, case_dessus, case_dessous)
+        Check_Coulage_NavireV(j, case_gauche, case_droite)
     print("FIN CHECK COULAGE DU NAVIRE") #Utile à savoir
     
 def Check_Coulage_NavireH(j, case_dessus, case_dessous): #Spécifique aux navires horizontaux
@@ -719,11 +719,11 @@ def Check_Coulage_NavireH(j, case_dessus, case_dessous): #Spécifique aux navire
     for x in range (NbCoulIANavire-1): #La boucle tourne tant que l'on est pas arrivé à la fin du bateau
         j = j+1
         print("\n")
-        print("Case: " + str(NbCase))
+        print("Case: " + str(Grille1[j]))
         print("Index: " + str(j))             
         #La case suivante appartient t'elle au bateau ?
         Grille1[j][2] = 1 #On check la Case
-        if case_dessus == Tr257ue: #On vérifie que la case au dessus existe...
+        if case_dessus == True: #On vérifie que la case au dessus existe...
             Grille1[j-20][2] = 1 #On n'oublie pas de checker la Case 
         if case_dessous == True:  #On vérifie que la case en dessous existe...
             Grille1[j+20][2] = 1 #On n'oublie pas de checker la Case
@@ -736,7 +736,7 @@ def Check_Coulage_NavireH(j, case_dessus, case_dessous): #Spécifique aux navire
         if case_dessous == True:  #On vérifie que la case en dessous existe...
             Grille1[j+20][2] = 1 #On n'oublie pas de checker la Case
     
-def Check_Coulage_NavireV(j, case_dessus, case_dessous): #Spécifique aux navires verticaux
+def Check_Coulage_NavireV(j, case_gauche, case_droite): #Spécifique aux navires verticaux
     #on globalise les variables
     global Grille1
     global bas
@@ -748,7 +748,7 @@ def Check_Coulage_NavireV(j, case_dessus, case_dessous): #Spécifique aux navire
     for x in range (NbCoulIANavire-1): #La boucle tourne tant que l'on est pas arrivé à la fin du bateau
         j = j+20        
         print("\n")
-        print("Case: " + str(NbCase))
+        print("Case: " + str(Grille1[j]))
         print("Index: " + str(j)) 
         Grille1[j][2] = 1 #On check la Case
         if case_gauche == True: #On vérifie que la case au dessus existe...

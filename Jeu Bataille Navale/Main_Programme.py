@@ -126,7 +126,7 @@ pygame.font.init()
 #- un nombre, qui défini la taille des lettres que ce font contiendra: c'est ce qui différencie un fond d'un autre 
 Info = pygame.font.Font(None, 20) #Transparent pour l'affichage des Textes (version 15 px)
 font = pygame.font.Font(None, 30) #Transparent pour l'affichage des Textes (version 30 px)
-Jeu = pygame.font.Font(None, 60) #Transparent pour l'affichage des Textes du jeu (version 60 px)
+Jeu = pygame.font.Font(None, 50) #Transparent pour l'affichage des Textes du jeu (version 60 px)
 SuperFont = pygame.font.Font(None, 80) #Transparent pour l'affichage des Textes (version 80 px)
 
 #Ini des Grilles (on joue les fonctions puis on importe les grilles créees ainsi)
@@ -178,20 +178,29 @@ CarRouge = pygame.image.load("Carree_Rouge.png")
 CarBleu = pygame.image.load("Carree_Bleu.png")
 RondBleu = pygame.image.load("rond.png").convert_alpha()
 CroixRouge = pygame.image.load("Croix.png").convert_alpha()
+CarBlanc = pygame.image.load("Efface_Score.png") #Carrée Blanc pour effacer les anciens scores affichés
 
 #Liste des textes de jeu
 #Création des Textes
 EAU = "Dans l'eau"
 TOUCHE = "Touche"
 COULE = "Coule"
+
 #Chargement des Textes
 #Le texte est chargé en indiquant le fond (ici "Jeu"), puis en en indiquant ce qu'on y met par la fonction render:
 # - le nom du texte (voir au dessus, texte crée)
-# - 
+# - antialias (1 = oui)
 # - la couleur du texte (trois "0" = noir, trois "1" = blanc)
-TextEAU = Info.render(EAU, 1, (0,0,0))
-TextTOUCHE = Info.render(TOUCHE, 1, (0,0,0))
-TextCOULE = Info.render(COULE, 1, (0,0,0))
+TextEAU = font.render(EAU, 1, (0,0,0))
+TextTOUCHE = font.render(TOUCHE, 1, (0,0,0))
+TextCOULE = font.render(COULE, 1, (0,0,0))
+
+#Texte de Score
+TextScoreJ = "Score Joueur :"
+TextScoreIA = "Score IA : "
+ScoreJ = font.render(TextScoreJ, 1, (0,255,0))
+ScoreIA = font.render(TextScoreIA, 1, (0,255,0))
+
 
 #Importation Dicos + Initialisation Compteurs
 CasePlayer1 = Dico_Grille1.GrillePlayer1
@@ -321,6 +330,13 @@ while Infinie == 1:
                         from Search_Ship_IA import A_Z    
                         from Search_Ship_IA import Z_A
                         from Search_Ship_IA import Random
+                        fenetre.blit(ScoreJ, (1010, 150))
+                        fenetre.blit(ScoreIA, (1010, 250))
+                        PrintNbCoul = font.render(str(NbCoul), 1, (0,255,0))
+                        PrintNbCoulIA = font.render(str(NbCoulIA), 1, (0,255,0))
+                        fenetre.blit(PrintNbCoul, (1160, 150))
+                        fenetre.blit(PrintNbCoulIA, (1110, 250))
+                        pygame.display.flip()
                         print("\nPlacement de l'IA terminé, c'est à vous de commencer")
                         print("Appuyez sur \"gauche\" pour jouer")
                         Initialisation = False #On ne pourra plus revenir dans cette partie
@@ -370,11 +386,15 @@ while Infinie == 1:
             Search_Ship(fenetre, CasePlayer1, RondBleu, CroixRouge, TextEAU, TextTOUCHE, TextCOULE, A_Z, Z_A, Random)
             from Search_Ship_IA import NbCoulIA
             print("NbCoulIA in MainProgramme = " +str(NbCoulIA))
-            pygame.display.flip()
             #Passage tour du Joueur
             TourIA = False
             TourJoueur = True
             CountTourIA = CountTourIA+1
+            #affichage nouveau scrore
+            fenetre.blit(CarBlanc, (1110, 250))
+            PrintNbCoulIA = font.render(str(NbCoulIA), 1, (0,255,0))
+            fenetre.blit(PrintNbCoulIA, (1110, 250))
+            pygame.display.flip()
             print("Tour IA:" + str(CountTourIA))
             print("A vous, appuyez sur \"gauche\" pour jouer")
             
@@ -391,10 +411,14 @@ while Infinie == 1:
             Tour_Joueur(fenetre, CarBleu, CarRouge, TextEAU, TextTOUCHE, TextCOULE, Jeu) #Appelle de la fonction de tour du joueur
             from TourJoueur import NbCoul
             print("NbCoul in MainProgramme = " + str(NbCoul))
-            pygame.display.flip()
             #Passage tour de l'IA
             TourIA = True
             TourJoueur = False
+            #affichage nouveau score
+            fenetre.blit(CarBlanc, (1160, 150))
+            PrintNbCoul = font.render(str(NbCoul), 1, (0,255,0))
+            fenetre.blit(PrintNbCoul, (1160, 150))
+            pygame.display.flip()
             print("A l'IA, appuyez sur \"droit\" pour lui permettre de jouer")
             
         #réinitialisation du plateau
