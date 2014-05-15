@@ -1,24 +1,40 @@
-"gougnafier !!"
-"mécréant, chenapant ! jamais tu ne me battras !"
-"tu n'es pas assez rapide, j'ai déjà dix tours d'avance !!"
-"I See you !!"
-"Ceci n'est pas un message subliminale"
-"Si tu continues à jouer comme ça je vais partir !" 
-"c'est pitoyable ! "
+Texte dans l'eau joueur :
+
+"Mecreant, chenapant! Jamais tu ne me battras!"
+"Ceci n'est pas un message subliminale."
+"Si tu continues a jouer comme ça, je vais partir!" 
+"C'est pitoyable! "
 "Je connais la position de tous tes navires..."
-"Veux-tu visiter le fond des océans ? Je t'y envoie tout de suite"
-"Même ma LED joue mieux que toi !!"
+"Meme ma LED joue mieux que toi !!"
+"Tu vises trop mal"
+
+Texte impact joueur :
 
 "C'est le premier et dernier navire que tu me toucheras"
-"Tu as triché, c'est obligé tu n'es pas assez bon !"
-"Il m'en reste encore neuf !!"
-"Même pas mal !"
+"Tu as triche, c'est oblige, tu n'es pas assez bon !"
+"Meme pas mal !"
 "Enfin !!"
-"Aïe !"
-"Mon Cuirassée !!"
-""
+"Aie !"
+"Mon Cuirassee !!"
+
+
+Texte dans l'eau IA :
+
+"Tu as déplace tes navires, tu triches!"
+"Je l'ai fais expres!"
+"Je chasse le requin!"
+
+Texte impact IA :
+
+"I see you..."
+"Veux-tu visiter le fond des oceans? Je t'y envoie tout de suite!"
+"Brule, brule, bruuuuuule!!!"
+
+
+Texte déjà touché :
 
 "LOL !!"
-"Tu n'es pas déjà assez en retard comme ça ?!"
+"Tu n'es pas deja assez en retard comme ça ?!"
 "Pourquoi je joue contre toi ?..."
-""
+
+

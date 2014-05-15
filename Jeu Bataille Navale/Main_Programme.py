@@ -179,6 +179,7 @@ CarBleu = pygame.image.load("Carree_Bleu.png")
 RondBleu = pygame.image.load("rond.png").convert_alpha()
 CroixRouge = pygame.image.load("Croix.png").convert_alpha()
 CarBlanc = pygame.image.load("Efface_Score.png") #Carrée Blanc pour effacer les anciens scores affichés
+#ImageBlanche = pygame.image.load("imageblanche.png") #Carrée Blanc pour effacer les anciens textes de l'IA affichés
 
 #Liste des textes de jeu
 #Création des Textes
@@ -347,6 +348,8 @@ while Infinie == 1:
         
         #TOURS DE JEU (C'est l'heure du Duel !!)
         if TourIA == True and event.type == KEYDOWN and event.key == K_RIGHT: #Tour de l'IA
+            #fenetre.blit(ImageBlanche, (100, 30))
+            #pygame.display.flip()
             print("\nTour IA")
             
             #Système de changement de Stratégie de l'IA InGame 
