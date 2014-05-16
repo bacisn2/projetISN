@@ -9,6 +9,8 @@ import Dico_Grille2
 #from Texte_IA import *
 from Fonction_Ship import Grille2
 #import random
+import random
+from Phrases_IA import *
 CasePlayer2 = Dico_Grille2.GrillePlayer2 #mit hors de la fonction car unutile de les refaire à chaque fois
 NbCoul = 0
 
@@ -39,6 +41,9 @@ def Tour_Joueur(fenetre, CarBleu, CarRouge, TextEAU, TextTOUCHE, TextCOULE, Jeu)
                     print("Dans l'eau")
                     fenetre.blit(CarBleu, Grille2[IndexCible][0])
                     fenetre.blit(TextEAU, (758, 530)) #Affichage du texte "Dans l'eau" sur le plateau
+                    #a = random.randint(1, 3)
+                    #if a == 1 :
+                        #TexteJoueurEau()
                 else :
                     print("Touche")
                     fenetre.blit(CarRouge, Grille2[IndexCible][0])
