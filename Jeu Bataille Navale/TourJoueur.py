@@ -10,7 +10,7 @@ import Dico_Grille2
 from Fonction_Ship import Grille2
 #import random
 import random
-from Phrases_IA import *
+#from Phrases_IA import *
 CasePlayer2 = Dico_Grille2.GrillePlayer2 #mit hors de la fonction car unutile de les refaire à chaque fois
 NbCoul = 0
 

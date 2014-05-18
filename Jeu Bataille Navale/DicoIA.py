@@ -15,21 +15,21 @@ def Create_Dico_CaseIA():
     z = 1 #Numéro case
     i = 1 #compteur Nb de cases
     List_IA = [] #liste à remplir
-    for i in range (1, 20): #pour toute la Grille
+    for i in range (1, 21): #pour toute la Grille
         x = 105 #on revient à la première colonne
         y = y+20 #ligne suivante
         z = 1 #chiffre correspondant à l'abisse
         lettre = DicoLettre[i] #lettre correspondant à la coordonné
         while z < 21: #pour le 20 premières cases
             xy = (x, y) #création du tuple
-            print(xy)
+            #print(xy)
             case = lettre+str(z) #création du code chiffre lettre
-            print(case)
+            #print(case)
             List_IA.append(((xy), case)) #ajout à la liste
             z = z+1 #nombre suivant
             x = x+20 #colonne suivante
     Dico_IA = dict(List_IA) #convertion en dictionnaire
-    print(Dico_IA)
+    #print(Dico_IA)
  
 
 #Create_Dico_CaseIA()       

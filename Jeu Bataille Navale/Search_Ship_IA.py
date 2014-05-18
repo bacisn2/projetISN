@@ -121,7 +121,7 @@ def Define_List_Case_and_Strategie():
         #print("Strategie Case Aleatoire") #Le joueur n'a pas à savoir ceci
     Choice = 0 #Initialisation "choix de la case"
         
-def Search_Ship(fenetre, CasePlayer1, RondBleu, CroixRouge, TextEAU, TextTOUCHE, TextCOULE, A_Z, Z_A, Random, Dico_IA): #On utilise certaines variables du Main
+def Search_Ship(fenetre, CasePlayer1, RondBleu, CroixRouge, TextEAU, TextTOUCHE, TextCOULE, A_Z, Z_A, Random, Dico_IA, font): #On utilise certaines variables du Main
     global CaseIA
     global Choice
     global InAttaque
@@ -141,7 +141,7 @@ def Search_Ship(fenetre, CasePlayer1, RondBleu, CroixRouge, TextEAU, TextTOUCHE,
     Choice = 0 #On prend en compte que la stratégie peut avoir changé entre temps, la réinitialisation de "Choice" s'impose donc
     if InAttaque == True: #l'IA essaie-t-il maintenant de couler un navire ?
         #IndexCible = IndexIntermforAttaque
-        Attaque_Base_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, TextEAU, TextCOULE, Dico_IA)
+        Attaque_Base_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, TextEAU, TextCOULE, Dico_IA, font)
     else: #Alors il en recherche un
         print("\nIn Search Ship")
         while Tour == False: #Le tour est-il terminé ?
@@ -160,6 +160,8 @@ def Search_Ship(fenetre, CasePlayer1, RondBleu, CroixRouge, TextEAU, TextTOUCHE,
                 if Cible[2] == 0:
                     Code = Dico_IA[Cible[0]]
                     print(Code)
+                    TextCase = font.render(Code, 1, (0,0,0))
+                    fenetre.blit(TextCase, (115, 530))
                     CaseIA[IndexCible][2] = 1 #La case est maintenant touché
                     #print [c for c,Cible[0] in CasePlayer1.items() if CasePlayer1[c]==Cible[0]]
                     #Il y a-t-il un bateau sur la case touché ?
@@ -191,6 +193,8 @@ def Search_Ship(fenetre, CasePlayer1, RondBleu, CroixRouge, TextEAU, TextTOUCHE,
                 if Cible[2] == 0:
                     Code = Dico_IA[Cible[0]]
                     print(Code)
+                    TextCase = font.render(Code, 1, (0,0,0))
+                    fenetre.blit(TextCase, (115, 530))
                     CaseIA[IndexCible][2] = 1 #La case est maintenant touché
                     #print [c for c,Cible[0] in CasePlayer1.items() if CasePlayer1[c]==Cible[0]]
                     #Il y a-t-il un bateau sur la case touché ?
@@ -222,6 +226,8 @@ def Search_Ship(fenetre, CasePlayer1, RondBleu, CroixRouge, TextEAU, TextTOUCHE,
                 if Cible[2] == 0:
                     Code = Dico_IA[Cible[0]]
                     print(Code)
+                    TextCase = font.render(Code, 1, (0,0,0))
+                    fenetre.blit(TextCase, (115, 530))
                     CaseIA[IndexCible][2] = 1 #La case est maintenant touché
                     #print [c for c,Cible[0] in CasePlayer1.items() if CasePlayer1[c]==Cible[0]]
                     #Il y a-t-il un bateau sur la case touché ?
@@ -247,7 +253,7 @@ def Search_Ship(fenetre, CasePlayer1, RondBleu, CroixRouge, TextEAU, TextTOUCHE,
             Choice = Choice+1 #On passe à la case suivante (en cas d'échec)
     print("NbCoulIA in TourIA = " + str(NbCoulIA))
         
-def Attaque_Base_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, TextEAU, TextCOULE):
+def Attaque_Base_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, TextEAU, TextCOULE, Dico_IA, font):
     global droite
     global gauche
     global haut
@@ -280,6 +286,8 @@ def Attaque_Base_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, Te
                         print("Bateau ?: " + str(CaseCible[1]))
                         Code = Dico_IA[CaseCible[0]]
                         print(Code)
+                        TextCase = font.render(Code, 1, (0,0,0))
+                        fenetre.blit(TextCase, (115, 530))
                         if CaseCible[1] == 1: #Il y a-t-il un bateau sur cette case ?
                             #On affiche touché et on place un carrée rouge
                             print("TOUCHE")
@@ -306,6 +314,8 @@ def Attaque_Base_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, Te
                         print("Bateau ?: " + str(CaseCible[1]))
                         Code = Dico_IA[CaseCible[0]]
                         print(Code)
+                        TextCase = font.render(Code, 1, (0,0,0))
+                        fenetre.blit(TextCase, (115, 530))
                         if CaseCible[1] == 1: #Il y a-t-il un bateau sur cette case ?
                             #On affiche touché et on place un carrée rouge
                             print("TOUCHE")
@@ -333,6 +343,8 @@ def Attaque_Base_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, Te
                         print("Bateau ?: " + str(CaseCible[1]))
                         Code = Dico_IA[CaseCible[0]]
                         print(Code)
+                        TextCase = font.render(Code, 1, (0,0,0))
+                        fenetre.blit(TextCase, (115, 530))
                         if CaseCible[1] == 1: #Il y a-t-il un bateau sur cette case ?
                             #On affiche touché et on place un carrée rouge
                             print("TOUCHE")
@@ -360,6 +372,8 @@ def Attaque_Base_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, Te
                         print("Bateau ? : " + str(CaseCible[1]))
                         Code = Dico_IA[CaseCible[0]]
                         print(Code)
+                        TextCase = font.render(Code, 1, (0,0,0))
+                        fenetre.blit(TextCase, (115, 530))
                         if CaseCible[1] == 1: #Il y a-t-il un bateau sur cette case ?
                             #On affiche touché et on place un carrée rouge
                             print("TOUCHE")
@@ -386,10 +400,10 @@ def Attaque_Base_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, Te
                 NbCoulIA = NbCoulIA+1 #+1 navire coulé, la victoire est proche... 
     else:
         #Appelle fonction suivante
-        Attaque_Avancee_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, TextEAU, TextCOULE)
+        Attaque_Avancee_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, TextEAU, TextCOULE, Dico_IA, font)
     print("NbAttaque in End Tour = " + str(NbAttaque))
 
-def Attaque_Avancee_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, TextEAU, TextCOULE):
+def Attaque_Avancee_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, TextEAU, TextCOULE, Dico_IA, font):
     global droite
     global gauche
     global haut
@@ -418,6 +432,8 @@ def Attaque_Avancee_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE,
                     print("Bateau ?: " + str(CaseCible[1]))
                     Code = Dico_IA[CaseCible[0]]
                     print(Code)
+                    TextCase = font.render(Code, 1, (0,0,0))
+                    fenetre.blit(TextCase, (115, 530))
                     if CaseCible[1] == 1: #Il y a-t-il un bateau ?
                         #On affiche touché et on place un carrée rouge
                         print("TOUCHE")
@@ -454,6 +470,8 @@ def Attaque_Avancee_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE,
                     print("Bateau ?: " + str(CaseCible[1]))
                     Code = Dico_IA[CaseCible[0]]
                     print(Code)
+                    TextCase = font.render(Code, 1, (0,0,0))
+                    fenetre.blit(TextCase, (115, 530))
                     if CaseCible[1] == 1: #Il y a-t-il un bateau ?
                         #On affiche touché et on place un carrée rouge
                         print("TOUCHE")
@@ -491,6 +509,8 @@ def Attaque_Avancee_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE,
                     print("Bateau ?: " + str(CaseCible[1]))
                     Code = Dico_IA[CaseCible[0]]
                     print(Code)
+                    TextCase = font.render(Code, 1, (0,0,0))
+                    fenetre.blit(TextCase, (115, 530))
                     if CaseCible[1] == 1: #Il y a-t-il un bateau ?
                         #On affiche touché et on place un carrée rouge
                         print("TOUCHE")
@@ -528,6 +548,8 @@ def Attaque_Avancee_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE,
                     print("Bateau ?: " + str(CaseCible[1]))
                     Code = Dico_IA[CaseCible[0]]
                     print(Code)
+                    TextCase = font.render(Code, 1, (0,0,0))
+                    fenetre.blit(TextCase, (115, 530))
                     if CaseCible[1] == 1: #Il y a-t-il un bateau ?
                         #On affiche touché et on place un carrée rouge
                         print("TOUCHE")

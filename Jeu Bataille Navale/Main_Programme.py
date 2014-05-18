@@ -413,7 +413,7 @@ while Infinie == 1:
             from Search_Ship_IA import CaseIA
             #testcroix_rond() #test CaseIA + affichage croix et rond
             #Appelle de la fonction de tour de l'IA  
-            Search_Ship(fenetre, CasePlayer1, RondBleu, CroixRouge, TextEAU, TextTOUCHE, TextCOULE, A_Z, Z_A, Random, Dico_IA)
+            Search_Ship(fenetre, CasePlayer1, RondBleu, CroixRouge, TextEAU, TextTOUCHE, TextCOULE, A_Z, Z_A, Random, Dico_IA, font)
             from Search_Ship_IA import NbCoulIA
             print("NbCoulIA = " +str(NbCoulIA))
             #Passage tour du Joueur
