@@ -22,7 +22,7 @@ def Tour_Joueur(fenetre, CarBleu, CarRouge, TextEAU, TextTOUCHE, TextCOULE, Jeu)
     global Dico_Grille2
     global CasePlayer2
     global NbCoul
-    print("NbCoul debut TourJoueur = " + str(NbCoul))
+    #print("NbCoul debut TourJoueur = " + str(NbCoul)) #Inutile à ce stade
     Tir = False #Variable limitant le nombre de tir à un
     print("Choisir une cible")
     while Tir == False : 
@@ -38,24 +38,24 @@ def Tour_Joueur(fenetre, CarBleu, CarRouge, TextEAU, TextTOUCHE, TextCOULE, Jeu)
                 Grille2[IndexCible][2] = 1 #La case passe de "non touchée" (=0) à touchée (=1)
                 VariableBPB = Grille2[IndexCible][1] #Variable de la présence d'un bateau ou pas
                 if VariableBPB == 0 : #Si il n'y a pas de bateau
-                    print("Dans l'eau")
+                    print("DANS L'EAU")
                     fenetre.blit(CarBleu, Grille2[IndexCible][0])
                     fenetre.blit(TextEAU, (758, 530)) #Affichage du texte "Dans l'eau" sur le plateau
                     #a = random.randint(1, 3)
                     #if a == 1 :
                         #TexteJoueurEau()
                 else :
-                    print("Touche")
+                    print("TOUCHE")
                     fenetre.blit(CarRouge, Grille2[IndexCible][0])
                     fenetre.blit(TextTOUCHE, (758, 530)) #Affichage du texte "Touché" sur le plateau
                     Coulage(Grille2, IndexCible, fenetre, TextCOULE)
-                    print("NbCoul in TourJoueur = " + str(NbCoul))
+                    #print("NbCoul in TourJoueur = " + str(NbCoul)) #inutile à ce stade
                 Tir = True 
             else : 
-                print("Case deja touchee, tir perdue")
+                print("CASE DEJA TOUCHE, TIR PERDU")
                 Tir = True
         else : 
-            print("Cette case n'existe pas, en choisir une autre")
+            print("CETTE CASE N'EXISTE PAS, EN CHOISIR UNE AUTRE")
         
 def Fonction_Search_Index_CaseListe_for_Grille2(cible):
     #On globalise toutes les variables
@@ -165,8 +165,8 @@ def Coulage(Grille2, IndexCible, fenetre, TextCOULE):
             z = z + 1 #Incrémentation de la variable du nombre de case avec bateau qui sont touchées
         x = x + 1 #Incrémentation de x pour le parcourt de la boucle
     if x == z : #Si le nombre de case avec bateau qui sont touchée est égal au nombre de case devant être vérifiée
-        print("Coule") #print pour test
-        print("NbCoul avant rajout :" + str(NbCoul)) #print pour test
+        print("COULE") #print pour test
+        #print("NbCoul avant rajout :" + str(NbCoul)) #print pour test. Inutile à savoir
         NbCoul = NbCoul + 1
         fenetre.blit(TextCOULE, (914, 530)) #Affichage du texte "Touché" sur le plateau
         print("Le nombre de bateau coule est de " + str(NbCoul))            

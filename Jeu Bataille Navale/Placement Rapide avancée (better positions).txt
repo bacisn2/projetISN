@@ -1,6 +1,6 @@
 CuirSuper
 G7
-PAV
+PA2V
 D15
 CuirBase
 B2
@@ -8,9 +8,9 @@ Cuir2V
 P4
 SM
 C18
-SM
+Destroyer
 M16
-SMV
+DestroyerV
 I2
 Voilier
 R16

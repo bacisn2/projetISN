@@ -28,6 +28,7 @@ import pygame
 from pygame.locals import *
 #import Dico_Grille2 #(inutilisé à ce jour... Le sera prochainement)
 from Fonction_Ship import *
+from DicoIA import *
 import Dico_Grille1
 import Dico_Ship
 #FIN PARTIE IMPORTATION PROGRAMME UTILE 
@@ -89,6 +90,14 @@ def REINITIALISATION_PARTIE():
     pygame.display.flip()
 #FIN FONCTION REINITIALISATION
 
+#FONCTION IF LOOSE
+def Reveal_Ship(Grille2, CarVert):
+    i = 0
+    for i in range (400):
+        if (Grille2[i][1] == 1) and (Grille2[i][2] == 0): #Ne s'occupe que des navires non touché
+            fenetre.blit(CarVert, Grille2[i][0]) #Place un carrée vert pour montrer leur position au joueur
+    pygame.display()
+#FIN FONCTION IF LOOSE
 
 #FONCTION TEST POSITION IA
 #Fonction qui affiche la position des navires de l'IA une fois son placement terminé
@@ -132,9 +141,11 @@ SuperFont = pygame.font.Font(None, 80) #Transparent pour l'affichage des Textes 
 #Ini des Grilles (on joue les fonctions puis on importe les grilles créees ainsi)
 IniListeCaseGrille1()
 IniListeCaseGrille2()
+Create_Dico_CaseIA()
 from Fonction_Ship import Grille1
 from Fonction_Ship import Grille2
-    
+from DicoIA import Dico_IA
+#print(Dico_IA)    
 #Ini Fenêtre + Fond Blanc
 #Crée une fenêtre de 1200*700 pixel pour le Jeu
 fenetre = pygame.display.set_mode((1200, 700))
@@ -176,6 +187,7 @@ pygame.display.flip()
 #Chargement des carrées et croix pour le jeu (mais aucun placement pour le moment)
 CarRouge = pygame.image.load("Carree_Rouge.png")
 CarBleu = pygame.image.load("Carree_Bleu.png")
+CarVert = pygame.image.load("Carree_Vert.png")
 RondBleu = pygame.image.load("rond.png").convert_alpha()
 CroixRouge = pygame.image.load("Croix.png").convert_alpha()
 CarBlanc = pygame.image.load("Efface_Score.png") #Carrée Blanc pour effacer les anciens scores affichés
@@ -186,6 +198,8 @@ CarBlanc = pygame.image.load("Efface_Score.png") #Carrée Blanc pour effacer les
 EAU = "Dans l'eau"
 TOUCHE = "Touche"
 COULE = "Coule"
+WIN = "VICTOIRE"
+LOOSE = "DEFAITE"
 
 #Chargement des Textes
 #Le texte est chargé en indiquant le fond (ici "Jeu"), puis en en indiquant ce qu'on y met par la fonction render:
@@ -195,6 +209,8 @@ COULE = "Coule"
 TextEAU = font.render(EAU, 1, (0,0,0))
 TextTOUCHE = font.render(TOUCHE, 1, (0,0,0))
 TextCOULE = font.render(COULE, 1, (0,0,0))
+Victoire = SuperFont.render(WIN, 1, (0,0,255))
+Defaite = SuperFont.render(LOOSE, 1, (255,0,0))
 
 #Texte de Score
 TextScoreJ = "Score Joueur :"
@@ -213,34 +229,36 @@ Initialisation = True #permet d'entrer dans la partie de positionnement des navi
 TourJoueur = False #permet au joueur de jouer son tour
 TourIA = False #permet à l'IA de jouer son tour
 CountTourIA = 1 #Compteur du nombre de tour de l'IA (pour le système de changement de stratégie)
-NbCoul = 0
-NbCoulIA = 0
+NbCoul = 0 #Compteur nombre de navire coulé par le Joueur
+NbCoulIA = 0 #Compteur nombre de navire coulé par l'IA
 
 #Liste des commandes pour le début
 #Création des Textes
-TextD1 = "Il y a 9 navires possibles, chacun possede un code propre que voici pour facilite leur saisi:"
+TextD1 = "Il y a 10 navires possibles, chacun possede un code propre que voici pour facilite leur saisi:"
 TextD2 = "Voilier (2 cases) --> Code: \"Voilier\""
-TextD3 = "Destroyer (2 cases) --> Code: \"LitShip\""
+TextD3 = "Petit Navire (2 cases) --> Code: \"LitShip\""
 TextD4 = "Sous-Marin (3 cases) --> Code: \"SM\""
-TextD5 = "Mini-Navire version Bleue (3 cases) --> Code: \"MNB\""
-TextD6 = "Mini-Navire version Rouge (3 cases) --> Code: \"MNR\""
+TextD5 = "Destroyer (3 cases) --> Code: \"Destroyer\""
+TextD6 = "Super Cuirasse version 2 --> Code: \"SuperCuir\""
 TextD7 = "Cuirasse Standard (4 cases) --> Code: \"CuirBase\""
 TextD8 = "Cuirasse Version 2 (4 cases) --> Code: \"Cuir2\""
 TextD9 = "Porte Avion (5 cases) --> Code: \"PA\""
 TextD10 = "Super Cuirasse (6 cases) --> Code: \"CuirSuper\""
-TextD11 = "Ces codes placent vos bateaux de maniere horizontal, pour les placer verticalement, rajouter \"V\" apres les codes ci-dessus"
+TextD11 = "Porte Avion Version 2 (5 cases) --> Code: \"PA2\""
+TextD12 = "Ces codes placent vos bateaux de maniere horizontal, pour les placer verticalement, rajouter \"V\" apres les codes ci-dessus"
 #Chargement des Textes
 Instr1 = Info.render(TextD1, 1, (0,0,0))
 Instr2 = Info.render(TextD2, 1, (0,0,0))
-Instr3 = Info.render(TextD3, 1, (0,0,0))
-Instr4 = Info.render(TextD4, 1, (0,0,0))
-Instr5 = Info.render(TextD5, 1, (0,0,0))
-Instr6 = Info.render(TextD6, 1, (0,0,0))
-Instr7 = Info.render(TextD7, 1, (0,0,0))
-Instr8 = Info.render(TextD8, 1, (0,0,0))
-Instr9 = Info.render(TextD9, 1, (0,0,0))
-Instr10 = Info.render(TextD10, 1, (0,0,0))
-Instr11 = Info.render(TextD11, 1, (0,0,0))
+Instr3 = Info.render(TextD8, 1, (0,0,0))
+Instr4 = Info.render(TextD3, 1, (0,0,0))
+Instr5 = Info.render(TextD9, 1, (0,0,0))
+Instr6 = Info.render(TextD4, 1, (0,0,0))
+Instr7 = Info.render(TextD11, 1, (0,0,0))
+Instr8 = Info.render(TextD5, 1, (0,0,0))
+Instr9 = Info.render(TextD10, 1, (0,0,0))
+Instr10 = Info.render(TextD7, 1, (0,0,0))
+Instr11 = Info.render(TextD6, 1, (0,0,0))
+Instr12 = Info.render(TextD12, 1, (0,0,0))
 #Placement des Textes sur le Plateau de Jeu
 fenetre.blit(Instr1, (100,580))
 fenetre.blit(Instr2, (100,595))
@@ -252,14 +270,23 @@ fenetre.blit(Instr7, (450,625))
 fenetre.blit(Instr8, (100,640))
 fenetre.blit(Instr9, (450,640))
 fenetre.blit(Instr10, (100,655))
-fenetre.blit(Instr11, (100,670))
+fenetre.blit(Instr11, (450,655))
+fenetre.blit(Instr12, (100,670))
 #Raifraichissement du Plateau de Jeu
 pygame.display.flip()
 #FIN PARTIE INITIALISATION DU JEU
 
 #MAIN PROGRAMME
+#importation du Tour du Joueur et du Tour de l'IA (qui requis des éléments conçut avant comme les Grilles de Jeu)
 from Search_Ship_IA import *   
-from TourJoueur import *       
+from TourJoueur import *  
+#message de début
+print("Bienvenue dans cette partie de Bataille Navale\n")  
+print("l'IA vous attend avec impatiente pour se mesurer a vous\n")   
+print("Appuyez sur \"espace\" pour commencer à placer vos navires \nLes codes de placements sont ecrits sur le plateau de jeu\n")
+print("Bonne Chance, mais mefiez-vous: l'IA n'est du genre a ce laisser faire, \nvous allez mordre la poussiere (et surtout le fond des oceans)")
+print("\n")
+#début boucle jeu (tourne jusqu'à la fin)
 while Infinie == 1:
     for event in pygame.event.get(): #Fait la liste des évènements possible (appuyer sur une touche, souris, etc...)
         if event.type == QUIT: #Quitte la partie quand on appuie sur "Quitter" (bug sous Windows 8 avec Python 2.7)
@@ -302,7 +329,7 @@ while Infinie == 1:
                     #print("Nouvelle Grille1")
                     #print(Grille1)
                     print("Nombre de Bateaux: " + str(CountShip))
-                    print("Appuyez sur \"b\" pour placer un nouveau navire ou \nlancer la verification de votre positionnement")
+                    print("Appuyez sur \"espace\" pour placer un nouveau navire ou \nlancer la verification de votre positionnement")
                     print("\n")
             else: #Une fois les dix navires posés
                 #déclenche la vérification du positionnement
@@ -361,19 +388,19 @@ while Infinie == 1:
                 Z_A = False
                 Random = True
                 print("Et on change de strategie !!")
-                print("--> Random")
+                #print("--> Random") #le Joueur n'a pas à savoir ceci
             elif CountTourIA % 6 == 0: #Passage Stratégie Z_A
                 A_Z = False
                 Z_A = True
                 Random = False    
                 print("Et on change de strategie !!")
-                print("--> Z vers A")
+                #print("--> Z vers A") #le Joueur n'a pas à savoir ceci
             elif CountTourIA % 3 == 0: #Passage Stratégie A_Z
                 A_Z = True
                 Z_A = False
                 Random = False
                 print("Et on change de strategie !!")
-                print("--> A vers Z") 
+                #print("--> A vers Z") #le Joueur n'a pas à savoir ceci
             #Fin changement de stratégie
                 
             #Réinitialisation des textes (on efface tout)
@@ -386,9 +413,9 @@ while Infinie == 1:
             from Search_Ship_IA import CaseIA
             #testcroix_rond() #test CaseIA + affichage croix et rond
             #Appelle de la fonction de tour de l'IA  
-            Search_Ship(fenetre, CasePlayer1, RondBleu, CroixRouge, TextEAU, TextTOUCHE, TextCOULE, A_Z, Z_A, Random)
+            Search_Ship(fenetre, CasePlayer1, RondBleu, CroixRouge, TextEAU, TextTOUCHE, TextCOULE, A_Z, Z_A, Random, Dico_IA)
             from Search_Ship_IA import NbCoulIA
-            print("NbCoulIA in MainProgramme = " +str(NbCoulIA))
+            print("NbCoulIA = " +str(NbCoulIA))
             #Passage tour du Joueur
             TourIA = False
             TourJoueur = True
@@ -398,7 +425,7 @@ while Infinie == 1:
             PrintNbCoulIA = font.render(str(NbCoulIA), 1, (0,255,0))
             fenetre.blit(PrintNbCoulIA, (1110, 250))
             pygame.display.flip()
-            print("Tour IA:" + str(CountTourIA))
+            print("Nombre de Tour IA :" + str(CountTourIA))
             print("A vous, appuyez sur \"gauche\" pour jouer")
             
         if TourJoueur == True and event.type == KEYDOWN and event.key == K_LEFT: #Tour du Joueur 
@@ -413,7 +440,7 @@ while Infinie == 1:
             fenetre.blit(CaseText, (869, 505))
             Tour_Joueur(fenetre, CarBleu, CarRouge, TextEAU, TextTOUCHE, TextCOULE, Jeu) #Appelle de la fonction de tour du joueur
             from TourJoueur import NbCoul
-            print("NbCoul in MainProgramme = " + str(NbCoul))
+            print("NbCoul = " + str(NbCoul))
             #Passage tour de l'IA
             TourIA = True
             TourJoueur = False
@@ -423,7 +450,23 @@ while Infinie == 1:
             fenetre.blit(PrintNbCoul, (1160, 150))
             pygame.display.flip()
             print("A l'IA, appuyez sur \"droit\" pour lui permettre de jouer")
-            
+        
+        #VERIF VICTOIRE 
+        if (NbCoulIA == 10) and (NbCoul != 10): #Victoire de l'IA ?
+            TourJoueur == False
+            TourIA == False
+            Reveal_Ship(Grille2, CarVert)
+            fenetre.blit(Defaite, (320,310)) #on le place de manière à ce qu'il soit au milieu du plateau, bien en évidence
+            print("\nVOUS AVEZ PERDU, L'IA A GAGNE CETTE PARTIE\n")
+            print("Appuyez sur \"fermé\" pour quitter la partie \nou sur \"haut\" pour recommencer une nouvelle partie")
+        
+        if (NbCoul == 10) and (NbCoulIA != 10): #Victoire du Joueur ?
+            TourJoueur == False
+            TourIA == False
+            fenetre.blit(Victoire, (280,310)) #on le place de manière à ce qu'il soit au milieu du plateau, bien en évidence
+            print("\nVOUS AVEZ GAGNE, L'IA N'A PAS SU VOUS DEFAIRE\n")
+            print("Appuyez sur \"fermé\" pour quitter la partie \nou sur \"haut\" pour recommencer une nouvelle partie")
+        
         #réinitialisation du plateau
         if event.type == KEYDOWN and event.key == K_UP : #Réinitialisation Volontaire (car on peut vouloir écourté la partie)
             #Demande de confirmation
@@ -432,9 +475,11 @@ while Infinie == 1:
                 REINITIALISATION_PARTIE()
                 #Message Réinitialisation
                 print("Reinitialisation de la partie")
+                print("appuyez sur \"espace\" pour commencer")
             else:
                 print("Reinitialisation annulee")
         if EchecVerifFinal == True: #Réinitialisation forcé en cas de mauvais positionnement
             REINITIALISATION_PARTIE()
-            print("Appuyez sur \"b\" pour recommencer la saisi")
+            print("Appuyez sur \"espace\" pour recommencer la saisi")
+print("Au revoir et a Bientot !") #message de fin
 #FIN MAIN PROGRAMME
