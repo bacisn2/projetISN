@@ -96,7 +96,7 @@ def Reveal_Ship(Grille2, CarVert):
     for i in range (400):
         if (Grille2[i][1] == 1) and (Grille2[i][2] == 0): #Ne s'occupe que des navires non touché
             fenetre.blit(CarVert, Grille2[i][0]) #Place un carrée vert pour montrer leur position au joueur
-    pygame.display()
+    pygame.display.flip()
 #FIN FONCTION IF LOOSE
 
 #FONCTION TEST POSITION IA

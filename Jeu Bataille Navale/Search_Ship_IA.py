@@ -60,7 +60,7 @@ def Define_List_Case_and_Strategie():
     for x in range(80, 100):
         if x % 2 == 0:
             CaseIA.append(Grille1[x])
-    for x in range(100, 20):
+    for x in range(100, 120):
         if x % 2 == 1:
             CaseIA.append(Grille1[x])
     for x in range(120, 140):
@@ -720,14 +720,13 @@ def Fonction_Ckeck_Coulage_Fin():
     #Travail sur les cases du dessous (si elles existent):        
     if case_dessous == True: 
         print("passage --> case dessous")
+        Grille1[j+20][2] = 1  #On touche la case
         if case_droite == True: #Case inférieure droite (diagonale)
             print("passage --> case dessous droite")
             Grille1[j+21][2] = 1 #On touche la case
         if case_gauche == True: #Case inférieure gauche (diagonale)
             print("passage --> case dessous gauche")
-            Grille1[j+19][2] = 1 #On touche la case
-        if Grille1[j+20][1] == 1: #Case immédiatement au dessous 
-            Grille1[j+20][2] = 1  #On touche la case                          
+            Grille1[j+19][2] = 1 #On touche la case                          
             
     #Travail sur la case à gauche (si elle existe):          
     if case_gauche == True:
@@ -736,8 +735,7 @@ def Fonction_Ckeck_Coulage_Fin():
     #Travail sur la case à droite (si elle existe):        
     if case_droite == True:
         print("passage --> case droite")
-        if Grille1[j+1][1] == 1: #Case immédiatement à droite
-            Grille1[j+1][2] = 1  #On touche la case                        
+        Grille1[j+1][2] = 1  #On touche la case                        
                 
     #Détermination du type de navire (Horizontale/Verticale) à l'aide des variable H/V:                   
     if droite == True or gauche == True: #Le bateau est-il Horizontal ?
