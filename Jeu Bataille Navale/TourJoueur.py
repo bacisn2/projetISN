@@ -50,7 +50,7 @@ def Tour_Joueur(fenetre, CarBleu, CarRouge, TextEAU, TextTOUCHE, TextCOULE, Jeu,
                     fenetre.blit(TextTOUCHE, (758, 530)) #Affichage du texte "Touché" sur le plateau
                     Coulage(Grille2, IndexCible, fenetre, TextCOULE)
                     #print("NbCoul in TourJoueur = " + str(NbCoul)) #inutile à ce stade
-                    a = random.randint(1, 3)
+                    a = random.randint(1, 2)
                     if a == 1 :
                         TexteJoueurImpactF(fenetre, font)
                 Tir = True 

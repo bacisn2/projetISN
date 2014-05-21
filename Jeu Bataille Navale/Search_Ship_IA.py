@@ -180,7 +180,7 @@ def Search_Ship(fenetre, CasePlayer1, RondBleu, CroixRouge, TextEAU, TextTOUCHE,
                         print("IndexCible in CaseIA = " + str(IndexCible))
                         fenetre.blit(CroixRouge, CaseIA[IndexCible][0]) #Placement croix
                         fenetre.blit(TextTOUCHE, (258, 530)) #Affichage du texte "Touché" sur le plateau
-                        a = random.randint(1, 3)
+                        a = random.randint(1, 2)
                         if a == 1 :
                             TexteIAImpactF(fenetre, font)
                         IndexCible = Grille1.index(Cible)
