@@ -191,7 +191,7 @@ CarVert = pygame.image.load("Carree_Vert.png")
 RondBleu = pygame.image.load("rond.png").convert_alpha()
 CroixRouge = pygame.image.load("Croix.png").convert_alpha()
 CarBlanc = pygame.image.load("Efface_Score.png") #Carrée Blanc pour effacer les anciens scores affichés
-#ImageBlanche = pygame.image.load("imageblanche.png") #Carrée Blanc pour effacer les anciens textes de l'IA affichés
+ImageBlanche = pygame.image.load("imageblanche.png") #Carrée Blanc pour effacer les anciens textes de l'IA affichés
 
 #Liste des textes de jeu
 #Création des Textes
@@ -375,8 +375,8 @@ while Infinie == 1:
         
         #TOURS DE JEU (C'est l'heure du Duel !!)
         if TourIA == True and event.type == KEYDOWN and event.key == K_RIGHT: #Tour de l'IA
-            #fenetre.blit(ImageBlanche, (100, 30))
-            #pygame.display.flip()
+            fenetre.blit(ImageBlanche, (100, 30))
+            pygame.display.flip()
             print("\nTour IA")
             
             #Système de changement de Stratégie de l'IA InGame 
@@ -429,7 +429,9 @@ while Infinie == 1:
             print("A vous, appuyez sur \"gauche\" pour jouer")
             
         if TourJoueur == True and event.type == KEYDOWN and event.key == K_LEFT: #Tour du Joueur 
-            #dès qu'on appuie sur gauche), permet au plateau de ne pas bugger et de laisser le joueur réfléchir            
+            #dès qu'on appuie sur gauche), permet au plateau de ne pas bugger et de laisser le joueur réfléchir    
+            fenetre.blit(ImageBlanche, (100, 30))
+            pygame.display.flip()        
             print("\nTour Joueur")
             #Réinitialisation des textes (on efface tout)
             fenetre.blit(CaseText, (100, 505))
@@ -438,7 +440,7 @@ while Infinie == 1:
             fenetre.blit(CaseText, (600, 505))
             fenetre.blit(CaseText, (733, 505))
             fenetre.blit(CaseText, (869, 505))
-            Tour_Joueur(fenetre, CarBleu, CarRouge, TextEAU, TextTOUCHE, TextCOULE, Jeu) #Appelle de la fonction de tour du joueur
+            Tour_Joueur(fenetre, CarBleu, CarRouge, TextEAU, TextTOUCHE, TextCOULE, Jeu, font) #Appelle de la fonction de tour du joueur
             from TourJoueur import NbCoul
             print("NbCoul = " + str(NbCoul))
             #Passage tour de l'IA

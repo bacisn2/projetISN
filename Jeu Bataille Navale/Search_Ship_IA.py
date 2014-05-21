@@ -12,6 +12,7 @@ from random import *
 from Fonction_Ship import Grille1
 import pygame
 from pygame.locals import *
+from Phrases_IA import *
 pygame.init()
 pygame.font.init()
 NbCoulIA = 0
@@ -170,12 +171,18 @@ def Search_Ship(fenetre, CasePlayer1, RondBleu, CroixRouge, TextEAU, TextTOUCHE,
                         print("DANS L'EAU")
                         fenetre.blit(RondBleu, CaseIA[IndexCible][0])  #Placement rond
                         fenetre.blit(TextEAU, (258, 530)) #Affichage du texte "Dans l'eau" sur le plateau
+                        a = random.randint(1, 3)
+                        if a == 1 :
+                            TexteIAEauF(fenetre, font)
                     else:
                         #On affiche touché et on place un carrée rouge
                         print("TOUCHE")
                         print("IndexCible in CaseIA = " + str(IndexCible))
                         fenetre.blit(CroixRouge, CaseIA[IndexCible][0]) #Placement croix
                         fenetre.blit(TextTOUCHE, (258, 530)) #Affichage du texte "Touché" sur le plateau
+                        a = random.randint(1, 3)
+                        if a == 1 :
+                            TexteIAImpactF(fenetre, font)
                         IndexCible = Grille1.index(Cible)
                         print("IndexCible in Grille1 = " + str(IndexCible))
                         #appelle fonction attaque
