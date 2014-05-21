@@ -210,12 +210,18 @@ def Search_Ship(fenetre, CasePlayer1, RondBleu, CroixRouge, TextEAU, TextTOUCHE,
                         print("DANS L'EAU")
                         fenetre.blit(RondBleu, CaseIA[IndexCible][0])  #Placement rond
                         fenetre.blit(TextEAU, (258, 530)) #Affichage du texte "Dans l'eau" sur le plateau
+                        a = random.randint(1, 3)
+                        if a == 1 :
+                            TexteIAEauF(fenetre, font)
                     else:
                         #On affiche touché et on place un carrée rouge
                         print("TOUCHE")
                         print("IndexCible in CaseIA = " + str(IndexCible))
                         fenetre.blit(CroixRouge, CaseIA[IndexCible][0]) #Placement croix
                         fenetre.blit(TextTOUCHE, (258, 530)) #Affichage du texte "Touché" sur le plateau
+                        a = random.randint(1, 2)
+                        if a == 1 :
+                            TexteIAImpactF(fenetre, font)
                         IndexCible = Grille1.index(Cible)
                         print("IndexCible in Grille1 = " + str(IndexCible))
                         #appelle fonction attaque
@@ -243,12 +249,18 @@ def Search_Ship(fenetre, CasePlayer1, RondBleu, CroixRouge, TextEAU, TextTOUCHE,
                         print("DANS L'EAU")
                         fenetre.blit(RondBleu, CaseIA[IndexCible][0])  #Placement rond
                         fenetre.blit(TextEAU, (258, 530)) #Affichage du texte "Dans l'eau" sur le plateau
+                        a = random.randint(1, 3)
+                        if a == 1 :
+                            TexteIAEauF(fenetre, font)
                     else:
                         #On affiche touché et on place un carrée rouge
                         print("TOUCHE")
                         print("IndexCible in CaseIA = " + str(IndexCible))
                         fenetre.blit(CroixRouge, CaseIA[IndexCible][0]) #Placement croix
                         fenetre.blit(TextTOUCHE, (258, 530)) #Affichage du texte "Touché" sur le plateau
+                        a = random.randint(1, 2)
+                        if a == 1 :
+                            TexteIAImpactF(fenetre, font)
                         IndexCible = Grille1.index(Cible)
                         print("IndexCible in Grille1 = " + str(IndexCible))
                         #appelle fonction attaque
@@ -300,6 +312,9 @@ def Attaque_Base_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, Te
                             print("TOUCHE")
                             fenetre.blit(CroixRouge, CaseCible[0]) #Placement croix
                             fenetre.blit(TextTOUCHE, (258, 530)) #Affichage du texte "Touché" sur le plateau
+                            a = random.randint(1, 2)
+                            if a == 1 :
+                                TexteIAImpactF(fenetre, font)
                             droite = True #Le bateau continue bien sur la droite (utile pour le tour suivant)
                             NbAttaque = NbAttaque +1
                             IndexCible = IndexCible+1
@@ -309,6 +324,9 @@ def Attaque_Base_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, Te
                             print("DANS L'EAU")
                             fenetre.blit(RondBleu, CaseCible[0])  #Placement rond
                             fenetre.blit(TextEAU, (258, 530)) #Affichage du texte "Dans l'eau" sur le plateau
+                            a = random.randint(1, 3)
+                            if a == 1 :
+                                TexteIAEauF(fenetre, font)
                             Tour = True
                             break
             elif NewCible == 2:
@@ -329,6 +347,9 @@ def Attaque_Base_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, Te
                             Reference = CaseCible #Nouvelle case la plus à gauche: Nouvelle Référence
                             fenetre.blit(CroixRouge, CaseCible[0]) #Placement croix
                             fenetre.blit(TextTOUCHE, (258, 530)) #Affichage du texte "Touché" sur le plateau
+                            a = random.randint(1, 2)
+                            if a == 1 :
+                                TexteIAImpactF(fenetre, font)
                             gauche = True #Le bateau continue bien sur la gauche (utile pour le tour suivant)
                             NbAttaque = NbAttaque +1
                             IndexCible = IndexCible-1
@@ -338,6 +359,9 @@ def Attaque_Base_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, Te
                             print("DANS L'EAU")
                             fenetre.blit(RondBleu, CaseCible[0])  #Placement rond
                             fenetre.blit(TextEAU, (258, 530)) #Affichage du texte "Dans l'eau" sur le plateau
+                            a = random.randint(1, 3)
+                            if a == 1 :
+                                TexteIAEauF(fenetre, font)
                             Tour = True
                             break
             elif NewCible == 3:
@@ -358,6 +382,9 @@ def Attaque_Base_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, Te
                             Reference = CaseCible #Nouvelle case la plus en haut: Nouvelle Référence
                             fenetre.blit(CroixRouge, CaseCible[0]) #Placement croix
                             fenetre.blit(TextTOUCHE, (258, 530)) #Affichage du texte "Touché" sur le plateau
+                            a = random.randint(1, 2)
+                            if a == 1 :
+                                TexteIAImpactF(fenetre, font)
                             haut = True #Le bateau continue bien vers le haut (utile pour le tour suivant)
                             NbAttaque = NbAttaque +1
                             IndexCible = IndexCible-20
@@ -367,6 +394,9 @@ def Attaque_Base_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, Te
                             print("DANS L'EAU")
                             fenetre.blit(RondBleu, CaseCible[0])  #Placement rond
                             fenetre.blit(TextEAU, (258, 530)) #Affichage du texte "Dans l'eau" sur le plateau
+                            a = random.randint(1, 3)
+                            if a == 1 :
+                                TexteIAEauF(fenetre, font)
                             Tour = True
                             break
             elif NewCible == 4:
@@ -386,6 +416,9 @@ def Attaque_Base_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, Te
                             print("TOUCHE")
                             fenetre.blit(CroixRouge, CaseCible[0]) #Placement croix
                             fenetre.blit(TextTOUCHE, (258, 530)) #Affichage du texte "Touché" sur le plateau
+                            a = random.randint(1, 2)
+                            if a == 1 :
+                                TexteIAImpactF(fenetre, font)
                             bas = True #Le bateau continue bien vers le bas (utile pour le tour suivant)
                             NbAttaque = NbAttaque +1
                             IndexCible = IndexCible+20
@@ -395,6 +428,9 @@ def Attaque_Base_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, Te
                             print("DANS L'EAU")
                             fenetre.blit(RondBleu, CaseCible[0])  #Placement rond
                             fenetre.blit(TextEAU, (258, 530)) #Affichage du texte "Dans l'eau" sur le plateau
+                            a = random.randint(1, 3)
+                            if a == 1 :
+                                TexteIAEauF(fenetre, font)
                             Tour = True
                             break 
             #Appelle fonction Nombre de Case
@@ -446,6 +482,9 @@ def Attaque_Avancee_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE,
                         print("TOUCHE")
                         fenetre.blit(CroixRouge, CaseCible[0]) #Placement croix
                         fenetre.blit(TextTOUCHE, (258, 530)) #Affichage du texte "Touché" sur le plateau
+                        a = random.randint(1, 2)
+                        if a == 1 :
+                            TexteIAImpactF(fenetre, font)
                         NbAttaque = NbAttaque +1
                         IndexCible = IndexCible +1 #cible prochain tour
                         Tour = True
@@ -455,6 +494,9 @@ def Attaque_Avancee_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE,
                         fenetre.blit(RondBleu, CaseCible[0])  #Placement rond
                         fenetre.blit(TextEAU, (258, 530)) #Affichage du texte "Dans l'eau" sur le plateau 
                         #Plus de bateau à droite: on continue à gauche pour le prochain tour
+                        a = random.randint(1, 3)
+                        if a == 1 :
+                            TexteIAEauF(fenetre, font)
                         droite = False
                         gauche = True
                         IndexCible = FirstCase #On revient à la première case
@@ -484,6 +526,9 @@ def Attaque_Avancee_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE,
                         print("TOUCHE")
                         fenetre.blit(CroixRouge, CaseCible[0]) #Placement croix
                         fenetre.blit(TextTOUCHE, (258, 530)) #Affichage du texte "Touché" sur le plateau
+                        a = random.randint(1, 2)
+                        if a == 1 :
+                            TexteIAImpactF(fenetre, font)
                         NbAttaque = NbAttaque +1
                         IndexCible = IndexCible -1
                         Reference = CaseCible
@@ -494,6 +539,9 @@ def Attaque_Avancee_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE,
                         fenetre.blit(RondBleu, CaseCible[0])  #Placement rond
                         fenetre.blit(TextEAU, (258, 530)) #Affichage du texte "Dans l'eau" sur le plateau 
                         #Plus de bateau à droite: on continue à gauche pour le prochain tour
+                        a = random.randint(1, 3)
+                        if a == 1 :
+                            TexteIAEauF(fenetre, font)
                         droite = True
                         gauche = False
                         IndexCible = FirstCase #On revient à la première case
@@ -523,6 +571,9 @@ def Attaque_Avancee_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE,
                         print("TOUCHE")
                         fenetre.blit(CroixRouge, CaseCible[0]) #Placement croix
                         fenetre.blit(TextTOUCHE, (258, 530)) #Affichage du texte "Touché" sur le plateau
+                        a = random.randint(1, 2)
+                        if a == 1 :
+                            TexteIAImpactF(fenetre, font)
                         NbAttaque = NbAttaque +1
                         IndexCible = IndexCible -20
                         Reference = CaseCible
@@ -533,6 +584,9 @@ def Attaque_Avancee_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE,
                         fenetre.blit(RondBleu, CaseCible[0])  #Placement rond
                         fenetre.blit(TextEAU, (258, 530)) #Affichage du texte "Dans l'eau" sur le plateau 
                         #Plus de bateau à droite: on continue à gauche pour le prochain tour
+                        a = random.randint(1, 3)
+                        if a == 1 :
+                            TexteIAEauF(fenetre, font)
                         bas = True
                         haut = False
                         IndexCible = FirstCase #On revient à la première case
@@ -562,6 +616,9 @@ def Attaque_Avancee_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE,
                         print("TOUCHE")
                         fenetre.blit(CroixRouge, CaseCible[0]) #Placement croix
                         fenetre.blit(TextTOUCHE, (258, 530)) #Affichage du texte "Touché" sur le plateau
+                        a = random.randint(1, 2)
+                        if a == 1 :
+                            TexteIAImpactF(fenetre, font)
                         NbAttaque = NbAttaque +1
                         IndexCible = IndexCible +20
                         Tour = True
@@ -571,6 +628,9 @@ def Attaque_Avancee_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE,
                         fenetre.blit(RondBleu, CaseCible[0])  #Placement rond
                         fenetre.blit(TextEAU, (258, 530)) #Affichage du texte "Dans l'eau" sur le plateau 
                         #Plus de bateau à droite: on continue à gauche pour le prochain tour
+                        a = random.randint(1, 3)
+                        if a == 1 :
+                            TexteIAEauF(fenetre, font)
                         haut = True
                         bas = False
                         IndexCible = FirstCase #On revient à la première case
