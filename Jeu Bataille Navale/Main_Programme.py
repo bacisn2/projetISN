@@ -440,7 +440,7 @@ while Infinie == 1:
             fenetre.blit(CaseText, (600, 505))
             fenetre.blit(CaseText, (733, 505))
             fenetre.blit(CaseText, (869, 505))
-            Tour_Joueur(fenetre, CarBleu, CarRouge, TextEAU, TextTOUCHE, TextCOULE, Jeu, font) #Appelle de la fonction de tour du joueur
+            Tour_Joueur(fenetre, CarBleu, CarRouge, TextEAU, TextTOUCHE, TextCOULE, Jeu, font, ImageBlanche) #Appelle de la fonction de tour du joueur
             from TourJoueur import NbCoul
             print("NbCoul = " + str(NbCoul))
             #Passage tour de l'IA
