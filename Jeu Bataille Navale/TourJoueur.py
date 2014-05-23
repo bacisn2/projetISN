@@ -11,10 +11,12 @@ from Fonction_Ship import Grille2
 #import random
 import random
 from Phrases_IA import *
+import pygame    
+from pygame.locals import *
 CasePlayer2 = Dico_Grille2.GrillePlayer2 #mit hors de la fonction car unutile de les refaire à chaque fois
 NbCoul = 0
 
-def Tour_Joueur(fenetre, CarBleu, CarRouge, TextEAU, TextTOUCHE, TextCOULE, Jeu, font): 
+def Tour_Joueur(fenetre, CarBleu, CarRouge, TextEAU, TextTOUCHE, TextCOULE, Jeu, font, ImageBlanche): 
     #utilisation des arguments pour la fenetre et les carrées
     global IndexCible
     global Grille2
@@ -48,11 +50,11 @@ def Tour_Joueur(fenetre, CarBleu, CarRouge, TextEAU, TextTOUCHE, TextCOULE, Jeu,
                     print("TOUCHE")
                     fenetre.blit(CarRouge, Grille2[IndexCible][0])
                     fenetre.blit(TextTOUCHE, (758, 530)) #Affichage du texte "Touché" sur le plateau
-                    Coulage(Grille2, IndexCible, fenetre, TextCOULE)
-                    #print("NbCoul in TourJoueur = " + str(NbCoul)) #inutile à ce stade
                     a = random.randint(1, 2)
                     if a == 1 :
                         TexteJoueurImpactF(fenetre, font)
+                    Coulage(Grille2, IndexCible, fenetre, TextCOULE, font, ImageBlanche)
+                    #print("NbCoul in TourJoueur = " + str(NbCoul)) #inutile à ce stade                
                 Tir = True 
             else : 
                 print("CASE DEJA TOUCHE, TIR PERDU")
@@ -73,7 +75,7 @@ def Fonction_Search_Index_CaseListe_for_Grille2(cible):
             print("IndexCase = " + str(IndexCible)) #
             break #si on sort du quadrillage, rien de sert de continuer, on quitte la fonction
 
-def Coulage(Grille2, IndexCible, fenetre, TextCOULE):
+def Coulage(Grille2, IndexCible, fenetre, TextCOULE, font, ImageBlanche):
     global NbCoul
     liste = [] #Liste des index des cases qui vont devoir être vérifiées (touché ou non)
     x = 0 #Variable pour le parcourt de la liste des index
@@ -173,4 +175,7 @@ def Coulage(Grille2, IndexCible, fenetre, TextCOULE):
         #print("NbCoul avant rajout :" + str(NbCoul)) #print pour test. Inutile à savoir
         NbCoul = NbCoul + 1
         fenetre.blit(TextCOULE, (914, 530)) #Affichage du texte "Touché" sur le plateau
+        fenetre.blit(ImageBlanche, (100, 30))
+        pygame.display.flip()
+        TexteJoueurCoulF(fenetre, font)
         print("Le nombre de bateau coule est de " + str(NbCoul))            

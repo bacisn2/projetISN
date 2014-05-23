@@ -12,6 +12,7 @@ from DicoTexte import TexteJoueurImpact
 from DicoTexte import TexteIAEau
 from DicoTexte import TexteIAImpact
 from DicoTexte import TexteJoueurNul
+from DicoTexte import TexteJoueurCoul
 import pygame    
 from pygame.locals import *
 
@@ -50,3 +51,9 @@ def TexteIAImpactF(fenetre, font) :
     fenetre.blit(Phrase, (100, 30))
     pygame.display.flip()
     
+def TexteJoueurCoulF(fenetre, font) :
+    a = random.randint(1, 3)
+    PhraseBrut = TexteJoueurCoul[a]
+    Phrase = font.render(PhraseBrut, 1, (0,0,0))
+    fenetre.blit(Phrase, (100, 30))
+    pygame.display.flip()
