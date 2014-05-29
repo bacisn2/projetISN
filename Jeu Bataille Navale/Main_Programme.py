@@ -85,6 +85,7 @@ def REINITIALISATION_PARTIE():
     fenetre.blit(Instr11, (450,655))
     fenetre.blit(Instr12, (100,670))
     fenetre.blit(Instr13, (750, 595))
+    fenetre.blit(Instr14, (750, 610))
     pygame.display.flip()
 #FIN FONCTION REINITIALISATION
 
@@ -232,7 +233,7 @@ NbCoulIA = 0 #Compteur nombre de navire coulé par l'IA
 
 #Liste des commandes pour le début
 #Création des Textes
-TextD1 = "Il y a 11 navires possibles, chacun possede un code propre que voici pour facilite leur saisi:"
+TextD1 = "Il y a 12 navires possibles, chacun possede un code propre que voici pour facilite leur saisi:"
 TextD2 = "Voilier (2 cases) --> Code: \"Voilier\""
 TextD3 = "Petit Navire (2 cases) --> Code: \"LitShip\""
 TextD4 = "Sous-Marin (3 cases) --> Code: \"SM\""
@@ -243,7 +244,8 @@ TextD8 = "Cuirasse Version 2 (4 cases) --> Code: \"Cuir2\""
 TextD9 = "Porte Avion (5 cases) --> Code: \"PA\""
 TextD10 = "Super Cuirasse (6 cases) --> Code: \"CuirSuper\""
 TextD11 = "Porte Avion Version 2 (5 cases) --> Code: \"PA2\""
-TextD13 = "Yatch de Luxe (4 cases) --> Code: \"Yatch\""
+TextD13 = "Yacht de Luxe (4 cases) --> Code: \"Yacht\""
+TextD14 = "Yacht Blinder (4 cases) --> Code: \"Yacht2\""
 TextD12 = "Ces codes placent vos bateaux de maniere horizontal, pour les placer verticalement, rajouter \"V\" apres les codes ci-dessus"
 #Chargement des Textes
 Instr1 = Info.render(TextD1, 1, (0,0,0))
@@ -259,6 +261,7 @@ Instr10 = Info.render(TextD7, 1, (0,0,0))
 Instr11 = Info.render(TextD6, 1, (0,0,0))
 Instr12 = Info.render(TextD12, 1, (0,0,0))
 Instr13 = Info.render(TextD13, 1, (0,0,0))
+Instr14 = Info.render(TextD14, 1, (0,0,0))
 #Placement des Textes sur le Plateau de Jeu
 fenetre.blit(Instr1, (100,580))
 fenetre.blit(Instr2, (100,595))
@@ -273,6 +276,7 @@ fenetre.blit(Instr10, (100,655))
 fenetre.blit(Instr11, (450,655))
 fenetre.blit(Instr12, (100,670))
 fenetre.blit(Instr13, (750, 595))
+fenetre.blit(Instr14, (750, 610))
 #Raifraichissement du Plateau de Jeu
 pygame.display.flip()
 #FIN PARTIE INITIALISATION DU JEU
@@ -285,7 +289,7 @@ from TourJoueur import *
 print("Bienvenue dans cette partie de Bataille Navale\n")  
 print("l'IA vous attend avec impatiente pour se mesurer a vous\n")   
 print("Appuyez sur \"espace\" pour commencer à placer vos navires \nLes codes de placements sont ecrits sur le plateau de jeu\n")
-print("Vous avez le droit à douze navires, \npour savoir le nombre par classe, commencez par placer un navire\n")
+print("Vous avez le droit a douze navires, \npour savoir le nombre par classe, commencez par placer un navire\n")
 print("Bonne Chance, mais mefiez-vous: l'IA n'est du genre a ce laisser faire, \nvous allez mordre la poussiere (et surtout le fond des oceans)")
 print("\n")
 #début boucle jeu (tourne jusqu'à la fin)

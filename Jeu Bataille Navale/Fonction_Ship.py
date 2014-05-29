@@ -600,7 +600,7 @@ def ListShip_for_Chgmt_State():
             Grille1_Navire_Verticale()
             Nb3Case = Nb3Case+1
         
-    elif Bat == "CuirBase" or Bat == "Cuir2" or Bat == "Yatch": #Bateau "4 cases" horizontale
+    elif Bat == "CuirBase" or Bat == "Cuir2" or Bat == "Yacht" or Bat == "Yacht2": #Bateau "4 cases" horizontale
         #Prologue: Appelle de la Fonction vérif quadrillage & autres navires
         NbCase = 4 #Nombre de case du navire (sert pour les fonctions suivantes)
         Fonction_Verif_Position_Brute_for_H()
@@ -611,7 +611,7 @@ def ListShip_for_Chgmt_State():
             Grille1_Navire_Horizontale()
             Nb4Case = Nb4Case+1
         
-    elif Bat == "CuirBaseV" or Bat == "Cuir2V" or Bat == "YatchV": #Bateau "4 cases" verticale
+    elif Bat == "CuirBaseV" or Bat == "Cuir2V" or Bat == "YachtV" or Bat == "Yacht2V": #Bateau "4 cases" verticale
         #Prologue: Appelle de la Fonction vérif quadrillage & autres navires
         NbCase = 4 #Nombre de case du navire (sert pour les fonctions suivantes)
         Fonction_Verif_Position_Brute_for_V()
