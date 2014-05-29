@@ -303,32 +303,32 @@ def Attaque_Base_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, Te
                         print("IndexCase = " + str(IndexCible+1))
                         print("Case: " + str(CaseCible))
                         print("Bateau ?: " + str(CaseCible[1]))
-                        Code = Dico_IA[CaseCible[0]]
-                        print(Code)
+                        Code = Dico_IA[CaseCible[0]] #Recherche du nom de la case à partir de ses coordonnées grâce au Dico "CaseCible"
+                        print(Code) #Affichage de la case dans la console
                         TextCase = font.render(Code, 1, (0,0,0))
-                        fenetre.blit(TextCase, (115, 530))
+                        fenetre.blit(TextCase, (115, 530)) #Affichage de la case sur la fenêtre de jeu
                         if CaseCible[1] == 1: #Il y a-t-il un bateau sur cette case ?
                             #On affiche touché et on place un carrée rouge
                             print("TOUCHE")
                             fenetre.blit(CroixRouge, CaseCible[0]) #Placement croix
                             fenetre.blit(TextTOUCHE, (258, 530)) #Affichage du texte "Touché" sur le plateau
-                            a = random.randint(1, 2)
-                            if a == 1 :
-                                TexteIAImpactF(fenetre, font)
+                            a = random.randint(1, 2) #Générateur de probabilité
+                            if a == 1 : #L'IA dit-il un mot (phrase affiché en haut du plateau). 1 == oui, sinon ce sera à un autre tour
+                                TexteIAImpactF(fenetre, font) #appel de la fonction 
                             droite = True #Le bateau continue bien sur la droite (utile pour le tour suivant)
-                            NbAttaque = NbAttaque +1
-                            IndexCible = IndexCible+1
-                            Tour = True
+                            NbAttaque = NbAttaque +1 #On a touché une case de plus du navire
+                            IndexCible = IndexCible+1 #on passe à la case suivante (pour le prochain tour)
+                            Tour = True #fin du tour de jeu
                         else:
                             #On affiche dans l'eau et on place un carrée bleu
                             print("DANS L'EAU")
                             fenetre.blit(RondBleu, CaseCible[0])  #Placement rond
                             fenetre.blit(TextEAU, (258, 530)) #Affichage du texte "Dans l'eau" sur le plateau
-                            a = random.randint(1, 3)
-                            if a == 1 :
-                                TexteIAEauF(fenetre, font)
-                            Tour = True
-                            break
+                            a = random.randint(1, 3) #Générateur de probabilité
+                            if a == 1 : #L'IA dit-il un mot (phrase affiché en haut du plateau). 1 == oui, sinon ce sera à un autre tour
+                                TexteIAEauF(fenetre, font) #appel de la fonction 
+                            Tour = True #Fin du tour de jeu
+                            break #On sort de la boucle while (plus rapide que de laisser le programme en sortir seul)
             elif NewCible == 2:
                 if list(Grille1[IndexCible][0])[0]-1 >= 105: #Il y a-t-il une case à gauche ?
                     CaseCible = Grille1[IndexCible-1] #case à gauche
@@ -351,8 +351,8 @@ def Attaque_Base_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, Te
                             if a == 1 :
                                 TexteIAImpactF(fenetre, font)
                             gauche = True #Le bateau continue bien sur la gauche (utile pour le tour suivant)
-                            NbAttaque = NbAttaque +1
-                            IndexCible = IndexCible-1
+                            NbAttaque = NbAttaque +1 #On a touché une case de plus du navire
+                            IndexCible = IndexCible-1 #on passe à la case suivante (pour le prochain tour)
                             Tour = True
                         else:
                             #On affiche dans l'eau et on place un carrée bleu
@@ -387,7 +387,7 @@ def Attaque_Base_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, Te
                                 TexteIAImpactF(fenetre, font)
                             haut = True #Le bateau continue bien vers le haut (utile pour le tour suivant)
                             NbAttaque = NbAttaque +1
-                            IndexCible = IndexCible-20
+                            IndexCible = IndexCible-20 #on passe à la case suivante (pour le prochain tour)
                             Tour = True
                         else:
                             #On affiche dans l'eau et on place un carrée bleu
@@ -421,7 +421,7 @@ def Attaque_Base_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, Te
                                 TexteIAImpactF(fenetre, font)
                             bas = True #Le bateau continue bien vers le bas (utile pour le tour suivant)
                             NbAttaque = NbAttaque +1
-                            IndexCible = IndexCible+20
+                            IndexCible = IndexCible+20 #on passe à la case suivante (pour le prochain tour)
                             Tour = True
                         else:
                             #On affiche dans l'eau et on place un carrée bleu
@@ -434,15 +434,15 @@ def Attaque_Base_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, Te
                             Tour = True
                             break 
             #Appelle fonction Nombre de Case
-            CountNbCoulIANavire(Grille1, IndexCible)                
-            if NbAttaque == NbCoulIANavire:
-                InAttaque = False
+            CountNbCoulIANavire(Grille1, IndexCible) #comptage du nombre de case du bateau touché (sert pour le coulage)               
+            if NbAttaque == NbCoulIANavire: #Le bateau est-til coulé ? (à ce stade ne vaut que pour les navires de 2 cases)
+                InAttaque = False #On sort de la phase d'attaque pour retourner dans celle de recherche
                 print("COULE")
                 fenetre.blit(TextCOULE, (414, 530)) #Affichage du texte "Coulé" sur le plateau
-                Fonction_Ckeck_Coulage_Fin()
+                Fonction_Ckeck_Coulage_Fin() #Réalisation de la fonction finale checkant les cases adjacentes au navire pour ne pas les retoucher
                 NbCoulIA = NbCoulIA+1 #+1 navire coulé, la victoire est proche... 
     else:
-        #Appelle fonction suivante
+        #Appelle fonction suite d'attaque, lorsque le sens du bateau est trouvé
         Attaque_Avancee_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, TextEAU, TextCOULE, Dico_IA, font)
     print("NbAttaque in End Tour = " + str(NbAttaque))
 
@@ -464,15 +464,16 @@ def Attaque_Avancee_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE,
     print("gauche: " + str(gauche))
     print("bas: " + str(bas))
     print("IndexCible base = " +str(IndexCible))
-    while Tour == False:
+    while Tour == False: #tourne tant que le tour de l'IA n'est pas terminé (tant qu'il n'a pas officiellement touché une case)
         if droite == True: #Le bateau continue-t-il à droite ?
             if list(Grille1[IndexCible][0])[0]+20 <= 485: #Il y a-t-il une case à droite ?
-                CaseCible =  Grille1[IndexCible+1]
-                if CaseCible[2] == 0:
+                CaseCible =  Grille1[IndexCible+1] #on touche prend l'indice suivant
+                if CaseCible[2] == 0: #La case a-t-elle déjà été touché ?
                     Grille1[IndexCible+1][2] = 1 #On touche la case
                     print("IndexCase = " + str(IndexCible+1))
                     print("Case: " + str(CaseCible))
                     print("Bateau ?: " + str(CaseCible[1]))
+                    #Affichage de la case touché sur la console et le plateau
                     Code = Dico_IA[CaseCible[0]]
                     print(Code)
                     TextCase = font.render(Code, 1, (0,0,0))
@@ -482,27 +483,27 @@ def Attaque_Avancee_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE,
                         print("TOUCHE")
                         fenetre.blit(CroixRouge, CaseCible[0]) #Placement croix
                         fenetre.blit(TextTOUCHE, (258, 530)) #Affichage du texte "Touché" sur le plateau
-                        a = random.randint(1, 2)
-                        if a == 1 :
-                            TexteIAImpactF(fenetre, font)
-                        NbAttaque = NbAttaque +1
+                        a = random.randint(1, 2) #générateur de probabilité
+                        if a == 1 : #l'IA dit-il un mot ?
+                            TexteIAImpactF(fenetre, font) #appel de la fonction
+                        NbAttaque = NbAttaque +1 #On a touché une case supplémentaire
                         IndexCible = IndexCible +1 #cible prochain tour
-                        Tour = True
+                        Tour = True #Fin du tour de jeu de l'IA
                     else:
                         #On affiche dans l'eau et on place un carrée bleu
                         print("DANS L'EAU")
                         fenetre.blit(RondBleu, CaseCible[0])  #Placement rond
                         fenetre.blit(TextEAU, (258, 530)) #Affichage du texte "Dans l'eau" sur le plateau 
                         #Plus de bateau à droite: on continue à gauche pour le prochain tour
-                        a = random.randint(1, 3)
-                        if a == 1 :
-                            TexteIAEauF(fenetre, font)
-                        droite = False
-                        gauche = True
+                        a = random.randint(1, 3) #générateur de probabilité
+                        if a == 1 : #l'IA dit-il un mot ?
+                            TexteIAEauF(fenetre, font) #appel de la fonction
+                        droite = False #plus de bateau à droite...
+                        gauche = True #...donc on continue à gauche
                         IndexCible = FirstCase #On revient à la première case
-                        Tour = True
-                else:
-                    IndexCible = FirstCase #Déjà touché ? Alors c'était dans l'eau
+                        Tour = True #Fin du tour de jeu de l'IA
+                else: #Déjà touché ? Alors c'était dans l'eau
+                    IndexCible = FirstCase #on revient à la première case choisi (pour changer de sens au prochain tour)
                     droite = False
                     gauche = True
             else: #Plus de case à droite: le bateau continue donc à gauche
@@ -822,13 +823,12 @@ def Check_Coulage_NavireH(j, case_dessus, case_dessous): #Spécifique aux navire
     global gauche
     global Reference
     global NbCoulIANavire
-    x = 1
+    x = 1 #on commence le compteur à un (et on retirera 1 au nombre de case du navire restant)
     for x in range (NbCoulIANavire-1): #La boucle tourne tant que l'on est pas arrivé à la fin du bateau
-        j = j+1
+        j = j+1 #case suivante
         print("Case: " + str(Grille1[j]))
         print("Index: " + str(j))             
-        #La case suivante appartient t'elle au bateau ?
-        Grille1[j][2] = 1 #On check la Case
+        Grille1[j][2] = 1 #On check la Case du  bateau
         if case_dessus == True: #On vérifie que la case au dessus existe...
             Grille1[j-20][2] = 1 #On n'oublie pas de checker la Case 
         if case_dessous == True:  #On vérifie que la case en dessous existe...
@@ -836,7 +836,7 @@ def Check_Coulage_NavireH(j, case_dessus, case_dessous): #Spécifique aux navire
     #Partie qui se fait une fois toutes les cases du navires ckeckées (on va sur les celles juste après)
     if list(Grille1[j+1][0])[0] <= 485: #Y a-t-il une case deux cases à droite ?
         j = j+1        
-        Grille1[j][2] = 1 #On check la Case
+        Grille1[j][2] = 1 #On check la Case juste après le bateau
         if case_dessus == True: #On vérifie que la case au dessus existe...
             Grille1[j-20][2] = 1 #On n'oublie pas de checker la Case 
         if case_dessous == True:  #On vérifie que la case en dessous existe...
