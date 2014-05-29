@@ -44,14 +44,10 @@ def REINITIALISATION_PARTIE():
     global TourJoueur
     global TourIA
     global Initialisation
-    global NbCoul
-    global NbCoulIA
     #réinitialisation des variables de début utile
     Reinitialisation_NbXCase()
     CountShip = 0
     CountTourIA = 1
-    NbCoul = 0
-    NbCoulIA = 0
     EchecVerifFinal = False
     TourJoueur = False
     TourIA = False
@@ -86,7 +82,9 @@ def REINITIALISATION_PARTIE():
     fenetre.blit(Instr8, (100,640))
     fenetre.blit(Instr9, (450,640))
     fenetre.blit(Instr10, (100,655))
-    fenetre.blit(Instr11, (100,670))
+    fenetre.blit(Instr11, (450,655))
+    fenetre.blit(Instr12, (100,670))
+    fenetre.blit(Instr13, (750, 595))
     pygame.display.flip()
 #FIN FONCTION REINITIALISATION
 
@@ -234,7 +232,7 @@ NbCoulIA = 0 #Compteur nombre de navire coulé par l'IA
 
 #Liste des commandes pour le début
 #Création des Textes
-TextD1 = "Il y a 10 navires possibles, chacun possede un code propre que voici pour facilite leur saisi:"
+TextD1 = "Il y a 11 navires possibles, chacun possede un code propre que voici pour facilite leur saisi:"
 TextD2 = "Voilier (2 cases) --> Code: \"Voilier\""
 TextD3 = "Petit Navire (2 cases) --> Code: \"LitShip\""
 TextD4 = "Sous-Marin (3 cases) --> Code: \"SM\""
@@ -245,6 +243,7 @@ TextD8 = "Cuirasse Version 2 (4 cases) --> Code: \"Cuir2\""
 TextD9 = "Porte Avion (5 cases) --> Code: \"PA\""
 TextD10 = "Super Cuirasse (6 cases) --> Code: \"CuirSuper\""
 TextD11 = "Porte Avion Version 2 (5 cases) --> Code: \"PA2\""
+TextD13 = "Yatch de Luxe (4 cases) --> Code: \"Yatch\""
 TextD12 = "Ces codes placent vos bateaux de maniere horizontal, pour les placer verticalement, rajouter \"V\" apres les codes ci-dessus"
 #Chargement des Textes
 Instr1 = Info.render(TextD1, 1, (0,0,0))
@@ -259,6 +258,7 @@ Instr9 = Info.render(TextD10, 1, (0,0,0))
 Instr10 = Info.render(TextD7, 1, (0,0,0))
 Instr11 = Info.render(TextD6, 1, (0,0,0))
 Instr12 = Info.render(TextD12, 1, (0,0,0))
+Instr13 = Info.render(TextD13, 1, (0,0,0))
 #Placement des Textes sur le Plateau de Jeu
 fenetre.blit(Instr1, (100,580))
 fenetre.blit(Instr2, (100,595))
@@ -272,6 +272,7 @@ fenetre.blit(Instr9, (450,640))
 fenetre.blit(Instr10, (100,655))
 fenetre.blit(Instr11, (450,655))
 fenetre.blit(Instr12, (100,670))
+fenetre.blit(Instr13, (750, 595))
 #Raifraichissement du Plateau de Jeu
 pygame.display.flip()
 #FIN PARTIE INITIALISATION DU JEU
@@ -284,6 +285,7 @@ from TourJoueur import *
 print("Bienvenue dans cette partie de Bataille Navale\n")  
 print("l'IA vous attend avec impatiente pour se mesurer a vous\n")   
 print("Appuyez sur \"espace\" pour commencer à placer vos navires \nLes codes de placements sont ecrits sur le plateau de jeu\n")
+print("Vous avez le droit à douze navires, \npour savoir le nombre par classe, commencez par placer un navire\n")
 print("Bonne Chance, mais mefiez-vous: l'IA n'est du genre a ce laisser faire, \nvous allez mordre la poussiere (et surtout le fond des oceans)")
 print("\n")
 #début boucle jeu (tourne jusqu'à la fin)
@@ -311,7 +313,7 @@ while Infinie == 1:
         #Placement navire (joueur puis IA) + vérification position joueur
         if event.type == KEYDOWN and event.key == K_SPACE and Initialisation == True:
             #Placement des bateau en jeu
-            if CountShip < 10:
+            if CountShip < 12:
                 #Appelle de la Fonction de position du Navire
                 #Cette Fonction appelera une sous-fontion qui à son tour 
                 #appelera deux sous-fonctions (choix entre les deux)
@@ -328,7 +330,7 @@ while Infinie == 1:
                     #print("\n")
                     #print("Nouvelle Grille1")
                     #print(Grille1)
-                    print("Nombre de Bateaux: " + str(CountShip))
+                    print("Nombre de Navires total: "+ str(CountShip) +("/12"))
                     print("Appuyez sur \"espace\" pour placer un nouveau navire ou \nlancer la verification de votre positionnement")
                     print("\n")
             else: #Une fois les dix navires posés
@@ -340,7 +342,7 @@ while Infinie == 1:
                 from Fonction_Ship import Nb4Case
                 from Fonction_Ship import Nb5Case
                 from Fonction_Ship import Nb6Case
-                if Nb2Case == 3 and Nb3Case == 3 and Nb4Case == 2 and Nb5Case == 1 and Nb6Case == 1:
+                if Nb2Case == 3 and Nb3Case == 3 and Nb4Case == 3 and Nb5Case == 2 and Nb6Case == 1:
                     print("OK pour la liste de navires")
                     EchecVerifFinal = False
                     Verification_Final_Grille1()
@@ -365,7 +367,7 @@ while Infinie == 1:
                         fenetre.blit(PrintNbCoul, (1160, 150))
                         fenetre.blit(PrintNbCoulIA, (1110, 250))
                         pygame.display.flip()
-                        print("\nPlacement de l'IA terminé, c'est à vous de commencer")
+                        print("Placement de l'IA terminé, c'est à vous de commencer")
                         print("Appuyez sur \"gauche\" pour jouer")
                         Initialisation = False #On ne pourra plus revenir dans cette partie
                         TourJoueur = True #On permet au joueur de commencer à jouer
@@ -454,17 +456,21 @@ while Infinie == 1:
             print("A l'IA, appuyez sur \"droit\" pour lui permettre de jouer")
         
         #VERIF VICTOIRE 
-        if (NbCoulIA == 10) and (NbCoul != 10): #Victoire de l'IA ?
+        if (NbCoulIA == 12) and (NbCoul != 12): #Victoire de l'IA ?
             TourJoueur == False
             TourIA == False
+            NbCoul = 0
+            NbCoulIA = 0
             Reveal_Ship(Grille2, CarVert)
             fenetre.blit(Defaite, (320,310)) #on le place de manière à ce qu'il soit au milieu du plateau, bien en évidence
             print("\nVOUS AVEZ PERDU, L'IA A GAGNE CETTE PARTIE\n")
             print("Appuyez sur \"fermé\" pour quitter la partie \nou sur \"haut\" pour recommencer une nouvelle partie")
         
-        if (NbCoul == 10) and (NbCoulIA != 10): #Victoire du Joueur ?
+        if (NbCoul == 12) and (NbCoulIA != 12): #Victoire du Joueur ?
             TourJoueur == False
             TourIA == False
+            NbCoul = 0
+            NbCoulIA = 0
             fenetre.blit(Victoire, (280,310)) #on le place de manière à ce qu'il soit au milieu du plateau, bien en évidence
             print("\nVOUS AVEZ GAGNE, L'IA N'A PAS SU VOUS DEFAIRE\n")
             print("Appuyez sur \"fermé\" pour quitter la partie \nou sur \"haut\" pour recommencer une nouvelle partie")

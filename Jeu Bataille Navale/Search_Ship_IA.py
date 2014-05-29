@@ -110,7 +110,7 @@ def Define_List_Case_and_Strategie():
     #print(CaseIA) #Désactivé pour inutilité à ce stade
     #Détermination de la stratégie
     x = randint(1,3) #stratégie aléatoire
-    print("choix strategie = " + str(x))
+    #print("choix strategie = " + str(x))
     if x == 1: #choix: du début vers la fin
         A_Z = True
         #print("Strategie A a Z") #Le joueur n'a pas à savoir ceci

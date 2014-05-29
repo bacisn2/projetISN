@@ -165,7 +165,7 @@ def Coulage(Grille2, IndexCible, fenetre, TextCOULE, font, ImageBlanche):
                                             e = IndexCible+100
                                             liste.append(e)
     #Début des vérifications case par case si il y a un bateau ou non
-    print("liste index coulage : " + str(liste)) #print pour test
+    #print("liste index coulage : " + str(liste)) #print pour test
     while x < len(liste) : #Boucle avec incrémentation de x jusqu'au nombre d'élément dans la liste
         if Grille2[liste[x]][2] == 1 : #Vérification si la case a été touchée ou non
             z = z + 1 #Incrémentation de la variable du nombre de case avec bateau qui sont touchées
