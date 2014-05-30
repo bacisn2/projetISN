@@ -122,7 +122,7 @@ def Define_List_Case_and_Strategie():
         #print("Strategie Case Aleatoire") #Le joueur n'a pas à savoir ceci
     Choice = 0 #Initialisation "choix de la case"
         
-def Search_Ship(fenetre, CasePlayer1, RondBleu, CroixRouge, TextEAU, TextTOUCHE, TextCOULE, A_Z, Z_A, Random, Dico_IA, font): #On utilise certaines variables du Main
+def Search_Ship(fenetre, CasePlayer1, RondBleu, CroixRouge, TextEAU, TextTOUCHE, TextCOULE, A_Z, Z_A, Random, Dico_IA, font, ImageBlanche): #On utilise certaines variables du Main
     global CaseIA
     global Choice
     global InAttaque
@@ -142,7 +142,7 @@ def Search_Ship(fenetre, CasePlayer1, RondBleu, CroixRouge, TextEAU, TextTOUCHE,
     Choice = 0 #On prend en compte que la stratégie peut avoir changé entre temps, la réinitialisation de "Choice" s'impose donc
     if InAttaque == True: #l'IA essaie-t-il maintenant de couler un navire ?
         #IndexCible = IndexIntermforAttaque
-        Attaque_Base_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, TextEAU, TextCOULE, Dico_IA, font)
+        Attaque_Base_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, TextEAU, TextCOULE, Dico_IA, font, ImageBlanche)
     else: #Alors il en recherche un
         print("\nIn Search Ship")
         while Tour == False: #Le tour est-il terminé ?
@@ -272,7 +272,7 @@ def Search_Ship(fenetre, CasePlayer1, RondBleu, CroixRouge, TextEAU, TextTOUCHE,
             Choice = Choice+1 #On passe à la case suivante (en cas d'échec)
     print("NbCoulIA in TourIA = " + str(NbCoulIA))
         
-def Attaque_Base_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, TextEAU, TextCOULE, Dico_IA, font):
+def Attaque_Base_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, TextEAU, TextCOULE, Dico_IA, font, ImageBlanche):
     global droite
     global gauche
     global haut
@@ -446,10 +446,10 @@ def Attaque_Base_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, Te
                 NbCoulIA = NbCoulIA+1 #+1 navire coulé, la victoire est proche... 
     else:
         #Appelle fonction suite d'attaque, lorsque le sens du bateau est trouvé
-        Attaque_Avancee_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, TextEAU, TextCOULE, Dico_IA, font)
+        Attaque_Avancee_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, TextEAU, TextCOULE, Dico_IA, font, ImageBlanche)
     print("NbAttaque in End Tour = " + str(NbAttaque))
 
-def Attaque_Avancee_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, TextEAU, TextCOULE, Dico_IA, font):
+def Attaque_Avancee_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, TextEAU, TextCOULE, Dico_IA, font, ImageBlanche):
     global droite
     global gauche
     global haut

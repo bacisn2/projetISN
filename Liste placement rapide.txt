@@ -1,6 +1,6 @@
 CuirSuper
 A1
-PA2
+PA
 C1
 Cuir2
 E1
@@ -18,7 +18,7 @@ Voilier
 Q1
 Voilier
 S1
-Yatch
+Yacht
 A10
-PA
+PA2V
 C10
