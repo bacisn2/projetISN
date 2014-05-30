@@ -439,7 +439,7 @@ def Attaque_Base_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE, Te
                 InAttaque = False #On sort de la phase d'attaque pour retourner dans celle de recherche
                 print("COULE")
                 fenetre.blit(TextCOULE, (414, 530)) #Affichage du texte "Coulé" sur le plateau
-                fenetre.blit(ImageBlanche, (100, 30))
+                fenetre.blit(ImageBlanche, (100, 0))
                 pygame.display.flip()
                 TexteIACoulF(fenetre, font)
                 Fonction_Ckeck_Coulage_Fin() #Réalisation de la fonction finale checkant les cases adjacentes au navire pour ne pas les retoucher
@@ -651,7 +651,7 @@ def Attaque_Avancee_IA(Tour, Grille1, fenetre, CroixRouge, RondBleu, TextTOUCHE,
         InAttaque = False
         print("COULE")
         fenetre.blit(TextCOULE, (414, 530)) #Affichage du texte "Touché" sur le plateau
-        fenetre.blit(ImageBlanche, (100, 30))
+        fenetre.blit(ImageBlanche, (100, 0))
         pygame.display.flip()
         TexteIACoulF(fenetre, font)
         Fonction_Ckeck_Coulage_Fin() #pour considérer comme touché toutes les cases adjacentes au navires

@@ -40,28 +40,28 @@ def Tour_Joueur(fenetre, CarBleu, CarRouge, TextEAU, TextTOUCHE, TextCOULE, Jeu,
                 Grille2[IndexCible][2] = 1 #La case passe de "non touchée" (=0) à touchée (=1)
                 VariableBPB = Grille2[IndexCible][1] #Variable de la présence d'un bateau ou pas
                 if VariableBPB == 0 : #Si il n'y a pas de bateau
-                    print("DANS L'EAU")
-                    fenetre.blit(CarBleu, Grille2[IndexCible][0])
+                    print("Dans l'eau")
+                    fenetre.blit(CarBleu, Grille2[IndexCible][0]) #Affichage d'un carré bleu sur la case ciblée
                     fenetre.blit(TextEAU, (758, 530)) #Affichage du texte "Dans l'eau" sur le plateau
-                    a = random.randint(1, 3)
+                    a = random.randint(1, 3) #Variable aléatoire pour afficher une phrase une fois sur trois
                     if a == 1 :
-                        TexteJoueurEauF(fenetre, font)
+                        TexteJoueurEauF(fenetre, font) #Appel de la fonction pour choisir et afficher une phrase
                 else :
-                    print("TOUCHE")
-                    fenetre.blit(CarRouge, Grille2[IndexCible][0])
+                    print("Touche")
+                    fenetre.blit(CarRouge, Grille2[IndexCible][0]) #Affichage d'un carré rouge sur la case ciblée
                     fenetre.blit(TextTOUCHE, (758, 530)) #Affichage du texte "Touché" sur le plateau
-                    a = random.randint(1, 2)
+                    a = random.randint(1, 2) #Variable aléatoire pour afficher une phrase une fois sur deux
                     if a == 1 :
-                        TexteJoueurImpactF(fenetre, font)
-                    Coulage(Grille2, IndexCible, fenetre, TextCOULE, font, ImageBlanche)
+                        TexteJoueurImpactF(fenetre, font) #Appel de la fonction pour choisir et afficher une phrase
+                    Coulage(Grille2, IndexCible, fenetre, TextCOULE, font, ImageBlanche) #Appel de la fonction qui vérifie si le navire est coulé
                     #print("NbCoul in TourJoueur = " + str(NbCoul)) #inutile à ce stade                
                 Tir = True 
             else : 
-                print("CASE DEJA TOUCHE, TIR PERDU")
-                TexteJoueurNulF(fenetre, font)
+                print("Case deja touche, tir perdu")
+                TexteJoueurNulF(fenetre, font) #Appel de la fonction pour choisir et afficher une phrase
                 Tir = True
         else : 
-            print("CETTE CASE N'EXISTE PAS, EN CHOISIR UNE AUTRE")
+            print("Cette case n'existe pas, en choisir une autre")
         
 def Fonction_Search_Index_CaseListe_for_Grille2(cible):
     #On globalise toutes les variables
@@ -72,7 +72,7 @@ def Fonction_Search_Index_CaseListe_for_Grille2(cible):
     for j in range (len(Grille2)):
         if Grille2[j][0] == CasePlayer2[cible]: #Grille2[j][0] = Coord de la "CaseListe"
             IndexCible = j #Index de la Case choisi dans la liste "Grille2"
-            print("IndexCase = " + str(IndexCible)) #
+            #print("IndexCase = " + str(IndexCible)) #Test
             break #si on sort du quadrillage, rien de sert de continuer, on quitte la fonction
 
 def Coulage(Grille2, IndexCible, fenetre, TextCOULE, font, ImageBlanche):
@@ -171,11 +171,11 @@ def Coulage(Grille2, IndexCible, fenetre, TextCOULE, font, ImageBlanche):
             z = z + 1 #Incrémentation de la variable du nombre de case avec bateau qui sont touchées
         x = x + 1 #Incrémentation de x pour le parcourt de la boucle
     if x == z : #Si le nombre de case avec bateau qui sont touchée est égal au nombre de case devant être vérifiée
-        print("COULE") #print pour test
+        print("Coule")
         #print("NbCoul avant rajout :" + str(NbCoul)) #print pour test. Inutile à savoir
-        NbCoul = NbCoul + 1
+        NbCoul = NbCoul + 1 #Incrémentation de la variable du nombre de navires coulés
         fenetre.blit(TextCOULE, (914, 530)) #Affichage du texte "Touché" sur le plateau
-        fenetre.blit(ImageBlanche, (100, 30))
-        pygame.display.flip()
-        TexteJoueurCoulF(fenetre, font)
+        fenetre.blit(ImageBlanche, (100, 0)) #Affichage d'une image blanche pour effacer le texte précédent
+        pygame.display.flip() #Rafraichit le plateau de jeu pour afficher le texte
+        TexteJoueurCoulF(fenetre, font) #Appel de la fonction pour choisir et afficher une phrase
         print("Le nombre de bateau coule est de " + str(NbCoul))            
