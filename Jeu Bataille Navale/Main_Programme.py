@@ -238,7 +238,7 @@ TextD2 = "Voilier (2 cases) --> Code: \"Voilier\""
 TextD3 = "Petit Navire (2 cases) --> Code: \"LitShip\""
 TextD4 = "Sous-Marin (3 cases) --> Code: \"SM\""
 TextD5 = "Destroyer (3 cases) --> Code: \"Destroyer\""
-TextD6 = "Super Cuirasse version 2 --> Code: \"SuperCuir\""
+TextD6 = "Super Cuirasse version 2 (6 cases) --> Code: \"SuperCuir\""
 TextD7 = "Cuirasse Standard (4 cases) --> Code: \"CuirBase\""
 TextD8 = "Cuirasse Version 2 (4 cases) --> Code: \"Cuir2\""
 TextD9 = "Porte Avion (5 cases) --> Code: \"PA\""
@@ -288,7 +288,7 @@ from TourJoueur import *
 #message de début
 print("Bienvenue dans cette partie de Bataille Navale\n")  
 print("l'IA vous attend avec impatiente pour se mesurer a vous\n")   
-print("Appuyez sur \"espace\" pour commencer à placer vos navires \nLes codes de placements sont ecrits sur le plateau de jeu\n")
+print("Appuyez sur \"espace\" pour commencer a placer vos navires \nLes codes de placements sont ecrits sur le plateau de jeu\n")
 print("Vous avez le droit a douze navires, \npour savoir le nombre par classe, commencez par placer un navire\n")
 print("Bonne Chance, mais mefiez-vous: l'IA n'est du genre a ce laisser faire, \nvous allez mordre la poussiere (et surtout le fond des oceans)")
 print("\n")

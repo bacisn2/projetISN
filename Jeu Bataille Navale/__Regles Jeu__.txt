@@ -1,7 +1,7 @@
-Navires:
+12 Navires:
 1 Navire 6 Cases
-1 Navires 5 Cases
-2 Navires 4 Cases
+2 Navires 5 Cases
+3 Navires 4 Cases
 3 Navires 3 Cases
 3 Navires 2 Cases
 
