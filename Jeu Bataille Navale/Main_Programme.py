@@ -355,6 +355,7 @@ while Infinie == 1:
                         EchecVerifFinal = True
                     #Les navires du joueur sont bien positionné, l'IA peut placer ses navires
                     else: #Passage au placement de l'IA
+                        Define_score() #redéfinie le score à 0
                         print("Verifiction termine, aucun probleme detecte, \nl'IA pose ses navires et la partie peut commencer")
                         print("\nPositionnement des navires de l'IA en cours. \nMerci de patientez quelques instants...")
                         IA_Pose_Bat()#Appelle Fonction IA_Pose_Bat
@@ -371,7 +372,7 @@ while Infinie == 1:
                         fenetre.blit(PrintNbCoul, (1160, 150))
                         fenetre.blit(PrintNbCoulIA, (1110, 250))
                         pygame.display.flip()
-                        print("Placement de l'IA terminé, c'est à vous de commencer")
+                        print("Placement de l'IA termine, c'est à vous de commencer")
                         print("Appuyez sur \"gauche\" pour jouer")
                         Initialisation = False #On ne pourra plus revenir dans cette partie
                         TourJoueur = True #On permet au joueur de commencer à jouer
@@ -466,18 +467,20 @@ while Infinie == 1:
             NbCoul = 0
             NbCoulIA = 0
             Reveal_Ship(Grille2, CarVert)
-            fenetre.blit(Defaite, (320,310)) #on le place de manière à ce qu'il soit au milieu du plateau, bien en évidence
+            fenetre.blit(Defaite, (420,280)) #on le place de manière à ce qu'il soit au milieu du plateau, bien en évidence
+            pygame.display.flip()
             print("\nVOUS AVEZ PERDU, L'IA A GAGNE CETTE PARTIE\n")
-            print("Appuyez sur \"fermé\" pour quitter la partie \nou sur \"haut\" pour recommencer une nouvelle partie")
+            print("Appuyez sur \"ferme\" pour quitter la partie \nou sur \"haut\" pour recommencer une nouvelle partie")
         
         if (NbCoul == 12) and (NbCoulIA != 12): #Victoire du Joueur ?
             TourJoueur == False
             TourIA == False
             NbCoul = 0
             NbCoulIA = 0
-            fenetre.blit(Victoire, (280,310)) #on le place de manière à ce qu'il soit au milieu du plateau, bien en évidence
+            fenetre.blit(Victoire, (400,280)) #on le place de manière à ce qu'il soit au milieu du plateau, bien en évidence
+            pygame.display.flip()
             print("\nVOUS AVEZ GAGNE, L'IA N'A PAS SU VOUS DEFAIRE\n")
-            print("Appuyez sur \"fermé\" pour quitter la partie \nou sur \"haut\" pour recommencer une nouvelle partie")
+            print("Appuyez sur \"ferme\" pour quitter la partie \nou sur \"haut\" pour recommencer une nouvelle partie")
         
         #réinitialisation du plateau
         if event.type == KEYDOWN and event.key == K_UP : #Réinitialisation Volontaire (car on peut vouloir écourté la partie)

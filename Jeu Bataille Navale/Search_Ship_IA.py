@@ -36,6 +36,7 @@ def Define_List_Case_and_Strategie():
     global A_Z
     global Z_A
     global Random
+    global NbCoulIA
     #variable locale utile
     x = 0
     #Variable Stratégie IA
@@ -121,6 +122,7 @@ def Define_List_Case_and_Strategie():
         Random = True
         #print("Strategie Case Aleatoire") #Le joueur n'a pas à savoir ceci
     Choice = 0 #Initialisation "choix de la case"
+    NbCoulIA = 0 #Initialisation score (sert en cas de réinitialisation de la partie)
         
 def Search_Ship(fenetre, CasePlayer1, RondBleu, CroixRouge, TextEAU, TextTOUCHE, TextCOULE, A_Z, Z_A, Random, Dico_IA, font, ImageBlanche): #On utilise certaines variables du Main
     global CaseIA

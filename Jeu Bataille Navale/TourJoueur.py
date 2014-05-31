@@ -16,6 +16,10 @@ from pygame.locals import *
 CasePlayer2 = Dico_Grille2.GrillePlayer2 #mit hors de la fonction car unutile de les refaire à chaque fois
 NbCoul = 0
 
+def Define_score():
+    global NbCoul
+    NbCoul = 0 #sert en case de réinitialisation de la partie
+    
 def Tour_Joueur(fenetre, CarBleu, CarRouge, TextEAU, TextTOUCHE, TextCOULE, Jeu, font, ImageBlanche): 
     #utilisation des arguments pour la fenetre et les carrées
     global IndexCible
