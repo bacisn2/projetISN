@@ -275,8 +275,8 @@ fenetre.blit(Instr9, (450,640))
 fenetre.blit(Instr10, (100,655))
 fenetre.blit(Instr11, (450,655))
 fenetre.blit(Instr12, (100,670))
-fenetre.blit(Instr13, (750, 595))
-fenetre.blit(Instr14, (750, 610))
+fenetre.blit(Instr13, (780, 595))
+fenetre.blit(Instr14, (780, 610))
 #Raifraichissement du Plateau de Jeu
 pygame.display.flip()
 #FIN PARTIE INITIALISATION DU JEU
@@ -381,7 +381,7 @@ while Infinie == 1:
         
         #TOURS DE JEU (C'est l'heure du Duel !!)
         if TourIA == True and event.type == KEYDOWN and event.key == K_RIGHT: #Tour de l'IA
-            fenetre.blit(ImageBlanche, (100, 30))
+            fenetre.blit(ImageBlanche, (100, 0))
             pygame.display.flip()
             print("\nTour IA")
             
@@ -436,7 +436,7 @@ while Infinie == 1:
             
         if TourJoueur == True and event.type == KEYDOWN and event.key == K_LEFT: #Tour du Joueur 
             #dès qu'on appuie sur gauche), permet au plateau de ne pas bugger et de laisser le joueur réfléchir    
-            fenetre.blit(ImageBlanche, (100, 30))
+            fenetre.blit(ImageBlanche, (100, 0))
             pygame.display.flip()        
             print("\nTour Joueur")
             #Réinitialisation des textes (on efface tout)
