@@ -372,7 +372,7 @@ while Infinie == 1:
                         fenetre.blit(PrintNbCoul, (1160, 150))
                         fenetre.blit(PrintNbCoulIA, (1110, 250))
                         pygame.display.flip()
-                        print("Placement de l'IA termine, c'est à vous de commencer")
+                        print("Placement de l'IA termine, c'est a vous de commencer")
                         print("Appuyez sur \"gauche\" pour jouer")
                         Initialisation = False #On ne pourra plus revenir dans cette partie
                         TourJoueur = True #On permet au joueur de commencer à jouer
