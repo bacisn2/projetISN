@@ -7,3 +7,5 @@
 
 Règles Positionnement:
 Les navires ne doivent pas se toucher (aucun navire directement adjacent, diagonal inclus)
+
+Si une case est touché deux fois, il n'est pas possible de recommencer son tir

@@ -4,6 +4,8 @@ Ce jeu n'est pas multijoueur, vous jouerez contre une IA à difficulté unique.
 --> Installation
 Pour pouvoir jouer, vous devez au préalable installer Python et Pygame. Prenez une version plutôt récente, tel que Python 2.7 et le pygame 1.9 
 compatible avec Python 2.7. Ne prenez pas de Python 3.0, il ne doit pas y avoir de version de Pygame compatible.
+Pour télécharger Python, vous pouvez vous rendre sur ce site: https://www.python.org/download/
+Pour télécharger Pygame, vous pouvez vous rendre sur ce site: http://www.pygame.org/download.shtml
 
 --> Lancement
 Pour lancer le jeu, vous devez ouvrir le dossier "Jeu Bataille Navale" et lancer le programme "Main_Programme.py"
