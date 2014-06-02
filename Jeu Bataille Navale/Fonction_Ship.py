@@ -165,12 +165,16 @@ def IA_Pose_Bat(): #Pose des bateaux par l'IA
             case = Grille2[IndexCase] #La case de positionnement du bateau celon l'index choisis 
             Fonction_Verif_PositionIA_Brute_for_V() #Appel fonction vérifiant position bateaux verticaux dans Grille2
             if EchecPosition == False:
-                Verif_VariableVPV_in_Grille2_for_V() #Appel fonction qui vérifie que que le navire ne soit ni sur un emplacement déjà pris ni sur une case adjacente à celui-ci
+                #Appel fonction qui vérifie que que le navire ne soit ni sur un 
+                #emplacement déjà pris ni sur une case adjacente à celui-ci
+                Verif_VariableVPV_in_Grille2_for_V() 
         else : #Choix Horizontal du bateau
             case = Grille2[IndexCase]   
             Fonction_Verif_PositionIA_Brute_for_H() #Appel fonction vérifiant position bateaux horizontaux dans Grille2
-            if EchecPosition == False:          
-                Verif_VariableVPV_in_Grille2_for_H() #Appel fonction qui vérifie que que le navire ne soit ni sur un emplacement déjà pris ni sur une case adjacente à celui-ci
+            if EchecPosition == False: 
+                #Appel fonction qui vérifie que que le navire ne soit ni sur un 
+                #emplacement déjà pris ni sur une case adjacente à celui-ci
+                Verif_VariableVPV_in_Grille2_for_H() 
         if EchecPosition == False : #On ne place le bateau que s'il peut être placé
             if b == 0:
                 Grille2_Navire_Verticale()
@@ -676,8 +680,7 @@ def ListShip_for_Chgmt_State():
 #//////////////////////////////////////////////////////////////////////////////
 #PARTIE CHANGEMENT DE L'ETAT DE LA VARIABLE "BATEAU/PAS BATEAU" (BPB) IA
 def Grille2_Navire_Horizontale(): #Spécifique aux navires Horizontaux
-    #On globalise toutes les variables
-    global batcase
+    global batcase #On globalise toutes les variables
     global Grille2
     global IndexCase
     global case
@@ -689,8 +692,7 @@ def Grille2_Navire_Horizontale(): #Spécifique aux navires Horizontaux
     case[1] = 1
     #print("case apres modification" + str(case))
     while i <= batcase:
-        #Récupération de la case adjecente à la précédente (vers la droite)
-        j = j+1                     
+        j = j+1 #Récupération de la case adjecente à la précédente (vers la droite)                     
         case = Grille2[j]
         #print("case suivante")
         #print("index: " + str(j))
@@ -703,8 +705,7 @@ def Grille2_Navire_Horizontale(): #Spécifique aux navires Horizontaux
         i = i+1
         
 def Grille2_Navire_Verticale(): #Spécifique aux navires Verticaux
-    #On globalise toutes les variables
-    global batcase
+    global batcase #On globalise toutes les variables
     global Grille2
     global IndexCase
     global case
@@ -716,8 +717,7 @@ def Grille2_Navire_Verticale(): #Spécifique aux navires Verticaux
     case[1] = 1
     #print("case apres modification" + str(case))
     while i <= batcase: 
-        #Récupération de la case adjecente à la précédente (vers le bas)
-        j = j+20                     
+        j = j+20 #Récupération de la case adjecente à la précédente (vers le bas)                    
         case = Grille2[j]
         #print("case suivante")
         #print("index: " + str(j))

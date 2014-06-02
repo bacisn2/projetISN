@@ -57,7 +57,8 @@ def Tour_Joueur(fenetre, CarBleu, CarRouge, TextEAU, TextTOUCHE, TextCOULE, Jeu,
                     a = random.randint(1, 2) #Variable aléatoire pour afficher une phrase une fois sur deux
                     if a == 1 :
                         TexteJoueurImpactF(fenetre, font) #Appel de la fonction pour choisir et afficher une phrase
-                    Coulage(Grille2, IndexCible, fenetre, TextCOULE, font, ImageBlanche) #Appel de la fonction qui vérifie si le navire est coulé
+                    #Appel de la fonction qui vérifie si le navire est coulé
+                    Coulage(Grille2, IndexCible, fenetre, TextCOULE, font, ImageBlanche) 
                     #print("NbCoul in TourJoueur = " + str(NbCoul)) #inutile à ce stade                
                 Tir = True 
             else : 
